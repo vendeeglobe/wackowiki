@@ -160,8 +160,6 @@ class WikiEdit extends ProtoEdit {
       (form && form.closest('.commentform')) ||
       ta.name === 'payload' || ta.id === 'payload';
 
-    //Log.log(`%cWikiEdit initialized in ${this.isCommentMode ? 'COMMENT' : 'EDIT'} mode – AJAX URL: ${this.ajaxUrl}`, 'color:#0a0;font-weight:bold');
-
     // ====================== DRAG & DROP + PASTE ======================
     if (this.canUpload) {
       this.area.addEventListener('dragover', this.handleDragOver.bind(this));
@@ -205,13 +203,6 @@ class WikiEdit extends ProtoEdit {
       const darkLi = tb ? tb.querySelector('li.we-dark-toggle') : null;
       if (darkLi) darkLi.classList.toggle('active', shouldBeDark);
     }
-
-    // ====================== LIVE PREVIEW AUTO-START ======================
-
-    // document.addEventListener('fullscreenchange', updateFSIcon);
-
-    // Initial state
-    // updateFSIcon();
 
     // ====================== STATUS BAR ======================
     const statusBar = this.createStatusBar();
@@ -2560,9 +2551,6 @@ class WikiEdit extends ProtoEdit {
     return mdRows.join('\n');
   }
 
-  /**
-   * Markdown → Wacko (approximate)
-   */
   /**
    * Markdown → Wacko (approximate)
    */

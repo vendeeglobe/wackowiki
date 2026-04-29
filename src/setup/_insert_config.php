@@ -224,6 +224,7 @@ $config_db['username_chars_max']			= $config['username_chars_max'];
 $config_db['user_can_delete_account']		= $config['user_can_delete_account'];
 $config_db['users_page']					= $config['users_page'];
 $config_db['whatsnew_page']					= $config['whatsnew_page'];
+$config_db['wikiedit_toolbar']				= json_encode($config['wikiedit_toolbar']);
 $config_db['xml_changes_link']				= $config['xml_changes_link'];
 $config_db['xml_sitemap']					= $config['xml_sitemap'];
 $config_db['xml_sitemap_gz']				= $config['xml_sitemap_gz'];

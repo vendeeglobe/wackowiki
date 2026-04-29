@@ -345,6 +345,7 @@ $tbl_user_setting =
 		allow_massemail TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
 		hide_lastsession TINYINT(1) UNSIGNED DEFAULT NULL,
 		validate_ip TINYINT(1) UNSIGNED DEFAULT NULL,
+		wikiedit_toolbar VARCHAR(2048) NOT NULL DEFAULT '',
 		editor_height INT(10) UNSIGNED NOT NULL DEFAULT '400',
 		autosave_draft TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
 		dark_mode TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',

@@ -46,6 +46,7 @@
 						data-heartbeat-timeout="[ ' heartbeat ' ]"
 						data-heartbeat-name="edit_page"
 					=]
+					data-toolbar-buttons="[ ' toolbar | e ' ]"
 					data-autosave-draft="[ ' autosave ' ]"
 					data-syntax-highlighting="[ ' syntax ' ]"
 					data-live-preview="[ ' preview ' ]"

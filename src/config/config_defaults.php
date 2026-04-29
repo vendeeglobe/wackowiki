@@ -274,11 +274,33 @@ $wacko_config_defaults = [
 	'pwd_min_chars'					=> 10,
 	'pwd_admin_min_chars'			=> 15,
 
-
 	'system_message'				=> '',
 	'system_message_type'			=> '',
 	'system_message_audience'		=> 1,
 	'enable_system_message'			=> 1,
+
+	'wikiedit_toolbar'				=> [
+											'h2','h3','h4','h5','h6','separator',
+											'bold','italic','underline','strike','small','code','separator',
+											'ul','ol','separator',
+											'center','right','justify','separator',
+											'outdent','indent','separator',
+											'quote','source','action','textred','highlight','separator',
+											'hr','signature','createlink','footnote','createtable',
+											'upload-media',
+											'separator',
+											'draft-restore','draft-clear',
+											'separator',
+											'wacko2md','md2wacko',
+											'separator',
+											'dark-toggle','syntax','livepreview','fullscreen',
+											'separator',
+											'shrink','enlarge',
+											'separator',
+											'undo','redo',
+											'separator', 'search', 'about',
+											'dropdown'
+										],
 
 	'enable_captcha'				=> 1,
 	'captcha_new_comment'			=> 1,

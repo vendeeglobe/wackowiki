@@ -193,6 +193,27 @@
 					</td>
 				</tr>
 				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<fieldset>
+							<legend>WikiEdit Toolbar</legend>
+							<p>Customize the buttons and their order in the page editor toolbar.</p>
+
+							<input type="hidden" name="wikiedit_toolbar" id="wikiedit_toolbar_hidden" 
+								value="[ ' toolbar | e ' ]">
+
+								<a href="#" onclick="ToolbarCustomizer.open('[ ' toolbar | e ' ]'); return false;" 
+									class="btn btn-primary">
+									Customize Toolbar (Drag & Drop)
+								</a>
+
+							<p class="small hint">
+								Changes are saved server-side and will apply across all your devices and browsers.
+							</p>
+						</fieldset>
+					</td>
+				</tr>
+				<tr>
 					<th><label for="editor_height">[ ' _t: EditorHeight ' ]</label></th>
 					<td>
 						<input type="number" id="editor_height" name="editor_height" value="[ ' height ' ]" min="300" max="800" step="100" style="width:80px">
@@ -211,7 +232,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th><label for="session_length">[ ' _t: SessionDuration ' ]</label></th>
+					<th>[ ' _t: SessionDuration ' ]</th>
 					<td>
 						<input type="radio" id="duration0" name="session_length" value="0"[ ' sessionlength | check 0 ' ]><label for="duration0">[ ' _t: SessionDurationSession ' ]</label>
 						<input type="radio" id="duration1" name="session_length" value="1"[ ' sessionlength | check 1 ' ]><label for="duration1">[ ' _t: SessionDurationDay ' ]</label>

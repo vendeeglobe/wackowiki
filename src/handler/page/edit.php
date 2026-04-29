@@ -428,10 +428,30 @@ if ($this->has_access('read')
 		$tpl->r_title = $this->page['title'];
 	}
 
+	$default_toolbar = $this->db->wikiedit_toolbar ?? json_encode([
+		'h2','h3','h4','h5','h6','separator',
+		'bold','italic','underline','strike','small','code','separator',
+		'ul','ol','separator',
+		'center','right','justify','separator',
+		'outdent','indent','separator',
+		'quote','source','action','textred','highlight','separator',
+		'hr','signature','createlink','footnote','createtable',
+		'upload-media','separator',
+		'draft-restore','draft-clear','separator',
+		'wacko2md','md2wacko','separator',
+		'dark-toggle','syntax','livepreview','fullscreen','separator',
+		'shrink','enlarge','separator',
+		'undo','redo','separator', 'search', 'about',
+		'dropdown'
+	]);
+
+	#echo json_encode($default_toolbar);
+
 	$tpl->sectionid	= $section_id;
 	$tpl->hlevel	= $h_level;
 	$tpl->nonce		= $upload_nonce;
 	$tpl->upload	= (int) $can_upload;
+	$tpl->toolbar	= $user['wikiedit_toolbar'] ?: $default_toolbar;
 	$tpl->autosave	= $user['autosave_draft'] ?? 0;;
 	$tpl->height	= $user['editor_height'] ?? 400;
 	$tpl->syntax	= $user['syntax_highlighting'] ?? 1;

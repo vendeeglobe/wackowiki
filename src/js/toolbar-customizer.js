@@ -1,0 +1,231 @@
+/*!
+ * WackoWiki Toolbar Customizer - Standalone (for User Settings)
+ */
+
+class ToolbarCustomizer {
+
+    static defaultOrder = [
+        'h2','h3','h4','h5','h6','separator',
+        'bold','italic','underline','strike','small','code','separator',
+        'ul','ol','separator',
+        'center','right','justify','separator',
+        'outdent','indent','separator',
+        'quote','source','action','textred','highlight','separator',
+        'hr','signature','createlink','footnote','createtable',
+        'upload-media','separator',
+        'draft-restore','draft-clear','separator',
+        'wacko2md','md2wacko','separator',
+        'dark-toggle','syntax','livepreview','fullscreen','separator',
+        'shrink','enlarge','separator',
+        'undo','redo','separator', 'search', 'about',
+        'dropdown'
+    ];
+
+    static buttonDefs = {
+        'h2':          { labelKey: 'Heading2' },
+        'h3':          { labelKey: 'Heading3' },
+        'h4':          { labelKey: 'Heading4' },
+        'h5':          { labelKey: 'Heading5' },
+        'h6':          { labelKey: 'Heading6' },
+        'bold':        { labelKey: 'Bold' },
+        'italic':      { labelKey: 'Italic' },
+        'underline':   { labelKey: 'Underline' },
+        'strike':      { labelKey: 'Strikethrough' },
+        'small':       { labelKey: 'Small' },
+        'code':        { labelKey: 'Code' },
+        'ul':          { labelKey: 'List' },
+        'ol':          { labelKey: 'NumberedList' },
+        'center':      { labelKey: 'Center' },
+        'right':       { labelKey: 'Right' },
+        'justify':     { labelKey: 'Justify' },
+        'outdent':     { labelKey: 'Outdent' },
+        'indent':      { labelKey: 'Indent' },
+        'quote':       { labelKey: 'Quote' },
+        'source':      { labelKey: 'CodeWrapper' },
+        'action':      { labelKey: 'Action' },
+        'textred':     { labelKey: 'MarkedText' },
+        'highlight':   { labelKey: 'HighlightText' },
+        'hr':          { labelKey: 'Line' },
+        'signature':   { labelKey: 'Signature' },
+        'createlink':  { labelKey: 'Hyperlink' },
+        'footnote':    { labelKey: 'Footnote' },
+        'createtable': { labelKey: 'InsertTable' },
+        'upload-media':{ labelKey: 'Upload' },
+        'draft-restore': { labelKey: 'DraftRestore' },
+        'draft-clear': { labelKey: 'DraftClear' },
+        'wacko2md':    { label: 'Wacko → MD' },
+        'md2wacko':    { label: 'MD → Wacko' },
+        'dark-toggle': { labelKey: 'ToggleDark' },
+        'syntax':      { labelKey: 'SyntaxHighlighting' },
+        'livepreview': { labelKey: 'LivePreview' },
+        'fullscreen':  { labelKey: 'Fullscreen' },
+        'shrink':      { labelKey: 'HeightShrink' },
+        'enlarge':     { labelKey: 'HeightEnlarge' },
+        'undo':        { labelKey: 'Undo' },
+        'redo':        { labelKey: 'Redo' },
+        'search':      { labelKey: 'SearchReplace' },
+        'about':       { labelKey: 'HelpAbout' },
+    };
+
+    static open(currentOrderJson = '[]') {
+        let currentOrder = [];
+        try {
+            currentOrder = JSON.parse(currentOrderJson || '[]');
+        } catch(e) {}
+
+        if (!currentOrder || currentOrder.length === 0) {
+            currentOrder = [...this.defaultOrder];
+        }
+
+        const html = `
+            <div id="we-toolbar-modal" style="position:fixed;inset:0;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;z-index:10000;">
+                <div style="background:#fff;width:680px;max-width:96%;max-height:92vh;border-radius:8px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.5);">
+                    <div style="padding:16px 20px;background:#f8f9fa;border-bottom:1px solid #ddd;">
+                        <h3 style="margin:0;">${window.lang?.CustomizeToolbar || 'Customize WikiEdit Toolbar'}</h3>
+                        <p style="margin:4px 0 0;color:#555;">${window.lang?.DragToReorder || 'Drag to reorder • Uncheck to hide buttons'}</p>
+                    </div>
+                    <div id="we-modal-content" style="padding:20px;max-height:62vh;overflow:auto;">
+                    </div>
+                    <div style="padding:12px 20px;background:#f8f9fa;border-top:1px solid #ddd;text-align:right;">
+                        <button type="button" onclick="ToolbarCustomizer.close()">${window.lang?.Cancel || 'Cancel'}</button>
+                        <button type="button" onclick="ToolbarCustomizer.save()" style="margin-left:8px;background:#007acc;color:white;">${window.lang?.SaveChanges || 'Save Changes'}</button>
+                        <button type="button" onclick="ToolbarCustomizer.resetToDefault()" style="margin-left:8px;">${window.lang?.ResetToDefault || 'Reset to Default'}</button>
+                    </div>
+                </div>
+            </div>`;
+
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = html;
+        const modal = wrapper.firstElementChild;
+
+        document.body.appendChild(modal);
+        this.currentModal = modal;
+
+        this.renderList(currentOrder);
+    }
+
+    static renderList(currentOrder) {
+        const container = this.currentModal.querySelector('#we-modal-content');
+        let html = '<div class="we-customizer-list">';
+
+        this.defaultOrder.forEach(id => {
+            if (id === 'dropdown') return;
+
+            if (id === 'separator') {
+                html += `<div class="we-separator-item" style="margin:12px 0;border-top:1px dashed #ccc;"></div>`;
+                return;
+            }
+
+            const def = this.buttonDefs[id] || {};
+            const label = def.labelKey 
+                ? (window.lang?.[def.labelKey] || id) 
+                : (def.label || id);
+
+            const isChecked = currentOrder.includes(id) ? 'checked' : '';
+
+            html += `
+                <div class="we-customizer-item" draggable="true" data-id="${id}">
+                    <label style="display:flex;align-items:center;gap:8px;cursor:grab;">
+                        <input type="checkbox" data-id="${id}" ${isChecked}>
+                        <span>${label}</span>
+                    </label>
+                </div>`;
+        });
+
+        html += '</div>';
+        container.innerHTML = html;
+
+        this.makeDraggable(container);
+    }
+
+    static makeDraggable(container) {
+        const items = container.querySelectorAll('.we-customizer-item');
+        items.forEach(item => {
+            item.addEventListener('dragstart', e => {
+                e.dataTransfer.setData('text/plain', item.dataset.id);
+                item.classList.add('dragging');
+            });
+            item.addEventListener('dragend', () => item.classList.remove('dragging'));
+
+            item.addEventListener('dragover', e => {
+                e.preventDefault();
+                const dragging = container.querySelector('.dragging');
+                if (dragging && dragging !== item) {
+                    const rect = item.getBoundingClientRect();
+                    if (e.clientY > rect.top + rect.height / 2) {
+                        item.after(dragging);
+                    } else {
+                        item.before(dragging);
+                    }
+                }
+            });
+        });
+    }
+
+    static save() {
+        const modal = this.currentModal;
+        if (!modal) return;
+
+        const checkedIds = Array.from(modal.querySelectorAll('input[type="checkbox"]:checked'))
+                                .map(el => el.dataset.id);
+
+        const newOrder = this.defaultOrder.filter(id => 
+            id === 'separator' || id === 'dropdown' || checkedIds.includes(id)
+        );
+
+        const hiddenField = document.getElementById('wikiedit_toolbar_hidden');
+        if (hiddenField) {
+            hiddenField.value = JSON.stringify(newOrder);
+        }
+
+        this.close();
+
+        // Show message in the standard output area instead of alert
+        ToolbarCustomizer.showMessage(
+            window.lang?.ToolbarConfigUpdated || 
+            'Toolbar configuration updated.<br><br>Please click <strong>Save Settings</strong> at the bottom of the page to store it on the server.',
+            'hint'
+        );
+    }
+
+    static resetToDefault() {
+        if (!confirm(window.lang?.ResetToolbarConfirm || 'Reset to default toolbar configuration?')) return;
+
+        const hiddenField = document.getElementById('wikiedit_toolbar_hidden');
+        if (hiddenField) hiddenField.value = '';
+
+        this.close();
+
+        ToolbarCustomizer.showMessage(
+            window.lang?.ToolbarResetToDefault || 
+            'Toolbar has been reset to default.<br><br>Please save the settings form to apply the change.',
+            'hint'
+        );
+    }
+
+    static showMessage(text, type = 'hint') {
+        const output = document.getElementById('output_messages');
+        if (!output) {
+            alert(text.replace(/<br>/g, '\n')); // fallback
+            return;
+        }
+
+        const div = document.createElement('div');
+        div.className = `msg ${type}`;
+        div.innerHTML = text;
+        output.appendChild(div);
+
+        // Auto-remove after 8 seconds
+        setTimeout(() => div.remove(), 8000);
+    }
+
+    static close() {
+        if (this.currentModal) {
+            this.currentModal.remove();
+            this.currentModal = null;
+        }
+    }
+}
+
+// Expose globally
+window.ToolbarCustomizer = ToolbarCustomizer;

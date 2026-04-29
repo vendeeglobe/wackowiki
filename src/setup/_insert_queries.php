@@ -122,6 +122,7 @@ $upgrade['6.2.1'][]		= ['alter',		'user_setting',		$alter_user_setting_r6_2_2];
 $upgrade['6.2.1'][]		= ['alter',		'user_setting',		$alter_user_setting_r6_2_3];
 $upgrade['6.2.1'][]		= ['alter',		'user_setting',		$alter_user_setting_r6_2_4];
 $upgrade['6.2.1'][]		= ['alter',		'user_setting',		$alter_user_setting_r6_2_5];
+$upgrade['6.2.1'][]		= ['alter',		'user_setting',		$alter_user_setting_r6_2_6];
 
 // usergroup
 

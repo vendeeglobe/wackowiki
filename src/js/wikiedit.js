@@ -18,6 +18,53 @@ if (typeof window.Log === 'undefined') {
 }
 
 class WikiEdit extends ProtoEdit {
+
+  static buttonDefs = {
+    'h2': { labelKey: 'Heading2', method: 'insTag', args: ['===', '===', 0, 1] },
+    'h3': { labelKey: 'Heading3', method: 'insTag', args: ['====', '====', 0, 1] },
+    'h4': { labelKey: 'Heading4', method: 'insTag', args: ['=====', '=====', 0, 1] },
+    'h5': { labelKey: 'Heading5', method: 'insTag', args: ['======', '======', 0, 1] },
+    'h6': { labelKey: 'Heading6', method: 'insTag', args: ['=======', '=======', 0, 1] },
+    'bold': { labelKey: 'Bold', method: 'insTag', args: ['**', '**'] },
+    'italic': { labelKey: 'Italic', method: 'insTag', args: ['//', '//'] },
+    'underline': { labelKey: 'Underline', method: 'insTag', args: ['__', '__'] },
+    'strike': { labelKey: 'Strikethrough', method: 'insTag', args: ['--', '--'] },
+    'small': { labelKey: 'Small', method: 'insTag', args: ['++', '++'] },
+    'code': { labelKey: 'Code', method: 'insTag', args: ['##', '##'] },
+    'ul': { labelKey: 'List', method: 'insTag', args: ['  * ', '', 0, 1, 1] },
+    'ol': { labelKey: 'NumberedList', method: 'insTag', args: ['  1. ', '', 0, 1, 1] },
+    'center': { labelKey: 'Center', method: 'insBlockWrapper', args: ['%%(wacko wrapper=text wrapper_align=center)'] },
+    'right': { labelKey: 'Right', method: 'insBlockWrapper', args: ['%%(wacko wrapper=text wrapper_align=right)'] },
+    'justify': { labelKey: 'Justify', method: 'insBlockWrapper', args: ['%%(wacko wrapper=text wrapper_align=justify)'] },
+    'outdent': { labelKey: 'Outdent', method: 'unindent', args: [] },
+    'indent': { labelKey: 'Indent', method: 'insTag', args: ['  ', '', 0, 1] },
+    'quote': { labelKey: 'Quote', method: 'insTag', args: ['<[', ']>', 2] },
+    'source': { labelKey: 'CodeWrapper', method: 'insBlockWrapper', args: ['%%'] },
+    'action': { labelKey: 'Action', method: 'insTag', args: ['{{', '}}', 2] },
+    'textred': { labelKey: 'MarkedText', method: 'insTag', args: ['!!', '!!', 2] },
+    'highlight': { labelKey: 'HighlightText', method: 'insTag', args: ['??', '??', 2] },
+    'hr': { labelKey: 'Line', method: 'insTag', args: ['', '\n----\n', 2] },
+    'signature': { labelKey: 'Signature', method: 'insTag', args: ['::@::', ' ', 1] },
+    'createlink': { labelKey: 'Hyperlink', method: 'createLink', args: [] },
+    'footnote': { labelKey: 'Footnote', method: 'insTag', args: ['[[^ ', ']]', 2] },
+    'createtable': { labelKey: 'InsertTable', method: 'createTable', args: [] },
+    'upload-media': { labelKey: 'Upload', method: 'triggerFileUpload', condition: 'canUpload' },
+    'draft-restore': { labelKey: 'DraftRestore', method: 'restoreDraft', condition: 'hasDraft' },
+    'draft-clear': { labelKey: 'DraftClear', method: 'clearDraft', condition: 'hasDraft' },
+    'wacko2md': { label: 'Wacko → MD', method: 'convertToMarkdown', args: [] },
+    'md2wacko': { label: 'MD → Wacko', method: 'convertToWacko', args: [] },
+    'dark-toggle': { labelKey: 'ToggleDark', method: 'toggleDarkMode', args: [] },
+    'syntax': { labelKey: 'SyntaxHighlighting', method: 'toggleSyntaxHighlight', args: [] },
+    'livepreview': { labelKey: 'LivePreview', method: 'toggleLivePreview', args: [] },
+    'fullscreen': { labelKey: 'Fullscreen', method: 'toggleFullscreen', args: [] },
+    'shrink': { labelKey: 'HeightShrink', method: 'changeEditorHeight', args: [-100] },
+    'enlarge': { labelKey: 'HeightEnlarge', method: 'changeEditorHeight', args: [100] },
+    'undo': { labelKey: 'Undo', method: 'undo', args: [] },
+    'redo': { labelKey: 'Redo', method: 'redo', args: [] },
+    'search': { labelKey: 'SearchReplace', method: 'showFindReplace', args: [] },
+    'about': { labelKey: 'HelpAbout', method: 'showHelpModal', args: [] },
+  };
+
   constructor() {
     super();
 
@@ -82,6 +129,9 @@ class WikiEdit extends ProtoEdit {
   // ===================================================================
   init(id, imgPath) {
     this._init(id);
+    this.imagesPath = imgPath || 'image/';
+
+    this.area.wikiEditInstance = this;
 
     const ta = this.area;
 
@@ -119,132 +169,15 @@ class WikiEdit extends ProtoEdit {
       this.area.addEventListener('paste', this.handlePaste.bind(this));
     }
 
-    this.imagesPath = imgPath || 'image/';
-
     // Setup undo/redo
     this.area.addEventListener('beforeinput', this.handleBeforeInput.bind(this));
 
-    const separator = '<div class="btn-separator"></div>';
+    // Load and build configurable toolbar instead of hard-coded buttons
+    this.loadAndBuildToolbar();
 
-    // Toolbar buttons
-    this.addButton('h2', lang.Heading2, () => this.insTag('===', '===', 0, 1));
-    this.addButton('h3', lang.Heading3, () => this.insTag('====', '====', 0, 1));
-    this.addButton('h4', lang.Heading4, () => this.insTag('=====', '=====', 0, 1));
-    this.addButton('h5', lang.Heading5, () => this.insTag('======', '======', 0, 1));
-    this.addButton('h6', lang.Heading6, () => this.insTag('=======', '=======', 0, 1));
-    this.addButton('customhtml', separator);
-
-    this.addButton('bold', lang.Bold, () => this.insTag('**', '**'));
-    this.addButton('italic', lang.Italic, () => this.insTag('//', '//'));
-    this.addButton('underline', lang.Underline, () => this.insTag('__', '__'));
-    this.addButton('strike', lang.Strikethrough, () => this.insTag('--', '--'));
-    this.addButton('small', lang.Small, () => this.insTag('++', '++'));
-    this.addButton('code', lang.Code, () => this.insTag('##', '##'));
-    this.addButton('customhtml', separator);
-
-    this.addButton('ul', lang.List, () => this.insTag('  * ', '', 0, 1, 1));
-    this.addButton('ol', lang.NumberedList, () => this.insTag('  1. ', '', 0, 1, 1));
-    this.addButton('customhtml', separator);
-
-    this.addButton('center', lang.Center, () => this.insBlockWrapper('%%(wacko wrapper=text wrapper_align=center)'));
-    this.addButton('right', lang.Right, () => this.insBlockWrapper('%%(wacko wrapper=text wrapper_align=right)'));
-    this.addButton('justify', lang.Justify, () => this.insBlockWrapper('%%(wacko wrapper=text wrapper_align=justify)'));
-    this.addButton('customhtml', separator);
-
-    this.addButton('outdent', lang.Outdent, () => this.unindent());
-    this.addButton('indent', lang.Indent, () => this.insTag('  ', '', 0, 1));
-    this.addButton('customhtml', separator);
-
-    this.addButton('quote', lang.Quote, () => this.insTag('<[', ']>', 2));
-    this.addButton('source', lang.CodeWrapper, () => this.insBlockWrapper('%%'));
-    this.addButton('action', lang.Action, () => this.insTag('{{', '}}', 2));
-    this.addButton('textred', lang.MarkedText, () => this.insTag('!!', '!!', 2));
-    this.addButton('highlight', lang.HighlightText, () => this.insTag('??', '??', 2));
-    this.addButton('customhtml', separator);
-
-    this.addButton('hr', lang.Line, () => this.insTag('', '\n----\n', 2));
-    this.addButton('signature', lang.Signature, () => this.insTag('::@::', ' ', 1));
-    this.addButton('createlink', lang.Hyperlink, () => this.createLink());
-
-    this.addButton('footnote', lang.Footnote, () => this.insTag('[[^ ', ']]', 2));
-    this.addButton('createtable', lang.InsertTable, () => this.createTable());
-    if (this.canUpload) {
-      this.addButton('upload-media', lang.Upload, () => this.triggerFileUpload());
-    }
-    this.addButton('customhtml', separator);
-
-    const autosaveEnabled = this.area.dataset.autosaveDraft !== '0';
-    if (autosaveEnabled) {
-      this.addButton('draft-restore', lang.DraftRestore, () => this.restoreDraft());
-      this.addButton('draft-clear', lang.DraftClear, () => this.clearDraft());
-      this.addButton('customhtml', separator);
-    }
-
-    this.addButton('wacko2md', 'Wacko → MD', () => this.convertToMarkdown());
-    this.addButton('md2wacko', 'MD → Wacko', () => this.convertToWacko());
-    this.addButton('customhtml', separator);
-
-    this.addButton('dark-toggle', lang.ToggleDark, () => this.toggleDarkMode());
-    this.addButton('syntax', lang.SyntaxHighlighting, () => this.toggleSyntaxHighlight());
-    this.addButton('livepreview', lang.LivePreview, () => this.toggleLivePreview());
-    this.addButton('fullscreen', lang.Fullscreen, () => this.toggleFullscreen());
-    this.addButton('customhtml', separator);
-
-    // === Custom controls ===
-    this.addButton('shrink', lang.HeightShrink, () => this.changeEditorHeight(-100));
-    this.addButton('enlarge', lang.HeightEnlarge, () => this.changeEditorHeight(100));
-    // this.addButton('height-reset', lang.HeightReset, () => this.clearEditorSettings());
-
-    this.addButton('customhtml', separator);
-    this.addButton('undo', lang.Undo, () => { if (this.undo()) this.updateStatus(); });
-    this.addButton('redo', lang.Redo, () => { if (this.redo()) this.updateStatus(); });
-
-    this.area.classList.add('wikiedit-area');
-
-
-    // Dropdown (custom HTML)
-    const dropdownHTML = `<li class="we-dropdown">
-      <button type="button" class="btn-" title="${lang.ToolsHelp || 'Tools &amp; Help'}">
-        <img src="${this.imagesPath}spacer.png" alt="▼">
-      </button>
-      <ul class="we-dropdown-menu">
-        <li class="we-search">
-          <img src="${this.imagesPath}spacer.png" alt="🔎" title="${lang.SearchReplace}" style="margin-right:6px;">
-        </li>
-        <li class="we-about">
-          <img src="${this.imagesPath}spacer.png" alt="?" title="${lang.HelpAbout}" style="margin-right:6px;">
-        </li>
-      </ul>
-    </li>`;
-
-    this.addButton('customhtml', dropdownHTML);
-    if (this.autocomplete) this.autocomplete.addButton();
-
-    // Build toolbar
-    const toolbarContainer = document.createElement('div');
-    toolbarContainer.id = `tb_${this.id}`;
-    this.area.parentNode.insertBefore(toolbarContainer, this.area);
-
-    const toolbar = this.createToolbar();
-    toolbarContainer.appendChild(toolbar);
-
-    toolbarContainer.className = 'we-toolbar-container';
-
-    // ====================== FULLSCREEN BUTTON SETUP (editor-only) ======================
-    const fsLi = toolbar.querySelector('li.we-fullscreen');
-    if (fsLi) {
-      this.fullscreenBtn = fsLi.querySelector('button');
-      this.fullscreenIcon = this.fullscreenBtn?.querySelector('.we-icon');
-    }
-
-    // Update icon when fullscreen state changes (handles Esc key too)
-    const updateFSIcon = () => {
-      if (!this.fullscreenIcon) return;
-      const isFullscreen = !!document.fullscreenElement;
-      this.fullscreenIcon.innerHTML = isFullscreen
-        ? this.icons.exitfullscreen
-        : this.icons.fullscreen;
-    };
+    // ====================== POST-TOOLBAR SETUP ======================
+    // All code that depends on the toolbar DOM must run AFTER buildToolbar()
+    this.attachSpecialButtons();
 
     // must be called after toolbar is built
     // ====================== LIVE PREVIEW ======================
@@ -253,10 +186,9 @@ class WikiEdit extends ProtoEdit {
       ? (savedLivePreview === 'true')
       : this.livePreviewDefault;
 
-    this.enableLivePreview();   // must run before any toggle
+    this.enableLivePreview();
 
     if (shouldEnableLivePreview) {
-      // open in live preview on load (default or remembered state)
       setTimeout(() => this.toggleLivePreview(), 100);
     }
 
@@ -269,7 +201,6 @@ class WikiEdit extends ProtoEdit {
       const html = document.documentElement;
       html.setAttribute('data-theme', shouldBeDark ? 'dark' : 'light');
 
-      // set active class on toolbar button
       const tb = document.getElementById(`tb_${this.id}`);
       const darkLi = tb ? tb.querySelector('li.we-dark-toggle') : null;
       if (darkLi) darkLi.classList.toggle('active', shouldBeDark);
@@ -277,24 +208,15 @@ class WikiEdit extends ProtoEdit {
 
     // ====================== LIVE PREVIEW AUTO-START ======================
 
-    document.addEventListener('fullscreenchange', updateFSIcon);
+    // document.addEventListener('fullscreenchange', updateFSIcon);
 
     // Initial state
-    updateFSIcon();
-
-    const dropdown = toolbar.querySelector('.we-dropdown');
-    if (dropdown) {
-      const searchItem = dropdown.querySelector('.we-search');
-      const aboutItem = dropdown.querySelector('.we-about');
-      if (searchItem) searchItem.addEventListener('click', () => this.showFindReplace());
-      if (aboutItem) aboutItem.addEventListener('click', () => this.showHelpModal());
-    }
+    // updateFSIcon();
 
     // ====================== STATUS BAR ======================
     const statusBar = this.createStatusBar();
     this.area.parentNode.insertBefore(statusBar, this.area.nextSibling);
 
-    // Initial display
     this.updateStatus();
 
     this.area.addEventListener('input', () => this.updateStatus());
@@ -355,7 +277,310 @@ class WikiEdit extends ProtoEdit {
     // ====================== SESSION HEARTBEAT ======================
     this.initSessionHeartbeat();
 
-    // Log.success(`WikiEdit initialized: ${id}`);
+    Log.success(`WikiEdit initialized: ${id}`);
+  }
+
+  getDefaultToolbarOrder() {
+    return [
+      'h2', 'h3', 'h4', 'h5', 'h6', 'separator',
+      'bold', 'italic', 'underline', 'strike', 'small', 'code', 'separator',
+      'ul', 'ol', 'separator',
+      'center', 'right', 'justify', 'separator',
+      'outdent', 'indent', 'separator',
+      'quote', 'source', 'action', 'textred', 'highlight', 'separator',
+      'hr', 'signature', 'createlink', 'footnote', 'createtable',
+      'upload-media', 'separator',
+      'draft-restore', 'draft-clear', 'separator',
+      'wacko2md', 'md2wacko', 'separator',
+      'dark-toggle', 'syntax', 'livepreview', 'fullscreen', 'separator',
+      'shrink', 'enlarge', 'separator',
+      'undo', 'redo', 'separator', 'search', 'about',
+      'dropdown',
+    ];
+  }
+
+  loadAndBuildToolbar() {
+    let config = [];
+
+    // 1. Server-side user preference (highest priority)
+    const serverJson = this.area.dataset.toolbarButtons;
+    if (serverJson) {
+      try { config = JSON.parse(serverJson); } catch (e) { Log.warn('Invalid toolbar JSON'); }
+    }
+
+    // 2. Fallback: localStorage (guests or quick testing)
+    if (!config.length) {
+      const saved = localStorage.getItem('we_toolbar_buttons');
+      if (saved) config = JSON.parse(saved);
+    }
+
+    // 3. Ultimate fallbackif (this.fullscreenIcon.tagName === 'IMG') {
+    if (!config.length) {
+      config = this.getDefaultToolbarOrder();
+    }
+
+    this.buildToolbar(config);   // from ProtoEdit
+  }
+
+  // ==================== TOOLBAR CUSTOMIZER MODAL (No Global) ====================
+
+  static openToolbarCustomizer(editorId = 'body') {
+    console.log(`[WikiEdit] openToolbarCustomizer called with id="${editorId}"`);
+
+    const textarea = document.getElementById(editorId);
+    if (!textarea) {
+      console.error(`[WikiEdit] Textarea with id "${editorId}" not found`);
+      return;
+    }
+
+    const instance = textarea.wikiEditInstance;
+    if (!instance) {
+      console.error(`[WikiEdit] No wikiEditInstance attached to textarea #${editorId}`);
+      console.log('Available properties on textarea:', Object.keys(textarea));
+      return;
+    }
+
+    if (!(instance instanceof WikiEdit)) {
+      console.error(`[WikiEdit] wikiEditInstance is not a WikiEdit object`);
+      return;
+    }
+
+    console.log(`[WikiEdit] Found valid instance, opening modal...`);
+    instance.showToolbarCustomizerModal();
+  }
+
+  showToolbarCustomizerModal() {
+    console.log('[WikiEdit] showToolbarCustomizerModal started');
+
+    if (!this.area) {
+      console.error('[WikiEdit] showToolbarCustomizerModal: this.area is not set!');
+      return;
+    }
+
+    const currentOrder = this.getCurrentToolbarOrder();
+    console.log('[WikiEdit] Current toolbar order:', currentOrder);
+
+    const html = `
+	          <div id="we-toolbar-modal" class="we-modal" style="position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:10000;">
+	              <div class="we-modal-dialog" style="background:#fff;width:640px;max-width:95%;max-height:90vh;border-radius:8px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.5);">
+	                  
+	                  <div class="we-modal-header" style="padding:16px 20px;background:#f8f9fa;border-bottom:1px solid #ddd;">
+	                      <h3 style="margin:0;">Customize WikiEdit Toolbar</h3>
+	                      <p style="margin:4px 0 0;color:#555;font-size:0.95em;">Drag to reorder • Toggle visibility</p>
+	                  </div>
+	                  
+	                  <div class="we-modal-body" id="we-modal-content" style="padding:20px;max-height:60vh;overflow:auto;">
+	                      <!-- Populated by renderCustomizerList() -->
+	                  </div>
+	                  
+	                  <div class="we-modal-footer" style="padding:12px 20px;background:#f8f9fa;border-top:1px solid #ddd;text-align:right;">
+	                      <button type="button" class="btn" onclick="this.closest('#we-toolbar-modal').remove()">Cancel</button>
+	                      <button type="button" class="btn btn-primary" onclick="WikiEdit.saveToolbarCustom(this)" style="margin-left:8px;">Save Changes</button>
+	                      <button type="button" class="btn btn-secondary" onclick="WikiEdit.resetToolbarToDefault(this)" style="margin-left:8px;">Reset to Default</button>
+	                  </div>
+	              </div>
+	          </div>`;
+
+    const modalWrapper = document.createElement('div');
+    modalWrapper.innerHTML = html.trim();
+    const modal = modalWrapper.firstElementChild;
+
+    if (!modal) {
+      console.error('[WikiEdit] Failed to create modal element - HTML parsing failed');
+      return;
+    }
+
+    document.body.appendChild(modal);
+    modal.dataset.editorId = this.area.id;
+
+    console.log('[WikiEdit] Modal added to DOM, rendering list...');
+    this.renderCustomizerList(modal, currentOrder);
+
+    console.log('[WikiEdit] Modal should now be visible');
+  }
+
+
+  getCurrentToolbarOrder() {
+    if (!this.area) {
+      Log.warn('getCurrentToolbarOrder: this.area not available, using default');
+      return this.getDefaultToolbarOrder();
+    }
+
+    let order = [];
+    const serverData = this.area.dataset.toolbarButtons;
+    if (serverData) {
+      try {
+        order = JSON.parse(serverData);
+      } catch (e) {
+        Log.warn('Invalid toolbar JSON in data-toolbar-buttons');
+      }
+    }
+
+    if (!order || order.length === 0) {
+      const saved = localStorage.getItem('we_toolbar_buttons');
+      if (saved) {
+        try { order = JSON.parse(saved); } catch (e) {}
+      }
+    }
+
+    if (!order || order.length === 0) {
+      order = this.getDefaultToolbarOrder();
+    }
+
+    return order;
+  }
+
+  renderCustomizerList(modal, currentOrder) {
+    const container = modal.querySelector('#we-modal-content');
+    if (!container) return;
+
+    let html = `<div class="we-customizer-list">`;
+
+    const defaultOrder = this.getDefaultToolbarOrder();
+
+    defaultOrder.forEach(id => {
+      if (id === 'dropdown') return; // skip dropdown in customizer
+
+      if (id === 'separator') {
+        html += `<div class="we-separator-item">—— Separator ——</div>`;
+        return;
+      }
+
+      const def = WikiEdit.buttonDefs[id] || ProtoEdit.buttonRegistry.get(id);
+      if (!def) return;
+
+      const label = def.labelKey
+        ? (this.lang?.[def.labelKey] || id)
+        : (def.label || id);
+
+      const checked = currentOrder.includes(id) ? 'checked' : '';
+
+      html += `
+	                <div class="we-customizer-item" draggable="true" data-id="${id}">
+	                    <label>
+	                        <input type="checkbox" data-id="${id}" ${checked}>
+	                        <span>${label}</span>
+	                    </label>
+	                </div>`;
+    });
+
+    html += `</div>`;
+    container.innerHTML = html;
+
+    this.makeCustomizerDraggable(modal);
+  }
+
+  makeCustomizerDraggable(modal) {
+    // Basic native drag & drop reordering
+    const items = modal.querySelectorAll('.we-customizer-item');
+    items.forEach(item => {
+      item.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', item.dataset.id);
+        item.classList.add('dragging');
+      });
+
+      item.addEventListener('dragend', () => {
+        item.classList.remove('dragging');
+      });
+
+      item.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        const dragging = modal.querySelector('.dragging');
+        if (dragging && dragging !== item) {
+          const rect = item.getBoundingClientRect();
+          const offset = e.clientY - rect.top;
+          if (offset > rect.height / 2) {
+            item.after(dragging);
+          } else {
+            item.before(dragging);
+          }
+        }
+      });
+    });
+  }
+
+  // Static methods called from modal buttons
+  static saveToolbarCustom(btn) {
+    const modal = btn.closest('#we-toolbar-modal');
+    if (!modal) return;
+
+    const editorId = modal.dataset.editorId;
+    const textarea = document.getElementById(editorId);
+    if (!textarea?.wikiEditInstance) {
+      modal.remove();
+      return;
+    }
+
+    const instance = textarea.wikiEditInstance;
+
+    // Collect currently checked buttons in their new visual order
+    const checkedIds = Array.from(modal.querySelectorAll('.we-customizer-item input:checked'))
+      .map(input => input.dataset.id);
+
+    // Rebuild order preserving separators from default
+    const defaultOrder = instance.getDefaultToolbarOrder();
+    const newOrder = defaultOrder.filter(id =>
+      id === 'separator' || id === 'dropdown' || checkedIds.includes(id)
+    );
+
+    // Save to hidden form field (for server-side persistence)
+    const hiddenInput = document.getElementById('wikiedit_toolbar_hidden');
+    if (hiddenInput) {
+      hiddenInput.value = JSON.stringify(newOrder);
+    }
+
+    // Optional: also save to localStorage as fallback
+    localStorage.setItem('we_toolbar_buttons', JSON.stringify(newOrder));
+
+    // Rebuild toolbar immediately
+    instance.buildToolbar(newOrder);
+
+    modal.remove();
+  }
+
+  static resetToolbarToDefault(btn) {
+    const modal = btn.closest('#we-toolbar-modal');
+    if (!modal) return;
+
+    const editorId = modal.dataset.editorId;
+    const textarea = document.getElementById(editorId);
+    if (textarea?.wikiEditInstance) {
+      localStorage.removeItem('we_toolbar_buttons');
+      const hiddenInput = document.getElementById('wikiedit_toolbar_hidden');
+      if (hiddenInput) hiddenInput.value = '';
+
+      textarea.wikiEditInstance.buildToolbar(
+        textarea.wikiEditInstance.getDefaultToolbarOrder()
+      );
+    }
+    modal.remove();
+  }
+
+  attachSpecialButtons() {
+    if (!this.toolbar) return;
+
+    // ====================== FULLSCREEN BUTTON SETUP ======================
+    const fsLi = this.toolbar.querySelector('li.we-fullscreen');
+    if (fsLi) {
+      this.fullscreenBtn = fsLi.querySelector('button');
+      this.fullscreenIcon = this.fullscreenBtn?.querySelector('img') || this.fullscreenBtn?.querySelector('.we-icon');
+    }
+
+    // Update icon when fullscreen state changes
+    const updateFSIcon = () => {
+      if (!this.fullscreenIcon) return;
+      const isFullscreen = !!document.fullscreenElement;
+      this.fullscreenIcon.innerHTML = isFullscreen
+        ? '' //this.icons.exitfullscreen
+        : ''; //this.icons.fullscreen;
+    };
+
+    // Listen for fullscreen change
+    document.removeEventListener('fullscreenchange', updateFSIcon);
+    document.addEventListener('fullscreenchange', updateFSIcon);
+
+    // Initial update
+    updateFSIcon();
   }
 
   /**

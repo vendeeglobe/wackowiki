@@ -114,6 +114,7 @@ else if ($user = $this->get_user())
 		'show_files			= ' . (int) isset($_POST['show_files']) . ', ' .
 		'hide_lastsession	= ' . (int) isset($_POST['hide_lastsession']) . ', ' .
 		'validate_ip		= ' . (int) isset($_POST['validate_ip']) . ', ' .
+		'wikiedit_toolbar	= ' . $this->db->q($_POST['wikiedit_toolbar']) . ', ' .
 		'autosave_draft		= ' . (int) isset($_POST['autosave_draft']) . ', ' .
 		'editor_height		= ' . (int) ($_POST['editor_height'] ?? 400) . ', ' .
 		'syntax_highlighting = ' . (int) isset($_POST['syntax_highlighting']) . ', ' .
@@ -239,6 +240,8 @@ else if ($user = $this->get_user())
 	// EXTENDED
 	else if ($mode == 'extended' || $action == 'user_settings_extended')
 	{
+		$this->add_html('footer', '<script src="' . $this->db->base_path . 'js/toolbar-customizer.js" defer></script>');
+
 		$tpl->enter('e_');
 
 		$tpl->doubleclick		= $user['doubleclick_edit'];
@@ -253,6 +256,7 @@ else if ($user = $this->get_user())
 		$tpl->syntax			= $user['syntax_highlighting'];
 		$tpl->preview			= $user['live_preview'];
 		$tpl->validateip		= $user['validate_ip'];
+		$tpl->toolbar			= $user['wikiedit_toolbar'];
 		$tpl->hidesession		= $user['hide_lastsession'];
 		$tpl->sessionlength		= $user['session_length'];
 

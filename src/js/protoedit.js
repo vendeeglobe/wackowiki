@@ -7,6 +7,16 @@
 class ProtoEdit {
   // Public properties (set by child classes)
   imagesPath = '';
+  buttons = [];
+  id = null;
+  area = null;
+
+  // Button registry for plugins (future-proof)
+  static buttonRegistry = new Map();
+
+  static registerButton(id, definition) {
+    ProtoEdit.buttonRegistry.set(id, definition);
+  }
 
   constructor() {
     this.enabled = true;
@@ -26,6 +36,7 @@ class ProtoEdit {
   _init(id, rte = null) {
     this.id = id;
     this.area = document.getElementById(id);
+    if (!this.area) return;
 
     const handler = (ev) => this.keyDown(ev);
 
@@ -47,7 +58,6 @@ class ProtoEdit {
   /** Base key handler – overridden by WikiEdit */
   keyDown(ev) {
     if (!this.enabled) return true;
-    // Child classes should now use modern ev.ctrlKey / ev.altKey / ev.shiftKey / ev.key
     return true;
   }
 
@@ -77,6 +87,81 @@ class ProtoEdit {
     this.buttons.push({ name, desc, handler });
   }
 
+  // ==================== ABSTRACT TOOLBAR BUILDING ====================
+  buildToolbar(configArray) {
+    this.buttons = [];
+
+    for (let id of configArray) {
+      if (id === 'separator') {
+        this.addButton('customhtml', '<li class="btn-separator"></li>');
+        continue;
+      }
+
+      if (id === 'dropdown') {
+        this.addButton('customhtml', this.getDropdownHTML());
+        continue;
+      }
+
+      let def = (typeof WikiEdit !== 'undefined' && WikiEdit.buttonDefs?.[id]) ||
+                ProtoEdit.buttonRegistry.get(id);
+
+      if (!def) continue;
+
+      // Bind condition to instance
+	  if (def.condition) {
+	    if (typeof def.condition === 'function' && !def.condition.call(this)) continue;
+	    if (typeof def.condition === 'string' && !this[def.condition]) continue;
+	  }
+
+      const label = def.labelKey ? (this.lang?.[def.labelKey] || id) : (def.label || id);
+
+      // Create handler bound to instance, using method/args if defined
+      const handler = def.method 
+        ? () => this[def.method](...(def.args || []))
+        : typeof def.handler === 'function' 
+          ? def.handler.bind(this) 
+          : null;
+
+      this.addButton(id, label, handler);
+    }
+
+    // Rebuild DOM
+    const oldContainer = document.getElementById(`tb_${this.id}`);
+    if (oldContainer) oldContainer.remove();
+
+    const container = document.createElement('div');
+    container.id = `tb_${this.id}`;
+    container.className = 'we-toolbar-container';
+
+    this.toolbar = this.createToolbar();        // ← IMPORTANT: assign to this.toolbar
+    container.appendChild(this.toolbar);
+
+    if (this.area && this.area.parentNode) {
+      this.area.parentNode.insertBefore(container, this.area);
+    }
+
+    // Re-attach any special button references after rebuild
+    this.attachSpecialButtons();
+  }
+
+  attachSpecialButtons() {
+    // This can be overridden or extended in WikiEdit
+    // For now it's empty — WikiEdit will override it
+  }
+
+  getDropdownHTML() {
+    // Keep your existing dropdown and add Customize entry
+    return `<li class="we-dropdown">
+       <button type="button" class="btn-" title="${this.lang?.ToolsHelp || 'Tools'}">▼</button>
+       <ul class="we-dropdown-menu">
+         <!-- existing items: search, about, etc. -->
+         <li class="we-customize">
+           <a href="#" onclick="WikiEdit.openToolbarCustomizer('${this.id}'); return false;">⚙️ Customize Toolbar</a>
+         </li>
+       </ul>
+     </li>`;
+  }
+
   /** Build toolbar as real DOM element */
   createToolbar() {
     const ul = document.createElement('ul');
@@ -92,7 +177,7 @@ class ProtoEdit {
         ul.append(spacer);
         continue;
       }
-
+      //Log.success(`createToolbar item: ${btn.name}`);
       if (btn.name === 'customhtml') {
         const temp = document.createElement('div');
         temp.innerHTML = btn.desc.trim();

@@ -66,6 +66,7 @@ $alter_user_setting_r6_2_2 = "ALTER TABLE {$pref}user_setting ADD COLUMN autosav
 $alter_user_setting_r6_2_3 = "ALTER TABLE {$pref}user_setting ADD COLUMN dark_mode TINYINT NOT NULL DEFAULT 0";
 $alter_user_setting_r6_2_4 = "ALTER TABLE {$pref}user_setting ADD COLUMN syntax_highlighting TINYINT NOT NULL DEFAULT 1";
 $alter_user_setting_r6_2_5 = "ALTER TABLE {$pref}user_setting ADD COLUMN live_preview TINYINT NOT NULL DEFAULT 0";
+$alter_user_setting_r6_2_6 = "ALTER TABLE {$pref}user_setting ADD COLUMN wikiedit_toolbar VARCHAR(2048) NOT NULL DEFAULT ''";
 
 // USERGROUP
 

@@ -2563,6 +2563,9 @@ class WikiEdit extends ProtoEdit {
   /**
    * Markdown → Wacko (approximate)
    */
+  /**
+   * Markdown → Wacko (approximate)
+   */
   markdownToWacko(text) {
     let w = text;
     const placeholders = [];
@@ -2573,24 +2576,25 @@ class WikiEdit extends ProtoEdit {
       return `@@CODEBLOCK_${placeholders.length - 1}@@`;
     });
 
-    // Extract `inline code` and replace with #...#
+    // Extract `inline code` and replace with ##...##
     w = w.replace(/`([^`]*)`/g, (match, content) => {
       placeholders.push('##' + content + '##');
       return `@@INLINECODE_${placeholders.length - 1}@@`;
     });
 
-    // List normalization for exact WackoWiki syntax
+    // Markdown: ---, ***, ___, or any 3+ of them → Wacko: ----
+    w = w.replace(/^(?:[-*_]){3,}[ \t]*$/gm, '----');
+
+    // List normalization for WackoWiki syntax
     w = w.replace(
-      /^(?!\s*\*\*)(\s*)([*+-]|\d+\.|[A-Za-z]\.)([ \t]*)/gm,
+      /^(?!\s*----)(?!\s*\*\*)(\s*)([*+-]|\d+\.|[A-Za-z]\.)([ \t]*)/gm,
       (match, indent, marker, postSpace) => {
         const len = indent.length;
         let newIndent = indent;
 
         if (len % 4 === 0 && len >= 4) {
-          // Halve existing deep indentation (2 spaces & 4 spaces -> 2, 8 spaces -> 4, etc.)
           newIndent = ' '.repeat(len / 2 + 2);
         } else if (len < 4) {
-          // Apply base 2-space indent to all top-level items (including the first one)
           newIndent = '  ';
         }
 
@@ -2598,36 +2602,27 @@ class WikiEdit extends ProtoEdit {
       }
     );
 
-    // Headings (## → === … === level + 1 with min 2 = on right)
+    // Headings
     w = w.replace(/^#{1,7}\s+(.*)$/gm, (m, title) => {
       const number = m.match(/^#+/)[0].length;
       const mkr = '='.repeat(number + 1);
       return mkr + ' ' + title + ' ' + mkr;
     });
 
-    // Bold / Italic / Strikethrough / Code / Small
+    // Bold / Italic / Strikethrough / etc.
     w = w.replace(/\_\_(.*?)\_\_/g, '**$1**');
     w = w.replace(/~~(.*?)~~/g, '--$1--');
-    w = w.replace(/```(.*?)```/gs, '%%$1%%'); // Will be replaced by placeholder
-    w = w.replace(/`(.*?)`/g, '##$1##');      // Will be replaced by placeholder
     w = w.replace(/<small>(.*?)<\/small>/g, '++$1++');
 
-    // Images ![alt](url) → ((url alt))
+    // Images
     w = w.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '(($2 $1))');
 
-    // Links [text](url) → ((url text))
+    // Links
     w = w.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '(($2 $1))');
 
-    // HR
-    w = w.replace(/^---$/gm, '----');
-
-    // ==================== TABLES: Markdown → Wacko ====================
+    // ==================== TABLES ====================
     w = w.replace(/(\|.*\|\n\|[-:\s|]+\|\n(?:\|.*\|\n?)+)/gs, (block) => this._markdownTableToWacko(block));
 
-    // Restore all blocks and inline code
-    /*    w = w.replace(/WIKI_TOKEN_(\d+)/g, (match, id) => {
-          return blocks[parseInt(id, 10)].content;
-        });*/
     // Restore code blocks and inline code
     w = w.replace(/@@CODEBLOCK_(\d+)@@/g, (match, index) => placeholders[index]);
     w = w.replace(/@@INLINECODE_(\d+)@@/g, (match, index) => placeholders[index]);

@@ -89,9 +89,9 @@
 			</div>
 		</form>
 	=]
-	[= e _ =
-		<form action="[ ' href: ' ]" method="post" name="user_settings_extended">
-			[ ' csrf: user_settings_extended ' ]
+	[= w _ =
+		<form action="[ ' href: ' ]" method="post" name="user_settings_editor">
+			[ ' csrf: user_settings_editor ' ]
 			<div class="page-settings">
 			<table class="account form-tbl">
 				<colgroup>
@@ -100,7 +100,7 @@
 				</colgroup>
 			<tbody>
 				<tr>
-					<th scope="row">[ ' _t: UserSettingsOther ' ]</th>
+					<th scope="row">WikiEdit</th>
 					<td>
 						<input type="checkbox" id="doubleclick_edit" name="doubleclick_edit"[ ' doubleclick | checkbox ' ]>
 						<label for="doubleclick_edit">[ ' _t: DoubleclickEditing ' ]</label>
@@ -115,6 +115,77 @@
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
+					<td>
+						<input type="checkbox" name="autosave_draft" id="autosave_draft"[ ' autosave | checkbox ' ]>
+						<label for="autosave_draft">[ ' _t: AutosaveDraft ' ]</label>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<input type="checkbox" name="syntax_highlighting" id="syntax_highlighting"[ ' syntax | checkbox ' ]>
+						<label for="syntax_highlighting">[ ' _t: SyntaxHighlighting ' ]</label>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<input type="checkbox" name="live_preview" id="live_preview"[ ' preview | checkbox ' ]>
+						<label for="live_preview">[ ' _t: LivePreview ' ]</label>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<fieldset>
+							<legend>WikiEdit Toolbar</legend>
+							<p>Customize the buttons and their order in the page editor toolbar.</p>
+
+							<input type="hidden" name="wikiedit_toolbar" id="wikiedit_toolbar_hidden" 
+								value="[ ' toolbar | e ' ]">
+
+								<a href="#" onclick="ToolbarCustomizer.open('[ ' toolbar | e ' ]'); return false;" 
+									class="btn btn-primary">
+									Customize Toolbar (Drag & Drop)
+								</a>
+
+							<p class="small hint">
+								Changes are saved server-side and will apply across all your devices and browsers.
+							</p>
+						</fieldset>
+					</td>
+				</tr>
+				<tr>
+					<th><label for="editor_height">[ ' _t: EditorHeight ' ]</label></th>
+					<td>
+						<input type="number" id="editor_height" name="editor_height" value="[ ' height ' ]" min="300" max="800" step="100" style="width:80px">
+						<span class="form-note">[ ' _t: UnitPixel ' ]</span>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						<br>
+						<button type="submit" class="btn-ok" id="submit" name="submit">[ ' _t: UpdateSettingsButton ' ]</button>
+					</td>
+				</tr>
+			</tbody>
+			</table>
+			</div>
+		</form>
+	=]
+	[= e _ =
+		<form action="[ ' href: ' ]" method="post" name="user_settings_extended">
+			[ ' csrf: user_settings_extended ' ]
+			<div class="page-settings">
+			<table class="account form-tbl">
+				<colgroup>
+					<col span="1">
+					<col span="1">
+				</colgroup>
+			<tbody>
+				<tr>
+					<th scope="row">[ ' _t: UserSettingsOther ' ]</th>
 					<td>
 						<input type="checkbox" id="numerate_links" name="numerate_links"[ ' numerate | checkbox ' ]>
 						<label for="numerate_links">[ ' _t: NumerateLinks ' ]</label>
@@ -166,60 +237,11 @@
 					<tr>
 						<td>&nbsp;</td>
 						<td>
-							<input type="checkbox" name="noid_pubs" id="noid_pubs"[ ' hidesession | checkbox ' ]>
+							<input type="checkbox" name="noid_pubs" id="noid_pubs"[ ' noid | checkbox ' ]>
 							<label for="noid_pubs">[ ' _t: AnonymousPub ' ]</label>
 						</td>
 					</tr>
 				=]
-				<tr>
-					<td>&nbsp;</td>
-					<td>
-						<input type="checkbox" name="autosave_draft" id="autosave_draft"[ ' autosave | checkbox ' ]>
-						<label for="autosave_draft">[ ' _t: AutosaveDraft ' ]</label>
-					</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td>
-						<input type="checkbox" name="syntax_highlighting" id="syntax_highlighting"[ ' syntax | checkbox ' ]>
-						<label for="syntax_highlighting">[ ' _t: SyntaxHighlighting ' ]</label>
-					</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td>
-						<input type="checkbox" name="live_preview" id="live_preview"[ ' preview | checkbox ' ]>
-						<label for="live_preview">[ ' _t: LivePreview ' ]</label>
-					</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td>
-						<fieldset>
-							<legend>WikiEdit Toolbar</legend>
-							<p>Customize the buttons and their order in the page editor toolbar.</p>
-
-							<input type="hidden" name="wikiedit_toolbar" id="wikiedit_toolbar_hidden" 
-								value="[ ' toolbar | e ' ]">
-
-								<a href="#" onclick="ToolbarCustomizer.open('[ ' toolbar | e ' ]'); return false;" 
-									class="btn btn-primary">
-									Customize Toolbar (Drag & Drop)
-								</a>
-
-							<p class="small hint">
-								Changes are saved server-side and will apply across all your devices and browsers.
-							</p>
-						</fieldset>
-					</td>
-				</tr>
-				<tr>
-					<th><label for="editor_height">[ ' _t: EditorHeight ' ]</label></th>
-					<td>
-						<input type="number" id="editor_height" name="editor_height" value="[ ' height ' ]" min="300" max="800" step="100" style="width:80px">
-						<span class="form-note">[ ' _t: UnitPixel ' ]</span>
-					</td>
-				</tr>
 				<tr>
 					<th><label for="default_diff_mode">[ ' _t: DefaultDiffMode ' ]</label></th>
 					<td>

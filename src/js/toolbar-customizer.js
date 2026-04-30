@@ -87,9 +87,9 @@ class ToolbarCustomizer {
                       <div id="we-modal-content" style="padding:20px;max-height:62vh;overflow:auto;">
                       </div>
                       <div style="padding:12px 20px;background:#f8f9fa;border-top:1px solid #ddd;text-align:right;">
-                          <button type="button" onclick="ToolbarCustomizer.close()">${window.lang?.Cancel || 'Cancel'}</button>
-                          <button type="button" onclick="ToolbarCustomizer.save()" style="margin-left:8px;background:#007acc;color:white;">${window.lang?.SaveChanges || 'Save Changes'}</button>
+                          <button type="button" onclick="ToolbarCustomizer.save()" style="background:#007acc;color:white;">${window.lang?.SaveChanges || 'Save Changes'}</button>
                           <button type="button" onclick="ToolbarCustomizer.resetToDefault()" style="margin-left:8px;">${window.lang?.ResetToDefault || 'Reset to Default'}</button>
+                          <button type="button" onclick="ToolbarCustomizer.close()" style="margin-left:8px;">${window.lang?.Cancel || 'Cancel'}</button>
                       </div>
                   </div>
               </div>`;

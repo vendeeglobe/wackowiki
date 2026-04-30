@@ -606,6 +606,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'User settings',
 	'UserSettingsGeneral'		=> 'General',
 	'UserSettingsNotifications'	=> 'Notifications',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Notify also minor edit',
 	'NotifyPageEdit'			=> 'Edit',

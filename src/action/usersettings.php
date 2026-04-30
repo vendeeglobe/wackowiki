@@ -27,6 +27,7 @@ $tabs			= [
 					''				=> 'UserSettingsGeneral',
 					'menu'			=> 'Bookmarks',
 					'notification'	=> 'UserSettingsNotifications',
+					'editor'		=> 'UserSettingsEditor',
 					'extended'		=> 'UserSettingsExtended'
 				];
 $mode			= $_GET[$mod_selector] ?? (@$_POST['_user_menu'] ? 'menu' : '');
@@ -104,23 +105,27 @@ else if ($user = $this->get_user())
 	if ($action == 'user_settings_extended')
 	{
 		$sql =
-		'doubleclick_edit	= ' . (int) isset($_POST['doubleclick_edit']) . ', ' .
 		'show_comments		= ' . (int) isset($_POST['show_comments']) . ', ' .
 		'show_spaces		= ' . (int) isset($_POST['show_spaces']) . ', ' .
-		'autocomplete		= ' . (int) isset($_POST['autocomplete']) . ', ' .
 		'numerate_links		= ' . (int) isset($_POST['numerate_links']) . ', ' .
 		'diff_mode			= ' . (int) $_POST['diff_mode'] . ', ' .
 		'dont_redirect		= ' . (int) isset($_POST['dont_redirect']) . ', ' .
 		'show_files			= ' . (int) isset($_POST['show_files']) . ', ' .
 		'hide_lastsession	= ' . (int) isset($_POST['hide_lastsession']) . ', ' .
 		'validate_ip		= ' . (int) isset($_POST['validate_ip']) . ', ' .
+		'noid_pubs			= ' . (int) isset($_POST['noid_pubs']) . ', ' .
+		'session_length		= ' . (int) @$_POST['session_length'] . ' '; // @ to normalize possible discrepancy
+	}
+	if ($action == 'user_settings_editor')
+	{
+		$sql =
+		'doubleclick_edit	= ' . (int) isset($_POST['doubleclick_edit']) . ', ' .
+		'autocomplete		= ' . (int) isset($_POST['autocomplete']) . ', ' .
 		'wikiedit_toolbar	= ' . $this->db->q($_POST['wikiedit_toolbar']) . ', ' .
 		'autosave_draft		= ' . (int) isset($_POST['autosave_draft']) . ', ' .
 		'editor_height		= ' . (int) ($_POST['editor_height'] ?? 400) . ', ' .
 		'syntax_highlighting = ' . (int) isset($_POST['syntax_highlighting']) . ', ' .
-		'live_preview		= ' . (int) isset($_POST['live_preview']) . ', ' .
-		'noid_pubs			= ' . (int) isset($_POST['noid_pubs']) . ', ' .
-		'session_length		= ' . (int) @$_POST['session_length'] . ' '; // @ to normalize possible discrepancy
+		'live_preview		= ' . (int) isset($_POST['live_preview']) . ' ';
 	}
 	else if ($action == 'user_settings_notifications')
 	{
@@ -237,32 +242,40 @@ else if ($user = $this->get_user())
 
 		$tpl->leave();
 	}
-	// EXTENDED
-	else if ($mode == 'extended' || $action == 'user_settings_extended')
+	// EDITOR
+	else if ($mode == 'editor' || $action == 'user_settings_editor')
 	{
 		$this->add_html('footer', '<script src="' . $this->db->base_path . 'js/toolbar-customizer.js" defer></script>');
 
-		$tpl->enter('e_');
+		$tpl->enter('w_');
 
 		$tpl->doubleclick		= $user['doubleclick_edit'];
 		$tpl->autocomplete		= $user['autocomplete'];
+		$tpl->autosave			= $user['autosave_draft'];
+		$tpl->height			= $user['editor_height'];
+		$tpl->syntax			= $user['syntax_highlighting'];
+		$tpl->preview			= $user['live_preview'];
+		$tpl->toolbar			= $user['wikiedit_toolbar'];
+
+		$tpl->leave();
+	}
+	// EXTENDED
+	else if ($mode == 'extended' || $action == 'user_settings_extended')
+	{
+		$tpl->enter('e_');
+
 		$tpl->numerate			= $user['numerate_links'];
 		$tpl->showcomments		= $user['show_comments'];
 		$tpl->showfiles			= $user['show_files'];
 		$tpl->showspaces		= $user['show_spaces'];
 		$tpl->noredirect		= $user['dont_redirect'];
-		$tpl->autosave			= $user['autosave_draft'];
-		$tpl->height			= $user['editor_height'];
-		$tpl->syntax			= $user['syntax_highlighting'];
-		$tpl->preview			= $user['live_preview'];
 		$tpl->validateip		= $user['validate_ip'];
-		$tpl->toolbar			= $user['wikiedit_toolbar'];
 		$tpl->hidesession		= $user['hide_lastsession'];
 		$tpl->sessionlength		= $user['session_length'];
 
 		if ($this->db->publish_anonymously)
 		{
-			$tpl->anon_hidesession	= $user['noid_pubs'];
+			$tpl->anon_noid	= $user['noid_pubs'];
 		}
 
 		$default_mode		= $user['diff_mode'] ?: $this->db->default_diff_mode;

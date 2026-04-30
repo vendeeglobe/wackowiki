@@ -356,18 +356,18 @@ class WikiEdit extends ProtoEdit {
 	              <div class="we-modal-dialog" style="background:#fff;width:640px;max-width:95%;max-height:90vh;border-radius:8px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.5);">
 	                  
 	                  <div class="we-modal-header" style="padding:16px 20px;background:#f8f9fa;border-bottom:1px solid #ddd;">
-	                      <h3 style="margin:0;">Customize WikiEdit Toolbar</h3>
-	                      <p style="margin:4px 0 0;color:#555;font-size:0.95em;">Drag to reorder • Toggle visibility</p>
+	                      <h3 style="margin:0;">${window.lang?.CustomizeToolbar || 'Customize WikiEdit Toolbar'}</h3>
+	                      <p style="margin:4px 0 0;color:#555;font-size:0.95em;">${window.lang?.DragToReorder || 'Drag to reorder • Uncheck to hide buttons'}</p>
 	                  </div>
-	                  
+
 	                  <div class="we-modal-body" id="we-modal-content" style="padding:20px;max-height:60vh;overflow:auto;">
 	                      <!-- Populated by renderCustomizerList() -->
 	                  </div>
-	                  
+
 	                  <div class="we-modal-footer" style="padding:12px 20px;background:#f8f9fa;border-top:1px solid #ddd;text-align:right;">
-	                      <button type="button" class="btn" onclick="this.closest('#we-toolbar-modal').remove()">Cancel</button>
-	                      <button type="button" class="btn btn-primary" onclick="WikiEdit.saveToolbarCustom(this)" style="margin-left:8px;">Save Changes</button>
-	                      <button type="button" class="btn btn-secondary" onclick="WikiEdit.resetToolbarToDefault(this)" style="margin-left:8px;">Reset to Default</button>
+	                      <button type="button" class="btn btn-primary" onclick="WikiEdit.saveToolbarCustom(this)">${window.lang?.SaveChanges || 'Save Changes'}</button>
+	                      <button type="button" class="btn btn-secondary" onclick="WikiEdit.resetToolbarToDefault(this)" style="margin-left:8px;">${window.lang?.ResetToDefault || 'Reset to Default'}</button>
+						  <button type="button" class="btn" onclick="this.closest('#we-toolbar-modal').remove()" style="margin-left:8px;">${window.lang?.Cancel || 'Cancel'}</button>
 	                  </div>
 	              </div>
 	          </div>`;

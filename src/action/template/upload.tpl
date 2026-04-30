@@ -115,13 +115,6 @@
 				</tr>
 			</table>
 			</div>
-			<noscript>
-				<div class="errorbox-js">
-					<strong>JavaScript is disabled.</strong><br>
-					The modern drag & drop upload is not available.<br>
-					Please use the <strong>Single File Upload (Classic)</strong> option above.
-				</div>
-			</noscript>
 		</form>
 		
 	=]

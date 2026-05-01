@@ -662,6 +662,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Editor height',
 	'SyntaxHighlighting'		=> 'Enable syntax highlighting',
 	'LivePreview'				=> 'Start with Live Preview enabled',
+	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
+	'CustomizeToolbar'			=> 'Customize Toolbar',
+
 	'PageMoved'					=> 'This page moved. You can find it at',
 	'RedirectedFrom'			=> 'Redirected from %1',
 	'RedirectedTo'				=> 'Redirected to',

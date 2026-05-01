@@ -138,20 +138,13 @@
 					<td>&nbsp;</td>
 					<td>
 						<fieldset>
-							<legend>WikiEdit Toolbar</legend>
-							<p>Customize the buttons and their order in the page editor toolbar.</p>
-
+							<legend>[ ' _t: WikiEditToolbar ' ]</legend>
 							<input type="hidden" name="wikiedit_toolbar" id="wikiedit_toolbar_hidden" 
 								value="[ ' toolbar | e ' ]">
-
 								<a href="#" onclick="ToolbarCustomizer.open('[ ' toolbar | e ' ]'); return false;" 
 									class="btn btn-primary">
-									Customize Toolbar (Drag & Drop)
+									[ ' _t: CustomizeToolbar ' ]
 								</a>
-
-							<p class="small hint">
-								Changes are saved server-side and will apply across all your devices and browsers.
-							</p>
 						</fieldset>
 					</td>
 				</tr>

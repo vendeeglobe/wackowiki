@@ -194,6 +194,10 @@ else if ($user = $this->get_user())
 		{
 			$tab = 'extended';
 		}
+		else if ($action == 'user_settings_editor')
+		{
+			$tab = 'editor';
+		}
 		else if ($action == 'user_settings_notifications')
 		{
 			$tab = 'notification';

@@ -79,14 +79,14 @@ class ToolbarCustomizer {
 
     const html = `
               <div id="we-toolbar-modal" style="position:fixed;inset:0;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;z-index:10000;">
-                  <div style="background:#fff;width:680px;max-width:96%;max-height:92vh;border-radius:8px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.5);">
-                      <div style="padding:16px 20px;background:#f8f9fa;border-bottom:1px solid #ddd;">
+                  <div style="background:var(--ww-bg-secondary);width:680px;max-width:96%;max-height:92vh;border-radius:8px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.5);">
+                      <div style="padding:16px 20px;var(--ww-bg-accent);border-bottom:1px solid #ddd;">
                           <h3 style="margin:0;">${window.lang?.CustomizeToolbar || 'Customize WikiEdit Toolbar'}</h3>
-                          <p style="margin:4px 0 0;color:#555;">${window.lang?.DragToReorder || 'Drag to reorder • Uncheck to hide buttons'}</p>
+                          <p style="margin:4px 0 0;var(--ww-text-tertiary);">${window.lang?.DragToReorder || 'Drag to reorder • Uncheck to hide buttons'}</p>
                       </div>
                       <div id="we-modal-content" style="padding:20px;max-height:62vh;overflow:auto;">
                       </div>
-                      <div style="padding:12px 20px;background:#f8f9fa;border-top:1px solid #ddd;text-align:right;">
+                      <div style="padding:12px 20px;background:var(--ww-bg-accent);border-top:1px solid #ddd;text-align:right;">
                           <button type="button" onclick="ToolbarCustomizer.save()" style="background:#007acc;color:white;">${window.lang?.SaveChanges || 'Save Changes'}</button>
                           <button type="button" onclick="ToolbarCustomizer.resetToDefault()" style="margin-left:8px;">${window.lang?.ResetToDefault || 'Reset to Default'}</button>
                           <button type="button" onclick="ToolbarCustomizer.close()" style="margin-left:8px;">${window.lang?.Cancel || 'Cancel'}</button>

@@ -171,12 +171,21 @@ class WikiEdit extends ProtoEdit {
     this.area.addEventListener('beforeinput', this.handleBeforeInput.bind(this));
 
     // Load and build configurable toolbar instead of hard-coded buttons
-    this.loadAndBuildToolbar();
+	this.loadAndBuildToolbar();
+
+    // Initial post-setup
+    if (typeof this.attachSpecialButtons === 'function') {
+      this.attachSpecialButtons();
+    }
+
+    if (this.autocomplete) {
+      setTimeout(() => {
+        this.autocomplete.attachDropdown();
+      }, 50);
+    }
 
     // ====================== POST-TOOLBAR SETUP ======================
     // All code that depends on the toolbar DOM must run AFTER buildToolbar()
-    this.attachSpecialButtons();
-
     // must be called after toolbar is built
     // ====================== LIVE PREVIEW ======================
     const savedLivePreview = localStorage.getItem('we_live_preview_enabled');
@@ -255,10 +264,6 @@ class WikiEdit extends ProtoEdit {
     this.area.addEventListener('click', updateStatusHandler);
     this.area.addEventListener('mouseup', updateStatusHandler);
 
-    if (this.autocomplete) {
-      this.autocomplete.attachDropdown();
-    }
-
     // ====================== AUTOSAVE SETUP ======================
     if (this.area.dataset.autosaveDraft !== '0') {
       this.setupAutosave();
@@ -269,6 +274,41 @@ class WikiEdit extends ProtoEdit {
     this.initSessionHeartbeat();
 
     Log.success(`WikiEdit initialized: ${id}`);
+  }
+
+  // ===================================================================
+  // Override buildToolbar e.g. Autocomplete
+  // ===================================================================
+  buildToolbar(configArray) {
+    // Let ProtoEdit clear and build the standard buttons from config
+    super.buildToolbar.call(this, configArray);
+
+    // NOW re-add the autocomplete custom button (after the array has been processed)
+    if (this.autocomplete) {
+      this.autocomplete.addButton();
+
+      // Force rebuild of the toolbar DOM so the new customhtml appears
+      this.toolbar = this.createToolbar();
+
+      const container = document.getElementById(`tb_${this.id}`);
+      if (container) {
+        const oldUl = container.querySelector('.we-toolbar');
+        if (oldUl) oldUl.remove();
+        container.appendChild(this.toolbar);
+      }
+    }
+
+    // Re-attach special buttons
+    if (typeof this.attachSpecialButtons === 'function') {
+      this.attachSpecialButtons();
+    }
+
+    // Re-attach autocomplete listeners
+    if (this.autocomplete) {
+      setTimeout(() => {
+        this.autocomplete.attachDropdown();
+      }, 50);
+    }
   }
 
   loadAndBuildToolbar() {
@@ -289,6 +329,7 @@ class WikiEdit extends ProtoEdit {
       config = this.getDefaultToolbarOrder();
     }
 
+    // IMPORTANT: Build the toolbar from config FIRST
     this.buildToolbar(config);
   }
 
@@ -1238,14 +1279,11 @@ class WikiEdit extends ProtoEdit {
       return;
     }
 
-    // CRITICAL FIX: Click the real Save button instead of form.submit()
     // This sends name="save" in the POST data so the backend actually saves
     const saveBtn = form.querySelector('input[name="save"], button[name="save"]');
     if (saveBtn) {
-      Log.log('[WikiEdit] savePage: clicking real Save button');
-      saveBtn.click();          // ← this is what makes the save actually happen
+      saveBtn.click();
     } else {
-      Log.warn('[WikiEdit] savePage: no name="save" button found – falling back to submit');
       form.submit();
     }
   }
@@ -2188,8 +2226,6 @@ class WikiEdit extends ProtoEdit {
         this.previewTimer = setTimeout(() => this.updatePreview(), 420);
       }
     });
-
-    Log.log('%cWikiEdit live preview ready', 'color:#0a0;font-weight:bold');
   }
 
   /**

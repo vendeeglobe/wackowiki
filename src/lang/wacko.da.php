@@ -167,7 +167,7 @@ $wacko_translation = [
 	'ShowTip'					=> 'Klik for at vende tilbage til visning',
 	'ShowText'					=> 'Vis',
 	'WikieditAutocomplete'		=> 'Komplet wikilinks af Ctrl + Space',
-	'WikiEditInactiveJs'		=> 'For at kunne bruge WikiEdit skal du aktivere JavaScript i din browser.',
+	'WikiEditInactiveJs'		=> 'For at bruge WikiEdit, skal du aktivere JavaScript i din browser.',
 	'NumerateLinks'				=> 'Numerér links i udskriftsvisning',
 	'Comment'					=> 'Kommentar',
 	'Comments0'					=> 'Ingen kommentarer til denne side.',
@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Brugerindstillinger',
 	'UserSettingsGeneral'		=> 'Generelt',
 	'UserSettingsNotifications'	=> 'Underretninger',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Underret også mindre redigering',
 	'NotifyPageEdit'			=> 'Redigere',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Editor højde',
 	'SyntaxHighlighting'		=> 'Aktiver syntaksfremhævning',
 	'LivePreview'				=> 'Start med Live-forhåndsvisning aktiveret',
+	'WikiEditToolbar'			=> 'WikiEdit Værktøjslinje',
+	'CustomizeToolbar'			=> 'Tilpas Værktøjslinje',
+
 	'PageMoved'					=> 'Denne side er flyttet. Du kan finde den på',
 	'RedirectedFrom'			=> 'Omdirigeret fra %1',
 	'RedirectedTo'				=> 'Omdirigeret til',

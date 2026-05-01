@@ -167,7 +167,7 @@ $wacko_translation = [
 	'ShowTip'					=> 'Cliquez pour revenir au mode vue',
 	'ShowText'					=> 'Voir',
 	'WikieditAutocomplete'		=> 'Confirmer les liens Wiki ou wikilinks par Ctrl+Espace',
-	'WikiEditInactiveJs'		=> 'Pour pouvoir utiliser WikiEdit, merci d’activer JavaScript dans votre navigateur.',
+	'WikiEditInactiveJs'		=> 'Pour utiliser WikiEdit, veuillez activer JavaScript dans votre navigateur.',
 	'NumerateLinks'				=> 'Numérotation des liens en vue d’impression',
 	'Comment'					=> 'Commentaire',
 	'Comments0'					=> 'Cette page n’a pas été commentée.',
@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Réglages utilisateur',
 	'UserSettingsGeneral'		=> 'Général',
 	'UserSettingsNotifications'	=> 'Notifications',
+	'UserSettingsEditor'		=> 'Editeur',
 
 	'NotifyMinorEdit'			=> 'Notifier aussi des modifications minimes',
 	'NotifyPageEdit'			=> 'Modifier',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Hauteur de l\'éditeur',
 	'SyntaxHighlighting'		=> 'Activer la coloration syntaxique',
 	'LivePreview'				=> 'Démarrer avec l\'aperçu en direct activé',
+	'WikiEditToolbar'			=> 'Barre d\'outils de modification du wiki',
+	'CustomizeToolbar'			=> 'Personnaliser la barre d\'outils',
+
 	'PageMoved'					=> 'Cette page a été déplacée ou a changé de nom. Vous pouvez la trouverez ici : ',
 	'RedirectedFrom'			=> 'Redirigé depuis %1',
 	'RedirectedTo'				=> 'Redirigé vers',

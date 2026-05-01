@@ -84,5 +84,12 @@ lang = {
 	AcSuggestions: 'Otomatik tamamlama önerileri',
 	Chars: 'karakter',
 	Words: 'kelime',
+	CustomizeToolbar: 'Customize WikiEdit Toolbar',
+	DragToReorder: 'Drag to reorder • Uncheck to hide buttons',
+	SaveChanges: 'Save Changes',
+	ResetToDefault: 'Reset to Default',
+	ResetToolbarConfirm: 'Reset to default toolbar configuration?',
+	ToolbarConfigUpdated: 'Toolbar configuration updated.<br><br>Please click <strong>Save Settings</strong> at the bottom of the page to store it on the server.',
+	ToolbarResetToDefault: 'Toolbar has been reset to default.<br><br>Please save the settings form to apply the change.',
 	HelpAboutTip: ' Shortcuts:\n' + ' Ctrl+B - Bold\n' + ' Ctrl+I - Italic\n' + ' Ctrl+U - Underline\n' + ' Ctrl+Shift+S - Strikethrough\n' + ' Ctrl+Shift+1 .. 5 - Heading 1..5\n' + ' Alt+I or Ctrl+T - Indent\n' + ' Alt+U or Ctrl+Shift+T - Unindent\n' + ' Ctrl+J - MarkUp (!!)\n' + ' Ctrl+H - MarkUp (??)\n' + ' Alt+L - Link\n' + ' Ctrl+L - Link with description\n' + ' Ctrl+Shift+L - Unordered List\n' + ' Ctrl+Shift+N - Ordered List\n' + ' Ctrl+Shift+O - Ordered List\n' + ' Ctrl+= - Small text\n' + ' Ctrl+Shift+Minus - Horizontal line\n' + ' \n'
 };

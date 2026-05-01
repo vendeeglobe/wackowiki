@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> '사용자 설정',
 	'UserSettingsGeneral'		=> '일반',
 	'UserSettingsNotifications'	=> '알림',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Notify also minor edit',
 	'NotifyPageEdit'			=> '편집',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Editor height',
 	'SyntaxHighlighting'		=> 'Enable syntax highlighting',
 	'LivePreview'				=> 'Start with Live Preview enabled',
+	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
+	'CustomizeToolbar'			=> 'Customize Toolbar',
+
 	'PageMoved'					=> 'This page moved. You can find it at',
 	'RedirectedFrom'			=> '%1에서 넘어옴',
 	'RedirectedTo'				=> '넘겨줄 대상',

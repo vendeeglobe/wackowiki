@@ -84,5 +84,12 @@ lang = {
 	AcSuggestions: 'Autocompletar sugerencias',
 	Chars: 'caracteres',
 	Words: 'palabras',
+	CustomizeToolbar: 'Personalizar la barra de herramientas de WikiEdit',
+	DragToReorder: 'Arrastre para reordenar • Desmarque para ocultar botones',
+	SaveChanges: 'Guardar Cambios',
+	ResetToDefault: 'Restablecer por defecto',
+	ResetToolbarConfirm: '¿Restablecer a la configuración predeterminada de la barra de herramientas?',
+	ToolbarConfigUpdated: 'Configuración de la barra de herramientas actualizada.<br><br>Por favor haga clic en <strong>Guardar Ajustes</strong> en la parte inferior de la página para almacenarla en el servidor.',
+	ToolbarResetToDefault: 'La barra de herramientas se ha restablecido por defecto.<br><br>Por favor, guarde el formulario de configuración para aplicar el cambio.',
 	HelpAboutTip: ' Teclas rápidas:\n' + ' Ctrl+B - Negrita\n' + ' Ctrl+I - Cursivo\n' + ' Ctrl+U - Subrayado\n' + ' Ctrl+Shift+S - Tachado\n' + ' Ctrl+Mayús+1 .. 5 - Encabezado 1..5\n' + ' Alt+I or Ctrl+T - Sangría\n' + ' Alt+U or Ctrl+Shift+T - Sin sangría\n' + ' Ctrl+J - Margen (!!)\n' + ' Ctrl+H - Margen (??)\n' + ' Alt+L - Hipervínculo\n' + ' Ctrl+L - Hipervínculo con descripción\n' + ' Ctrl+Shift+L - Lista desordenada\n' + ' Ctrl+Shift+N - Lista ordenada\n' + ' Ctrl+Shift+O - Lista ordenada\n' + ' Ctrl+= - Texto pequeño\n' + ' Ctrl+Shift+Minus - Linea horizontal\n' + ' \n'
 };

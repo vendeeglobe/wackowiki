@@ -84,5 +84,12 @@ lang = {
 	AcSuggestions: 'Compléter automatiquement les suggestions',
 	Chars: 'caractères',
 	Words: 'mots',
+	CustomizeToolbar: 'Personnaliser la barre d\'outils WikiEdit',
+	DragToReorder: 'Glisser pour réorganiser • Décocher pour masquer les boutons',
+	SaveChanges: 'Enregistrer les modifications',
+	ResetToDefault: 'Revenir à la valeur par défaut',
+	ResetToolbarConfirm: 'Revenir à la configuration par défaut de la barre d\'outils ?',
+	ToolbarConfigUpdated: 'Configuration de la barre d\'outils mise à jour.<br><br>Veuillez cliquer sur <strong>Enregistrer les paramètres</strong> en bas de la page pour le stocker sur le serveur.',
+	ToolbarResetToDefault: 'La barre d\'outils a été réinitialisée par défaut.<br><br>Veuillez enregistrer le formulaire de configuration pour appliquer la modification.',
 	HelpAboutTip: ' Raccourcis :\n' + ' Ctrl+B - Gras\n' + ' Ctrl+I - Italic\n' + ' Ctrl+U - Souligner\n' + ' Ctrl+Shift+S - Barré\n' + ' Ctrl+Shift+1 .. 5 - En-tête 1..5\n' + ' Alt+I ou Ctrl+T - Indentation\n' + ' Alt+U or Ctrl+Shift+T - Unindent\n' + ' Ctrl+J - MarkUp (!!)\n' + ' Ctrl+H - MarkUp (??)\n' + ' Alt+L - Lien\n' + ' Ctrl+L - Lien avec la description\n' + ' Ctrl+Maj+L - Liste non ordonnée\n' + ' Ctrl+Maj+N - Liste ordonnée\n' + ' Ctrl+Maj+O - Liste ordonnée\n' + ' Ctrl+= - Petit texte\n' + ' Ctrl+Maj+Mous - Ligne horizontale\n' + ' \n'
 };

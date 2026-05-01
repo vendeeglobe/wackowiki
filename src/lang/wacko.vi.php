@@ -258,11 +258,11 @@ $wacko_translation = [
 	'AclAccessDenied'			=> 'Bạn không phải là chủ sở hữu của trang này.',
 	'AclSyntaxError'			=> 'Lỗi cú pháp trong danh sách kiểm soát truy cập',
 	'AclHelp'					=> '<code>*</code> - mọi người đều được phép<br>' .
-	'<code>$</code> - chỉ người dùng đã đăng ký<br>' .
-	'<code>!</code> - dấu chấm than đứng trước sẽ từ chối quyền tương ứng<br>' .
-	'<code>[UserName]</code> - tên người dùng được phép<br>' .
-	'<code>[GroupName]</code> - tên nhóm người dùng được phép (bí danh)<br>' .
-	'<code>(an empty list)</code> - chỉ chủ sở hữu trang có quyền truy cập',
+									'<code>$</code> - chỉ người dùng đã đăng ký<br>' .
+									'<code>!</code> - dấu chấm than đứng trước sẽ từ chối quyền tương ứng<br>' .
+									'<code>[UserName]</code> - tên người dùng được phép<br>' .
+									'<code>[GroupName]</code> - tên nhóm người dùng được phép (bí danh)<br>' .
+									'<code>(an empty list)</code> - chỉ chủ sở hữu trang có quyền truy cập',
 
 	'AccessMode'				=> 'Hiển thị',
 	'AccessDenied'				=> 'bị từ chối',
@@ -606,6 +606,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Cài đặt người dùng',
 	'UserSettingsGeneral'		=> 'Chung',
 	'UserSettingsNotifications'	=> 'Thông báo',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Thông báo cả khi chỉnh sửa nhỏ',
 	'NotifyPageEdit'			=> 'Chỉnh sửa',
@@ -661,6 +662,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Chiều cao trình soạn thảo',
 	'SyntaxHighlighting'		=> 'Bật tô sáng cú pháp',
 	'LivePreview'				=> 'Bắt đầu với xem trước trực tiếp bật',
+	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
+	'CustomizeToolbar'			=> 'Customize Toolbar',
+
 	'PageMoved'					=> 'Trang này đã được di chuyển. Bạn có thể tìm tại',
 	'RedirectedFrom'			=> 'Chuyển hướng từ %1',
 	'RedirectedTo'				=> 'Chuyển hướng tới',
@@ -681,9 +685,9 @@ $wacko_translation = [
 	'EmailNotConfirmed'			=> 'Email không thể được xác nhận. Có thể do mã xác nhận sai hoặc địa chỉ email đã được xác nhận trước đó. Bạn có thể kiểm tra trạng thái email bằng cách đăng nhập và xem trên trang %1 của bạn.',
 	'EmailNotVerified'			=> 'Email chưa được xác minh!',
 	'EmailNotVerifiedDesc'		=> 'Bạn sẽ không nhận được thông báo về thay đổi hoặc bình luận của các trang đang theo dõi, ' .
-	'hoặc tin nhắn từ người dùng khác. Ngoài ra, bạn <strong>sẽ không thể khôi phục mật khẩu bị quên</strong>, ' .
-	'cho đến khi địa chỉ email được xác nhận theo liên kết trong email gửi tới bạn. ' .
-	'Nếu trong vài ngày sau khi đăng ký bạn không nhận được email, hãy yêu cầu gửi lại bằng cách nhấp ',
+									'hoặc tin nhắn từ người dùng khác. Ngoài ra, bạn <strong>sẽ không thể khôi phục mật khẩu bị quên</strong>, ' .
+									'cho đến khi địa chỉ email được xác nhận theo liên kết trong email gửi tới bạn. ' .
+									'Nếu trong vài ngày sau khi đăng ký bạn không nhận được email, hãy yêu cầu gửi lại bằng cách nhấp ',
 
 	'ForgotPasswordHint'		=> 'Nhập tên đăng nhập và địa chỉ email của bạn,' . "\n" . 'sau đó một email hướng dẫn sẽ được gửi tới bạn.',
 	'ForgotPassword'			=> 'Quên mật khẩu?',
@@ -1372,7 +1376,7 @@ $wacko_translation = [
 	'LogThumbnailGeneration'	=> 'Tạo hình thu nhỏ %1 giây.',
 
 	'ErrorMinPHPVersion'		=> 'Phiên bản PHP phải lớn hơn <strong>' . PHP_MIN_VERSION . '</strong>,' .
-			' máy chủ của bạn dường như đang chạy <strong>' . PHP_VERSION . '</strong>.' .
-			' Bạn nên nâng cấp lên phiên bản PHP mới hơn để WackoWiki hoạt động chính xác.',
+									' máy chủ của bạn dường như đang chạy <strong>' . PHP_VERSION . '</strong>.' .
+									' Bạn nên nâng cấp lên phiên bản PHP mới hơn để WackoWiki hoạt động chính xác.',
 
 ];

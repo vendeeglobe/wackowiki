@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Потребителски настройки',
 	'UserSettingsGeneral'		=> 'General',
 	'UserSettingsNotifications'	=> 'Notifications',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Notify also minor edit',
 	'NotifyPageEdit'			=> 'Редактиране',
@@ -654,7 +655,14 @@ $wacko_translation = [
 	'HideLastSession'			=> 'Hide last session',
 	'ValidateIP'				=> 'Tying session to IP',
 	'AnonymousPub'				=> 'Preferably, published anonymously (to hide the name)',
+	'AutosaveDraft'				=> 'Enable autosave draft (localStorage)',
+	'DarkMode'					=> 'Dark Mode',
 	'EditorHeight'				=> 'Editor height',
+	'SyntaxHighlighting'		=> 'Enable syntax highlighting',
+	'LivePreview'				=> 'Start with Live Preview enabled',
+	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
+	'CustomizeToolbar'			=> 'Customize Toolbar',
+
 	'PageMoved'					=> 'Преместено на адрес',
 	'RedirectedFrom'			=> 'Пренасочен от %1',
 	'RedirectedTo'				=> 'Пренасочен към',
@@ -853,7 +861,7 @@ $wacko_translation = [
 	'MassRename'				=> 'для всех страниц кластера',
 	'SettingsRemove'			=> 'Изртиване',
 	'SettingsPurge'				=> 'Изчистване',
-	'SettingsModerate'			=> 'Модерирай',
+	'SettingsModerate'			=> 'Модериstrongрай',
 	'SettingsPermissions'		=> 'Достъп',
 	'AclForEntireCluster'		=> 'Права за целия СЕКТОР',
 	'SettingsAttachments'		=> 'Прикачени файлове',
@@ -951,7 +959,7 @@ $wacko_translation = [
 	'NoFileUsage'				=> 'Няма страници, сочещи към файла.',
 
 	'FileSortExt'				=> 'разширения',
-	'FileSortName'				=> 'name',
+	'FileSortName'				=> 'име',
 	'FileSortSize'				=> 'размер на файла',
 	'FileSortTime'				=> 'created',
 

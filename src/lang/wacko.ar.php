@@ -167,7 +167,7 @@ $wacko_translation = [
 	'ShowTip'					=> 'وضع العودة في العرض',
 	'ShowText'					=> 'عرض',
 	'WikieditAutocomplete'		=> 'أكمل الروابط اللاسلكية بواسطة Ctrl+Space',
-	'WikiEditInactiveJs'		=> 'من أجل التمكن من استخدام ويكيديت، يرجى تمكين جافا سكريبت في المتصفح الخاص بك.',
+	'WikiEditInactiveJs'		=> 'لاستخدام WikiEdit، الرجاء تمكين JavaScript في المتصفح الخاص بك.',
 	'NumerateLinks'				=> 'عدد الروابط في عرض الطباعة',
 	'Comment'					=> 'تعليق',
 	'Comments0'					=> 'أضف تعليقك',
@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'إعدادات المستخدم',
 	'UserSettingsGeneral'		=> 'عام',
 	'UserSettingsNotifications'	=> 'الإشعارات',
+	'UserSettingsEditor'		=> 'محرر',
 
 	'NotifyMinorEdit'			=> 'إشعار أيضًا تعديل بسيط',
 	'NotifyPageEdit'			=> 'تحرير',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'ارتفاع المحرر',
 	'SyntaxHighlighting'		=> 'تمكين تسليط الضوء على بناء الجملة',
 	'LivePreview'				=> 'بدء بالمعاينة الحية مفعلة',
+	'WikiEditToolbar'			=> 'شريط أدوات WikiEdit',
+	'CustomizeToolbar'			=> 'تخصيص شريط الأدوات',
+
 	'PageMoved'					=> 'تم نقل هذه الصفحة. يمكنك العثور عليها في',
 	'RedirectedFrom'			=> 'إعادة توجيه من %1',
 	'RedirectedTo'				=> 'إعادة توجيه إلى',

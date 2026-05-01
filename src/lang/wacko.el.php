@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Ρυθμίσεις χρήστη',
 	'UserSettingsGeneral'		=> 'Γενικά',
 	'UserSettingsNotifications'	=> 'Ειδοποιήσεις',
+	'UserSettingsEditor'		=> 'Επεξεργαστής',
 
 	'NotifyMinorEdit'			=> 'Ειδοποίηση επίσης ήσσονος σημασίας επεξεργασία',
 	'NotifyPageEdit'			=> 'Επεξεργασία',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Ύψος επεξεργαστή',
 	'SyntaxHighlighting'		=> 'Ενεργοποίηση επισήμανσης σύνταξης',
 	'LivePreview'				=> 'Έναρξη με ζωντανή προεπισκόπηση ενεργοποιημένη',
+	'WikiEditToolbar'			=> 'Γραμμή Εργαλείων WikiEdit',
+	'CustomizeToolbar'			=> 'Προσαρμογή Γραμμής Εργαλείων',
+
 	'PageMoved'					=> 'Αυτή η σελίδα έχει μετακινηθεί. Μπορείτε να την βρείτε εδώ',
 	'RedirectedFrom'			=> 'Ανακατευθύνεται από %1',
 	'RedirectedTo'				=> 'Ανακατευθύνεται στο',

@@ -84,5 +84,12 @@ lang = {
 	AcSuggestions: 'Autovervollständigungsvorschläge',
 	Chars: 'Zeichen',
 	Words: 'Wörter',
+	CustomizeToolbar: 'WikiEdit Toolbar anpassen',
+	DragToReorder: 'Zum Neuanordnen ziehen • Zum Ausblenden der Schaltflächen deaktivieren',
+	SaveChanges: 'Änderungen speichern',
+	ResetToDefault: 'Auf Standard zurücksetzen',
+	ResetToolbarConfirm: 'Auf die Standardkonfiguration der Symbolleiste zurücksetzen?',
+	ToolbarConfigUpdated: 'Die Konfiguration der Symbolleiste wurde aktualisiert.<br><br>Bitte klicken Sie unten auf der Seite auf <strong>Einstellungen speichern</strong>, um sie auf dem Server zu speichern.',
+	ToolbarResetToDefault: 'Die Symbolleiste wurde auf den Standard zurückgesetzt.<br><br>Bitte speichern Sie das Einstellungsformular, um die Änderung zu übernehmen.',
 	HelpAboutTip: ' Tastenkürzel:\n' + ' Strg+B - Fett\n' + ' Strg+I - Kursiv\n' + ' Strg+U - Unterstrichen\n' + ' Strg+Umschalt+S - Durchgestrichen\n' + ' Strg+Umschalt+1 .. 5 - Kopfzeile 1..5\n' + ' Alt+I oder Ctrl+T - Einrücken\n' + ' Alt+U oder Ctrl+Shift+T - Ausrücken\n' + ' Strg+J - Hervorheben (!!)\n' + ' Strg+H - Markieren (??)\n' + ' Alt+L - Link\n' + ' Strg+L - Link mit Beschreibung\n' + ' Strg+Umschalt+L - Ungeordnete Liste\n' + ' Strg+Umschalt+N - Geordnete Liste\n' + ' Strg+Umschalt+O - Geordnete Liste\n' + ' Strg+= - Kleiner Text\n' + ' Strg+Umschalt+Minus - Horizontale Line\n' + ' \n'
 };

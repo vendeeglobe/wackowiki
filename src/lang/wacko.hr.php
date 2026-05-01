@@ -258,11 +258,11 @@ $wacko_translation = [
 	'AclAccessDenied'			=> 'Niste vlasnik ove stranice.',
 	'AclSyntaxError'			=> 'Sintaksna pogreška u listi kontrole pristupa',
 	'AclHelp'					=> '<code>*</code> - svima je dopušteno<br>' .
-	'<code>$</code> - samo registrirani korisnici<br>' .
-	'<code>!</code> - uskličnik ispred zabrani odgovarajuće pravo<br>' .
-	'<code>[UserName]</code> - imena dopuštenih korisnika<br>' .
-	'<code>[GroupName]</code> - imena dopuštenih grupa korisnika (alias)<br>' .
-	'<code>(an empty list)</code> - pristup ima samo vlasnik stranice',
+									'<code>$</code> - samo registrirani korisnici<br>' .
+									'<code>!</code> - uskličnik ispred zabrani odgovarajuće pravo<br>' .
+									'<code>[UserName]</code> - imena dopuštenih korisnika<br>' .
+									'<code>[GroupName]</code> - imena dopuštenih grupa korisnika (alias)<br>' .
+									'<code>(an empty list)</code> - pristup ima samo vlasnik stranice',
 
 	'AccessMode'				=> 'Vidljivost',
 	'AccessDenied'				=> 'zabranjeno',
@@ -606,6 +606,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Korisničke postavke',
 	'UserSettingsGeneral'		=> 'Općenito',
 	'UserSettingsNotifications'	=> 'Obavijesti',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Obavijesti i o manjim izmjenama',
 	'NotifyPageEdit'			=> 'Uređivanje',
@@ -661,6 +662,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Visina uređivača',
 	'SyntaxHighlighting'		=> 'Omogući isticanje sintakse',
 	'LivePreview'				=> 'Startaj s omogućenim Live Preview',
+	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
+	'CustomizeToolbar'			=> 'Customize Toolbar',
+
 	'PageMoved'					=> 'Ova stranica je premještena. Možete je pronaći na',
 	'RedirectedFrom'			=> 'Preusmjereno s %1',
 	'RedirectedTo'				=> 'Preusmjereno na',
@@ -681,16 +685,16 @@ $wacko_translation = [
 	'EmailNotConfirmed'			=> 'E-mail ne može biti potvrđen. Razlog može biti neispravan kod za potvrdu ili je e-mail već potvrđen. Možete provjeriti status prijavom i pregledom na svojoj %1 stranici.',
 	'EmailNotVerified'			=> 'E-mail nije potvrđen!',
 	'EmailNotVerifiedDesc'		=> 'Nećete primati obavijesti o promjenama ili komentarima praćenih stranica, ' .
-	'ili poruke od drugih korisnika. Također, <strong>nećete moći oporaviti zaboravljenu lozinku</strong>, ' .
-	'dok vaša e-mail adresa ne bude potvrđena putem veze u poslanom e-mailu. ' .
-	'Ako u danima nakon registracije ne primite e-mail, zatražite ga ponovno klikom ',
+									'ili poruke od drugih korisnika. Također, <strong>nećete moći oporaviti zaboravljenu lozinku</strong>, ' .
+									'dok vaša e-mail adresa ne bude potvrđena putem veze u poslanom e-mailu. ' .
+									'Ako u danima nakon registracije ne primite e-mail, zatražite ga ponovno klikom ',
 
 	'ForgotPasswordHint'		=> 'Unesite svoj login i adresu e-pošte,' . "\n" . 'i poslat ćemo vam e-mail s uputama za oporavak.',
 	'ForgotPassword'			=> 'Zaboravili ste lozinku?',
 	'UserNotFound'				=> 'Korisnik s tim imenom ili e-mail adresom nije pronađen.',
 	'NotConfirmedEmail'			=> 'Vaša e-mail adresa nije potvrđena.<br>Pošta se ne može slati na nepotvrđenu adresu.',
 	'EmailForgotSubject'		=> 'Obnova lozinke za ',
-	'EmailForgotMessage'		=> 'Netko (možda vi) zatražio je obnovu lozinke za %1.' . "\n" . 'Vaš login: %2'."\n\n" . 'Kliknite vezu ili je kopirajte u adresnu traku preglednika da biste promijenili lozinku.' . "\n" . '%3' . "\n\n",
+	'EmailForgotMessage'		=> 'Netko (možda vi) zatražio je obnovu lozinke za %1.' . "\n" . 'Vaš login: %2'."\n\n" . 'Kliknite vezu ili je kopirajte u adresnu traku preglednika da biste promijenili lozinku.' . "\n" . '%3'."\n\n",
 	'CodeWasSent'				=> 'Upute za oporavak lozinke poslane su vam e-poštom.',
 	'WrongCode'					=> 'Pogrešan kod',
 	'ChangePasswordForUser'		=> 'Promjena lozinke za %1',

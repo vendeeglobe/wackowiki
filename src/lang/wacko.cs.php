@@ -167,7 +167,7 @@ $wacko_translation = [
 	'ShowTip'					=> 'Vrátit v režimu zobrazení',
 	'ShowText'					=> 'Zobrazit',
 	'WikieditAutocomplete'		=> 'Dokončete wikilinky Ctrl + mezera',
-	'WikiEditInactiveJs'		=> 'Abyste mohli používat WikiEdit, povolte prosím JavaScript ve vašem prohlížeči.',
+	'WikiEditInactiveJs'		=> 'Chcete-li používat WikiEdit, povolte ve vašem prohlížeči JavaScript prosím.',
 	'NumerateLinks'				=> 'Číselné odkazy v zobrazení tisku',
 	'Comment'					=> 'Komentář',
 	'Comments0'					=> 'Přidejte svůj komentář',
@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Uživatelská nastavení',
 	'UserSettingsGeneral'		=> 'Obecná ustanovení',
 	'UserSettingsNotifications'	=> 'Oznámení',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Upozornit také na drobné úpravy',
 	'NotifyPageEdit'			=> 'Upravit',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Výška editoru',
 	'SyntaxHighlighting'		=> 'Povolit zvýraznění syntaxe',
 	'LivePreview'				=> 'Začít s živým náhledem povoleno',
+	'WikiEditToolbar'			=> 'Panel nástrojů WikiEdit',
+	'CustomizeToolbar'			=> 'Přizpůsobit lištu nástrojů',
+
 	'PageMoved'					=> 'Tato stránka byla přesunuta. Najdete ji na',
 	'RedirectedFrom'			=> 'Přesměrováno z %1',
 	'RedirectedTo'				=> 'Přesměrováno na',

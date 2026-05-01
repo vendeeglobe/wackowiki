@@ -167,7 +167,7 @@ $wacko_translation = [
 	'ShowTip'					=> 'Return in view mode',
 	'ShowText'					=> 'Olvasás',
 	'WikieditAutocomplete'		=> 'Complete wikilinks by Ctrl+Space',
-	'WikiEditInactiveJs'		=> 'A WikiEdit használatához engedélyezze a JavaScriptet böngészőjében.',
+	'WikiEditInactiveJs'		=> 'To use WikiEdit, please enable JavaScript in your browser.',
 	'NumerateLinks'				=> 'Numerate links in print view',
 	'Comment'					=> 'Hozzászólás',
 	'Comments0'					=> 'Adja hozzá megjegyzését',
@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Felhasználói beállítások',
 	'UserSettingsGeneral'		=> 'Általános',
 	'UserSettingsNotifications'	=> 'Értesítések',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Notify also minor edit',
 	'NotifyPageEdit'			=> 'Szerkesztés',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Editor height',
 	'SyntaxHighlighting'		=> 'Enable syntax highlighting',
 	'LivePreview'				=> 'Start with Live Preview enabled',
+	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
+	'CustomizeToolbar'			=> 'Customize Toolbar',
+
 	'PageMoved'					=> 'This page moved. You can find it at',
 	'RedirectedFrom'			=> 'Átirányítva innen %1',
 	'RedirectedTo'				=> 'Átirányítva a következőhöz',

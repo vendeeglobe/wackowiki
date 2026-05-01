@@ -84,5 +84,12 @@ lang = {
 	AcSuggestions: 'Automatisch aanvullen van suggesties',
 	Chars: 'tekens',
 	Words: 'woorden',
+	CustomizeToolbar: 'WikiEdit werkbalk aanpassen',
+	DragToReorder: 'Sleep om opnieuw te sorteren • Vink uit om knoppen te verbergen',
+	SaveChanges: 'Wijzigingen opslaan',
+	ResetToDefault: 'Standaardinstellingen herstellen',
+	ResetToolbarConfirm: 'Standaardconfiguratie van de werkbalk terugzetten?',
+	ToolbarConfigUpdated: 'Toolbar configuration updated.<br><br>Please click <strong>Save Settings</strong> at the bottom of the page to store it on the server.',
+	ToolbarResetToDefault: 'De werkbalk is teruggezet naar standaard.<br><br>Sla het instellingenformulier op om de wijziging toe te passen.',
 	HelpAboutTip: ' Snelkoppelingen:\n' + ' Ctrl+B - Vetgedrukt\n' + ' Ctrl+I - Italic\n' + ' Ctrl+U - Underline\n' + ' Ctrl+Shift+S - Strikethrough\n' + ' Ctrl+Shift+1 .. 5 - rubriek 1..5\n' + ' Alt+I of Ctrl+T - Inspringen\n' + ' Alt+U of Ctrl+Shift+T - Oninspringen\n' + ' Ctrl+J - MarkUp (!!)\n' + ' Ctrl+H - MarkUp (??)\n' + ' Alt+L - Link\n' + ' Ctrl+L - Link met beschrijving\n' + ' Ctrl+Shift+L - Unordered List\n' + ' Ctrl+Shift+N - Geordende lijst\n' + ' Ctrl+Shift+O - Ordered List\n' + ' Ctrl+= - Kleine tekst\n' + ' Ctrl+Shift+Minus - Horizontal line\n' + ' \n'
 };

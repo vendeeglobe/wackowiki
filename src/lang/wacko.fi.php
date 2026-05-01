@@ -167,7 +167,7 @@ $wacko_translation = [
 	'ShowTip'					=> 'Palauta näkymätilassa',
 	'ShowText'					=> 'Näytä',
 	'WikieditAutocomplete'		=> 'Suorita wikilinkit Ctrl+Avarusilla',
-	'WikiEditInactiveJs'		=> 'Jotta voit käyttää WikiEdit, ole hyvä ja ota JavaScript käyttöön selaimessasi.',
+	'WikiEditInactiveJs'		=> 'Käyttääksesi WikiEditiä ota JavaScript käyttöön selaimessasi.',
 	'NumerateLinks'				=> 'Numeroi linkit tulostusnäkymässä',
 	'Comment'					=> 'Kommentti',
 	'Comments0'					=> 'Lisää kommentti',
@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Käyttäjän asetukset',
 	'UserSettingsGeneral'		=> 'Yleiset',
 	'UserSettingsNotifications'	=> 'Ilmoitukset',
+	'UserSettingsEditor'		=> 'Muokkain',
 
 	'NotifyMinorEdit'			=> 'Ilmoita myös pienistä muokkauksista',
 	'NotifyPageEdit'			=> 'Muokkaa',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Muokkaimen korkeus',
 	'SyntaxHighlighting'		=> 'Ota syntaksin korostus käyttöön',
 	'LivePreview'				=> 'Aloita Live Preview käytössä',
+	'WikiEditToolbar'			=> 'WikiEdit Työkalurivi',
+	'CustomizeToolbar'			=> 'Muokkaa Työkalupalkkia',
+
 	'PageMoved'					=> 'Tämä sivu siirretty. Löydät sen osoitteesta',
 	'RedirectedFrom'			=> 'Ohjattu uudelleen kohteesta %1',
 	'RedirectedTo'				=> 'Uudelleenohjattu kohteeseen',

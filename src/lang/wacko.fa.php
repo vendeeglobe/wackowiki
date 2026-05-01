@@ -167,7 +167,7 @@ $wacko_translation = [
 	'ShowTip'					=> 'Return in view mode',
 	'ShowText'					=> 'مشاهده',
 	'WikieditAutocomplete'		=> 'Complete wikilinks by Ctrl+Space',
-	'WikiEditInactiveJs'		=> 'In order to be able to use WikiEdit, please enable JavaScript in your browser.',
+	'WikiEditInactiveJs'		=> 'To use WikiEdit, please enable JavaScript in your browser.',
 	'NumerateLinks'				=> 'Numerate links in print view',
 	'Comment'					=> 'دیدگاه',
 	'Comments0'					=> 'نظرتان را اضافه کنید',
@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'تنظیمات کاربری',
 	'UserSettingsGeneral'		=> 'اصلی',
 	'UserSettingsNotifications'	=> 'اعلانات',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Notify also minor edit',
 	'NotifyPageEdit'			=> 'ویرایش',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Editor height',
 	'SyntaxHighlighting'		=> 'Enable syntax highlighting',
 	'LivePreview'				=> 'Start with Live Preview enabled',
+	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
+	'CustomizeToolbar'			=> 'Customize Toolbar',
+
 	'PageMoved'					=> 'This page moved. You can find it at',
 	'RedirectedFrom'			=> 'Redirected from %1',
 	'RedirectedTo'				=> 'Redirected to',

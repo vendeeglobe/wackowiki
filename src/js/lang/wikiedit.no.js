@@ -84,5 +84,12 @@ lang = {
 	AcSuggestions: 'Autofullfør forslag',
 	Chars: 'tegn',
 	Words: 'ord',
+	CustomizeToolbar: 'Tilpass WikiEdit verktøylinje',
+	DragToReorder: 'Dra for å endre rekkefølgen • Fjern markeringen for å skjule knapper',
+	SaveChanges: 'Lagre endringer',
+	ResetToDefault: 'Tilbakestill til standard',
+	ResetToolbarConfirm: 'Tilbakestill til standard verktøylinjekonfigurasjon?',
+	ToolbarConfigUpdated: 'Konfigurasjonen til verktøylinjen oppdatert.<br><br>Vennligst klikk <strong>Lagre Innstillinger</strong> nederst på siden for å lagre den på serveren.',
+	ToolbarResetToDefault: 'Verktøylinjen er tilbakestilt til standard.<br><br>Vennligst lagre innstillingsskjemaet for å bruke endringen.',
 	HelpAboutTip: ' Snarveier:\n' + ' Ctrl+B - fet\n' + ' Ctrl+I - Italic\n' + ' Ctrl+U - Understrek\n' + ' Ctrl+Shift+S - Gjennomstreking\n' + ' Ctrl+Shift+1 ... 5 - Overskrift 1..5\n' + ' Alt+I eller Ctrl+T - Indent\n' + ' Alt+U eller Ctrl+Shift+T - Ikke innrykk\n' + ' Ctrl+J - MarkUp (!!)\n' + ' Ctrl+H - MarkUp (??)\n' + ' Alt+L - Link\n' + ' Ctrl+L - Lenke med beskrivelse\n' + ' Ctrl+Shift+L - Usortert liste\n' + ' Ctrl+Shift+N - Bestilt liste\n' + ' Ctrl+Shift+O - Bestilt liste\n' + ' Ctrl+= - Liten tekst\n' + ' Ctrl+Shift+Minus - Liggende linje\n' + ' \n'
 };

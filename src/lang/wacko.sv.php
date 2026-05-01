@@ -167,7 +167,7 @@ $wacko_translation = [
 	'ShowTip'					=> 'Returnera i visningsläge',
 	'ShowText'					=> 'Visa',
 	'WikieditAutocomplete'		=> 'Komplett wikilinks av Ctrl+Space',
-	'WikiEditInactiveJs'		=> 'För att kunna använda WikiEdit, vänligen aktivera JavaScript i din webbläsare.',
+	'WikiEditInactiveJs'		=> 'För att använda WikiEdit, vänligen aktivera JavaScript i din webbläsare.',
 	'NumerateLinks'				=> 'Numerera länkar i utskriftsvy',
 	'Comment'					=> 'Kommentar',
 	'Comments0'					=> 'Lägg till din kommentar',
@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Användarens inställningar',
 	'UserSettingsGeneral'		=> 'Allmänt',
 	'UserSettingsNotifications'	=> 'Aviseringar',
+	'UserSettingsEditor'		=> 'Redigerare',
 
 	'NotifyMinorEdit'			=> 'Meddela även mindre redigering',
 	'NotifyPageEdit'			=> 'Redigera',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Redaktörens höjd',
 	'SyntaxHighlighting'		=> 'Aktivera syntaxmarkering',
 	'LivePreview'				=> 'Börja med Live Preview aktiverad',
+	'WikiEditToolbar'			=> 'WikiEdit verktygsfält',
+	'CustomizeToolbar'			=> 'Anpassa verktygsfältet',
+
 	'PageMoved'					=> 'Denna sida flyttad. Du hittar den på',
 	'RedirectedFrom'			=> 'Omdirigerad från %1',
 	'RedirectedTo'				=> 'Omdirigerad till',

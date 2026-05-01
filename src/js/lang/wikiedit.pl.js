@@ -84,5 +84,12 @@ lang = {
 	AcSuggestions: 'Sugestie autouzupełniania',
 	Chars: 'znaki',
 	Words: 'słowa',
+	CustomizeToolbar: 'Dostosuj pasek narzędzi do edycji Wiki',
+	DragToReorder: 'Przeciągnij, aby zmienić kolejność • Odznacz aby ukryć przyciski',
+	SaveChanges: 'Zapisz zmiany',
+	ResetToDefault: 'Przywróć domyślne',
+	ResetToolbarConfirm: 'Przywrócić domyślną konfigurację paska narzędzi?',
+	ToolbarConfigUpdated: 'Konfiguracja paska narzędzi zaktualizowana.<br><br>Kliknij przycisk <strong>Zapisz Ustawienia</strong> u dołu strony, aby przechowywać je na serwerze.',
+	ToolbarResetToDefault: 'Pasek narzędzi został zresetowany do domyślnego.<br><br>Zapisz formularz ustawień, aby zastosować zmianę.',
 	HelpAboutTip: ' Skrótów:\n' + ' Ctrl+B - Pogrubienie\n' + ' Ctrl+I - Pochylenie\n' + ' Ctrl+U - Podkreślenie\n' + ' Ctrl+Shift+S - Przekreślenie\n' + ' Ctrl+Shift+1 .. 5 - Pozycja 1..5\n' + ' Alt+I or Ctrl+T - Wcięcie\n' + ' Alt+U or Ctrl+Shift+T - Wysunięcie\n' + ' Ctrl+J - MarkUp (!!)\n' + ' Ctrl+H - MarkUp (??)\n' + ' Alt+L - Link\n' + ' Ctrl+L - Link z opisem\n' + ' Ctrl+Shift+L - Nieuporządkowana lista\n' + ' Ctrl+Shift+N - Lista uporządkowana\n' + ' Ctrl+Shift+O - Lista uporządkowana\n' + ' Ctrl+= - Mały tekst\n' + ' Ctrl+Shift+Minus - Linia pozioma\n' + ' \n'
 };

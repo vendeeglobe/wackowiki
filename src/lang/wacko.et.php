@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Kasutaja seaded',
 	'UserSettingsGeneral'		=> 'Üldine',
 	'UserSettingsNotifications'	=> 'Teated',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Teavita ka pisimuudatustest',
 	'NotifyPageEdit'			=> 'Muuda',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Editor height',
 	'SyntaxHighlighting'		=> 'Enable syntax highlighting',
 	'LivePreview'				=> 'Start with Live Preview enabled',
+	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
+	'CustomizeToolbar'			=> 'Customize Toolbar',
+
 	'PageMoved'					=> 'See leht on ümber paigutatud. Sa leiad selle',
 	'RedirectedFrom'			=> 'Redigeeritud alates %1',
 	'RedirectedTo'				=> 'Ümber suunatud',

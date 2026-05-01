@@ -84,5 +84,12 @@ lang = {
 	AcSuggestions: 'Автодоповнення пропозицій',
 	Chars: 'символів',
 	Words: 'слова',
+	CustomizeToolbar: 'Налаштувати панель інструментів WikiEdit',
+	DragToReorder: 'Перетягніть щоб змінити порядок • Відмінити, щоб приховати кнопки',
+	SaveChanges: 'Зберегти зміни',
+	ResetToDefault: 'Відновити за замовчуванням',
+	ResetToolbarConfirm: 'Скинути до налаштувань панелі інструментів за замовчуванням?',
+	ToolbarConfigUpdated: 'Налаштування панелі інструментів оновлено.<br><br>Будь ласка, натисніть <strong>Зберегти</strong> в нижній частині сторінки, щоб зберегти її на сервері.',
+	ToolbarResetToDefault: 'Toolbar has been reset to default.<br><br>Please save the settings form to apply the change.',
 	HelpAboutTip: ' Ярлики:\n' + ' Ctrl+B - Жирний\n' + ' Ctrl+I - Italic\n' + ' Ctrl+U - Underline\n' + ' Ctrl+Shift+S - Перекреслення\n' + ' Ctrl+Shift+1 .. 5 - Заголовок 1..5\n' + ' Alt+I або Ctrl+T - Відступ\n' + ' Alt+U або Ctrl+Shift+T - Unindent\n' + ' Ctrl+J - MarkUp (!!)\n' + ' Ctrl+H - MarkUp (??)\n' + ' Alt+L - посилання\n' + ' Ctrl+L - посилання з описом\n' + ' Ctrl+Shift+L - Unordered List\n' + ' Ctrl+Shift+N - Ordered List\n' + ' Ctrl+Shift+O - Ordered List\n' + ' Ctrl+= - невеликий текст\n' + ' Ctrl+Shift+Minus - Горизонтальна лінія\n' + ' \n'
 };

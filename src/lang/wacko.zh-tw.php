@@ -256,11 +256,11 @@ $wacko_translation = [
 	'AclAccessDenied'			=> '您並非該頁的所有者。',
 	'AclSyntaxError'			=> '存取控制列表語法錯誤',
 	'AclHelp'					=> '<code>*</code> - 任何人皆可<br>' .
-	'<code>$</code> - 僅註冊使用者<br>' .
-	'<code>!</code> - 前置驚嘆號表示拒絕相應權限<br>' .
-	'<code>[UserName]</code> - 被允許的使用者名稱<br>' .
-	'<code>[GroupName]</code> - 被允許的使用者群組名稱（別名）<br>' .
-	'<code>(an empty list)</code> - 只有頁面所有者有存取權',
+									'<code>$</code> - 僅註冊使用者<br>' .
+									'<code>!</code> - 前置驚嘆號表示拒絕相應權限<br>' .
+									'<code>[UserName]</code> - 被允許的使用者名稱<br>' .
+									'<code>[GroupName]</code> - 被允許的使用者群組名稱（別名）<br>' .
+									'<code>(an empty list)</code> - 只有頁面所有者有存取權',
 
 	'AccessMode'				=> '可見性',
 	'AccessDenied'				=> '拒絕',
@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> '使用者設定',
 	'UserSettingsGeneral'		=> '一般',
 	'UserSettingsNotifications'	=> '通知',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> '也通知次要編輯',
 	'NotifyPageEdit'			=> '編輯',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> '編輯器高度',
 	'SyntaxHighlighting'		=> '啟用語法高亮',
 	'LivePreview'				=> '啟動時啟用即時預覽',
+	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
+	'CustomizeToolbar'			=> 'Customize Toolbar',
+
 	'PageMoved'					=> '此頁面已移動。您可以在此找到它：',
 	'RedirectedFrom'			=> '重新導向自 %1',
 	'RedirectedTo'				=> '重新導向至',
@@ -1291,12 +1295,12 @@ $wacko_translation = [
 	'PixelDecimalShort'			=> ['px', 'KP', 'MP', 'GP', 'TP', 'PP', 'EP', 'ZP', 'YP'],
 	'PixelDecimalLong'			=> ['pixel', 'Kpx', 'Mpx', 'Gpx', 'Tpx', 'Ppx', 'Epx', 'Zpx', 'Ypx'],
 
-	// 加載錯誤
+	// loading error
+	'UnknownAction'				=> '未知的動作',
+	'UnknownMethod'				=> '未知的方法',
+	'FormatterNotFound'			=> '找不到格式化器 %1',
 
-	'UnknownAction' => '未知的動作',
-	'UnknownMethod' => '未知的方法',
-	'FormatterNotFound' => '找不到格式化器 %1',
-	// 日誌
+	// log
 	'LogAdminLoginSuccess'		=> '成功登入管理後台',
 	'LogAdminLogout'			=> '登出管理後台',
 	'LogAdminLoginFailed'		=> '!!嘗試授權存取管理後台失敗!!',

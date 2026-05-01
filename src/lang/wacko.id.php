@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Pengaturan pengguna',
 	'UserSettingsGeneral'		=> 'General',
 	'UserSettingsNotifications'	=> 'Pemberitahuan',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Notify also minor edit',
 	'NotifyPageEdit'			=> 'Sunting',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Editor height',
 	'SyntaxHighlighting'		=> 'Enable syntax highlighting',
 	'LivePreview'				=> 'Start with Live Preview enabled',
+	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
+	'CustomizeToolbar'			=> 'Customize Toolbar',
+
 	'PageMoved'					=> 'Halaman ini telah dipindahkan. Anda dapat menemukannya di',
 	'RedirectedFrom'			=> 'Redirected from %1',
 	'RedirectedTo'				=> 'Redirected to',
@@ -1007,7 +1011,7 @@ $wacko_translation = [
 	'Prev'						=> 'Prev',
 	'NextAcr'					=> 'Next',
 	'PrevAcr'					=> 'Prev',
-	'Back'						=> 'Back',
+	'Back'						=> 'Kembali',
 
 	// filter
 	'Filter'					=> 'Sortir',

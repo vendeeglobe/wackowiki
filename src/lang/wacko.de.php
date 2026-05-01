@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Benutzereinstellungen',
 	'UserSettingsGeneral'		=> 'Allgemein',
 	'UserSettingsNotifications'	=> 'Mitteilungen',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Benachrichtigung auch bei kleinen Änderungen',
 	'NotifyPageEdit'			=> 'Änderung',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Höhe des Editors',
 	'SyntaxHighlighting'		=> 'Syntaxhervorhebung aktivieren',
 	'LivePreview'				=> 'Starte mit aktivierter Live-Vorschau',
+	'WikiEditToolbar'			=> 'WikiEdit Symbolleiste',
+	'CustomizeToolbar'			=> 'Symbolleiste anpassen',
+
 	'PageMoved'					=> 'Diese Seite wurde verschoben. Sie ist jetzt zu finden unter',
 	'RedirectedFrom'			=> 'Weitergeleitet von %1',
 	'RedirectedTo'				=> 'Weitergeleitet nach',

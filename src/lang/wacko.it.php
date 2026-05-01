@@ -167,7 +167,7 @@ $wacko_translation = [
 	'ShowTip'					=> 'Clicca per tornare in modalità visione',
 	'ShowText'					=> 'Visiona',
 	'WikieditAutocomplete'		=> 'Completa wikilink di Ctrl+Spazio',
-	'WikiEditInactiveJs'		=> 'Per poter utilizzare WikiEdit, abilitare JavaScript nel browser.',
+	'WikiEditInactiveJs'		=> 'Per utilizzare WikiEdit, abilita JavaScript nel tuo browser.',
 	'NumerateLinks'				=> 'Numerare i collegamenti nella vista di stampa',
 	'Comment'					=> 'Commento',
 	'Comments0'					=> 'Non ci sono commenti per questa pagina.',
@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Impostazioni utente',
 	'UserSettingsGeneral'		=> 'Generale',
 	'UserSettingsNotifications'	=> 'Notifiche',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Notifica anche modifica minore',
 	'NotifyPageEdit'			=> 'Modificare',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Altezza editor',
 	'SyntaxHighlighting'		=> 'Abilita evidenziazione sintassi',
 	'LivePreview'				=> 'Inizia con l\'anteprima in diretta abilitata',
+	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
+	'CustomizeToolbar'			=> 'Personalizza Barra Strumenti',
+
 	'PageMoved'					=> 'La pagina è stata spostata. Puoi trovarla qui',
 	'RedirectedFrom'			=> 'Reindirizzato da %1',
 	'RedirectedTo'				=> 'Reindirizzato a',

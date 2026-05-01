@@ -167,7 +167,7 @@ $wacko_translation = [
 	'ShowTip'					=> '返回查看模式',
 	'ShowText'					=> '查看',
 	'WikieditAutocomplete'		=> '使用 Ctrl+Space 完成wiki链接',
-	'WikiEditInactiveJs'		=> '为了能够使用WikiEdit，请在浏览器中启用JavaScript。',
+	'WikiEditInactiveJs'		=> '要使用 WikiEdit，请在您的浏览器中启用 JavaScript。',
 	'NumerateLinks'				=> '打印视图中计算链接',
 	'Comment'					=> '评论',
 	'Comments0'					=> '添加留言',
@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> '用户设置',
 	'UserSettingsGeneral'		=> '常规设置',
 	'UserSettingsNotifications'	=> '通知',
+	'UserSettingsEditor'		=> '编辑器',
 
 	'NotifyMinorEdit'			=> '同时通知小的编辑',
 	'NotifyPageEdit'			=> '编辑',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> '编辑器高度',
 	'SyntaxHighlighting'		=> '启用语法高亮',
 	'LivePreview'				=> '启用实时预览',
+	'WikiEditToolbar'			=> 'Wiki编辑工具栏',
+	'CustomizeToolbar'			=> '自定义工具栏',
+
 	'PageMoved'					=> '这一页被移动了。你可以在',
 	'RedirectedFrom'			=> '重定向自%1',
 	'RedirectedTo'				=> '重定向至',

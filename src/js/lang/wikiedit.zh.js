@@ -84,5 +84,12 @@ lang = {
 	AcSuggestions: '自动完成建议',
 	Chars: '字符数',
 	Words: '单词',
+	CustomizeToolbar: '自定义 WikiEdit 工具栏',
+	DragToReorder: '拖动以重新排序 • 取消勾选以隐藏按钮',
+	SaveChanges: '保存更改',
+	ResetToDefault: '重置为默认值',
+	ResetToolbarConfirm: '重置为默认工具栏配置？',
+	ToolbarConfigUpdated: 'Toolbar configuration updated.<br><br>Please click <strong>Save Settings</strong> at the bottom of the page to store it on the server.',
+	ToolbarResetToDefault: 'Toolbar has been reset to default.<br><br>Please save the settings form to apply the change.',
 	HelpAboutTip: ' 快捷方式：\n' + ' Ctrl+B - 粗体\n' + ' Ctrl+I - 斜体\n' + ' Ctrl+U - 下划线\n' + ' Ctrl+Shift+S - 删除线\n' + ' Ctrl+Shift+1... 5 - 标题 1..5\n' + ' Alt+I 或 Ctrl+T - 缩进\n' + ' Alt+U 或 Ctrl+Shift+T - 取消缩进\n' + ' Ctrl+J - 标记 (!!)\n' + ' 标记\n' + ' Alt+L - 链接\n' + ' Ctrl+L - 带描述的链接\n' + ' Ctrl+Shift+L - 无序列表\n' + ' Ctrl+Shift+N - 顺序列表\n' + ' Ctrl+Shift+O - 排序列表\n' + ' Ctrl+= - 小文本\n' + ' Ctrl+Shift+Minus - 水平线\n' + ' \n'
 };

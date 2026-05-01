@@ -1,7 +1,7 @@
 <?php
 
 $insert = [
-	'lang'				=> 'en',
+	'lang'				=> 'vi',
 
 	'home_page_body'		=> 'file:/wacko_logo.png?right' . "\n" .
 			'**Welcome to your ((WackoWiki:Doc/English WackoWiki)) site!**' . "\n\n" .

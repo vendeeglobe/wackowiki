@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Gebruikersinstellingen',
 	'UserSettingsGeneral'		=> 'Algemeen',
 	'UserSettingsNotifications'	=> 'Meldingen',
+	'UserSettingsEditor'		=> 'Tekstverwerker',
 
 	'NotifyMinorEdit'			=> 'Melden ook voor kleine bewerken',
 	'NotifyPageEdit'			=> 'Bewerk',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Editor hoogte',
 	'SyntaxHighlighting'		=> 'Syntaxismarkering inschakelen',
 	'LivePreview'				=> 'Starten met Live Preview ingeschakeld',
+	'WikiEditToolbar'			=> 'WikiEdit werkbalk',
+	'CustomizeToolbar'			=> 'Werkbalk aanpassen',
+
 	'PageMoved'					=> 'Deze pagina is verplaatst. U kunt \'m vinden op',
 	'RedirectedFrom'			=> 'Omgeleid van %1',
 	'RedirectedTo'				=> 'Doorverwezen naar',

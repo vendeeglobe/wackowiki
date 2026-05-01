@@ -84,5 +84,12 @@ lang = {
 	AcSuggestions: 'Autokomplettera förslag',
 	Chars: 'tecken',
 	Words: 'ord',
+	CustomizeToolbar: 'Anpassa verktygsfältet för WikiEdit',
+	DragToReorder: 'Dra för att ordna om • Avmarkera för att dölja knappar',
+	SaveChanges: 'Spara ändringar',
+	ResetToDefault: 'Återställ till standard',
+	ResetToolbarConfirm: 'Återställ standardkonfigurationen i verktygsfältet?',
+	ToolbarConfigUpdated: 'Verktygsfältet konfiguration uppdaterad.<br><br>Klicka på <strong>Spara inställningar</strong> längst ner på sidan för att lagra den på servern.',
+	ToolbarResetToDefault: 'Verktygsfältet har återställts till standard.<br><br>Spara inställningsformuläret för att tillämpa ändringen.',
 	HelpAboutTip: ' Genvägar:\n' + ' Ctrl+B - Fet\n' + ' Ctrl+I - Italic\n' + ' Ctrl+U - Understruken\n' + ' Ctrl+Shift+S - Strikethrough\n' + ' Ctrl+Shift+1 .. 5 - Rubrik 1..5\n' + ' Alt+I eller Ctrl+T - Indent\n' + ' Alt+U eller Ctrl+Shift+T - Avgränsa\n' + ' Ctrl+J - MarkUp (!!)\n' + ' Ctrl+H - MarkUp (??)\n' + ' Alt+L - länk\n' + ' Ctrl+L - Länk till beskrivning\n' + ' Ctrl+Shift+L - Obeställd lista\n' + ' Ctrl+Shift+N - Ordnad lista\n' + ' Ctrl+Shift+O - Ordnad lista\n' + ' Ctrl+= - Liten text\n' + ' Ctrl+Shift+Minus - Horisontell linje\n' + ' \n'
 };

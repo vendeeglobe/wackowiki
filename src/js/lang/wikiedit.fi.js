@@ -84,5 +84,12 @@ lang = {
 	AcSuggestions: 'Täydennä ehdotukset automaattisesti',
 	Chars: 'merkkiä',
 	Words: 'sanat',
+	CustomizeToolbar: 'Muokkaa WikiEdit Toolbar',
+	DragToReorder: 'Vedä järjestääksesi uudelleen • Poista valinta piilottaaksesi painikkeet',
+	SaveChanges: 'Tallenna Muutokset',
+	ResetToDefault: 'Palauta oletukset',
+	ResetToolbarConfirm: 'Palautetaanko työkalupalkin oletusasetukset?',
+	ToolbarConfigUpdated: 'Työkalupalkin määritys päivitetty.<br><br>Valitse <strong>Tallenna asetukset</strong> sivun alareunassa tallentaaksesi sen palvelimelle.',
+	ToolbarResetToDefault: 'Työkalupalkki on palautettu oletukseksi.<br><br>Tallenna asetuslomake ottaaksesi muutokset käyttöön.',
 	HelpAboutTip: ' Pikanäppäimet:\n' + ' Ctrl+B - Lihavoitu\n' + ' Ctrl+I - Italic\n' + ' Ctrl+U - Alleviivaus\n' + ' Ctrl+Shift+S - Yliviivaus\n' + ' Ctrl+Shift+1 .. 5 - Otsake 1..5\n' + ' Alt+I tai Ctrl+T - Sisennys\n' + ' Alt+U tai Ctrl+Shift+T - sisennys\n' + ' Ctrl+J - MarkUp (!!)\n' + ' Ctrl+H - MarkUp (??)\n' + ' Alt+L - Linkki\n' + ' Ctrl+L - Linkki kuvauksella\n' + ' Ctrl+Shift+L - Järjestämätön Luettelo\n' + ' Ctrl+Shift+N - Järjestetty Luettelo\n' + ' Ctrl+Shift+O - Järjestetty Luettelo\n' + ' Ctrl+= - Pieni teksti\n' + ' Ctrl+Shift+Minus - Vaakaviiva\n' + ' \n'
 };

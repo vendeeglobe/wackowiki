@@ -22,24 +22,24 @@ $wacko_translation = [
 	],
 
 	// common
+	'AddButton'					=> 'เพิ่ม',
+	'ArchiveButton'				=> 'เก็บถาวร',
+	'CancelButton'				=> 'ยกเลิก',
+	'ContinueButton'			=> 'ดำเนินการต่อ',
+	'ConvertButton'				=> 'แปลง',
+	'CreateButton'				=> 'สร้าง',
+	'DeleteButton'				=> 'ลบ',
+	'RemoveButton'				=> 'นำออก',
+	'RenameButton'				=> 'เปลี่ยนชื่อ',
+	'ResetButton'				=> 'รีเซ็ต',
+	'RestoreButton'				=> 'คืนค่า',
+	'SaveButton'				=> 'บันทึก',
+	'SearchButton'				=> 'ค้นหา',
+	'SendButton'				=> 'ส่ง',
+	'SetButton'					=> 'ตั้งค่า',
+	'SubmitButton'				=> 'ส่งข้อมูล',
+	'UpdateButton'				=> 'อัปเดต',
 
-	'AddButton' => 'เพิ่ม',
-	'ArchiveButton' => 'เก็บถาวร',
-	'CancelButton' => 'ยกเลิก',
-	'ContinueButton' => 'ดำเนินการต่อ',
-	'ConvertButton' => 'แปลง',
-	'CreateButton' => 'สร้าง',
-	'DeleteButton' => 'ลบ',
-	'RemoveButton' => 'นำออก',
-	'RenameButton' => 'เปลี่ยนชื่อ',
-	'ResetButton' => 'รีเซ็ต',
-	'RestoreButton' => 'คืนค่า',
-	'SaveButton' => 'บันทึก',
-	'SearchButton' => 'ค้นหา',
-	'SendButton' => 'ส่ง',
-	'SetButton' => 'ตั้งค่า',
-	'SubmitButton' => 'ส่งข้อมูล',
-	'UpdateButton' => 'อัปเดต',
 	'FormInvalid'				=> 'ฟอร์มที่ส่งไม่ถูกต้อง กรุณาลองส่งอีกครั้ง',
 	'UnitPixel'					=> 'px',
 	'Number'					=> 'ตัวเลข',
@@ -258,11 +258,11 @@ $wacko_translation = [
 	'AclAccessDenied'			=> 'คุณไม่ใช่เจ้าของหน้านี้',
 	'AclSyntaxError'			=> 'ข้อผิดพลาดไวยากรณ์ของรายการควบคุมการเข้าถึง',
 	'AclHelp'					=> '<code>*</code> - ทุกคนสามารถเข้าถึงได้<br>' .
-	'<code>$</code> - เฉพาะผู้ใช้ที่ลงทะเบียนเท่านั้น<br>' .
-	'<code>!</code> - เครื่องหมายตกใจนำหน้าจะปฏิเสธสิทธิ์นั้น<br>' .
-	'<code>[UserName]</code> - ชื่อผู้ใช้ที่ได้รับอนุญาต<br>' .
-	'<code>[GroupName]</code> - ชื่อกลุ่มผู้ใช้ที่ได้รับอนุญาต (อาจเป็นนามแฝง)<br>' .
-	'<code>(an empty list)</code> - เฉพาะเจ้าของหน้าที่มีสิทธิ์',
+									'<code>$</code> - เฉพาะผู้ใช้ที่ลงทะเบียนเท่านั้น<br>' .
+									'<code>!</code> - เครื่องหมายตกใจนำหน้าจะปฏิเสธสิทธิ์นั้น<br>' .
+									'<code>[UserName]</code> - ชื่อผู้ใช้ที่ได้รับอนุญาต<br>' .
+									'<code>[GroupName]</code> - ชื่อกลุ่มผู้ใช้ที่ได้รับอนุญาต (อาจเป็นนามแฝง)<br>' .
+									'<code>(an empty list)</code> - เฉพาะเจ้าของหน้าที่มีสิทธิ์',
 
 	'AccessMode'				=> 'การมองเห็น',
 	'AccessDenied'				=> 'ถูกปฏิเสธ',
@@ -606,6 +606,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'การตั้งค่าผู้ใช้',
 	'UserSettingsGeneral'		=> 'ทั่วไป',
 	'UserSettingsNotifications'	=> 'การแจ้งเตือน',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'แจ้งด้วยสำหรับการแก้ไขเล็กน้อย',
 	'NotifyPageEdit'			=> 'แก้ไข',
@@ -661,6 +662,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'ความสูงของตัวแก้ไข',
 	'SyntaxHighlighting'		=> 'เปิดใช้งานการเน้นไวยากรณ์',
 	'LivePreview'				=> 'เริ่มด้วยตัวอย่างสดเปิดใช้งาน',
+	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
+	'CustomizeToolbar'			=> 'Customize Toolbar',
+
 	'PageMoved'					=> 'หน้านี้ถูกย้าย คุณสามารถค้นหาได้ที่',
 	'RedirectedFrom'			=> 'เปลี่ยนทางมาจาก %1',
 	'RedirectedTo'				=> 'เปลี่ยนทางไปยัง',
@@ -681,9 +685,9 @@ $wacko_translation = [
 	'EmailNotConfirmed'			=> 'ไม่สามารถยืนยันอีเมลได้ อาจเกิดจากรหัสยืนยันไม่ถูกต้องหรือที่อยู่อีเมลอาจยืนยันแล้ว คุณสามารถตรวจสอบสถานะได้โดยเข้าสู่ระบบและดูสถานะในหน้าของคุณ %1',
 	'EmailNotVerified'			=> 'อีเมลยังไม่ยืนยัน!',
 	'EmailNotVerifiedDesc'		=> 'คุณจะไม่ได้รับการแจ้งเตือนเกี่ยวกับการเปลี่ยนแปลงหรือความคิดเห็นของหน้าที่เฝ้าดู ' .
-	'หรือข้อความจากผู้ใช้อื่น นอกจากนี้ คุณ <strong>จะไม่สามารถกู้คืนรหัสผ่านที่ลืมได้</strong> ' .
-	'จนกว่าจะยืนยันอีเมลโดยคลิกลิงก์ในอีเมลที่ส่งถึงคุณ ' .
-	'หากหลังการลงทะเบียนผ่านไปหลายวันแล้วยังไม่ได้รับอีเมล ให้ขอส่งใหม่โดยคลิก ',
+									'หรือข้อความจากผู้ใช้อื่น นอกจากนี้ คุณ <strong>จะไม่สามารถกู้คืนรหัสผ่านที่ลืมได้</strong> ' .
+									'จนกว่าจะยืนยันอีเมลโดยคลิกลิงก์ในอีเมลที่ส่งถึงคุณ ' .
+									'หากหลังการลงทะเบียนผ่านไปหลายวันแล้วยังไม่ได้รับอีเมล ให้ขอส่งใหม่โดยคลิก ',
 
 	'ForgotPasswordHint'		=> 'ป้อนชื่อผู้ใช้และที่อยู่อีเมลของคุณ,' . "\n" . 'จากนั้นอีเมลพร้อมคำแนะนำจะถูกส่งให้คุณ',
 	'ForgotPassword'			=> 'ลืมรหัสผ่าน?',
@@ -1372,7 +1376,7 @@ $wacko_translation = [
 	'LogThumbnailGeneration'	=> 'การสร้างภาพขนาดย่อใช้เวลา %1 วินาที',
 
 	'ErrorMinPHPVersion'		=> 'PHP เวอร์ชันต้องมากกว่า <strong>' . PHP_MIN_VERSION . '</strong>,' .
-	' เซิร์ฟเวอร์ของคุณกำลังรัน <strong>' . PHP_VERSION . '</strong>.' .
-	'  คุณควรอัปเกรดเป็นเวอร์ชัน PHP ที่ใหม่กว่าเพื่อให้ WackoWiki ทำงานได้อย่างถูกต้อง.',
+									' เซิร์ฟเวอร์ของคุณกำลังรัน <strong>' . PHP_VERSION . '</strong>.' .
+									'  คุณควรอัปเกรดเป็นเวอร์ชัน PHP ที่ใหม่กว่าเพื่อให้ WackoWiki ทำงานได้อย่างถูกต้อง.',
 
 ];

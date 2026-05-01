@@ -84,5 +84,12 @@ lang = {
 	AcSuggestions: 'Návrhy automatického dokončování',
 	Chars: 'Znaky',
 	Words: 'slova',
+	CustomizeToolbar: 'Přizpůsobit panel nástrojů WikiEdit',
+	DragToReorder: 'Přetažením přeskupíte • Zrušením zaškrtnutí skryjete tlačítka',
+	SaveChanges: 'Uložit změny',
+	ResetToDefault: 'Obnovit výchozí',
+	ResetToolbarConfirm: 'Obnovit výchozí nastavení panelu nástrojů?',
+	ToolbarConfigUpdated: 'Toolbar configuration updated.<br><br>Please click <strong>Save Settings</strong> at the bottom of the page to store it on the server.',
+	ToolbarResetToDefault: 'Toolbar has been reset to default.<br><br>Please save the settings form to apply the change.',
 	HelpAboutTip: ' Zkratky:\n' + ' Ctrl+B - tučné\n' + ' Ctrl+I - Italic\n' + ' Ctrl+U - podtržení\n' + ' Ctrl+Shift+S - Strikethrough\n' + ' Ctrl+Shift+1 .. 5 - Položka 1..5\n' + ' Alt+I nebo Ctrl+T - odsazení\n' + ' Alt+U nebo Ctrl+Shift+T - Odsazení\n' + ' Ctrl+J - MarkUp (!!)\n' + ' Ctrl+H - MarkUp (??)\n' + ' Alt+L - odkaz\n' + ' Ctrl+L - Propojit s popisem\n' + ' Ctrl+Shift+L - neuspořádaný seznam\n' + ' Ctrl+Shift+N - Objednaný seznam\n' + ' Ctrl+Shift+O - Objednaný seznam\n' + ' Ctrl+= - Malý text\n' + ' Ctrl+Shift+Minus - vodorovná čára\n' + ' \n'
 };

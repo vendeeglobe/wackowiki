@@ -167,7 +167,7 @@ $wacko_translation = [
 	'ShowTip'					=> 'Вернуться к просмотру страницы',
 	'ShowText'					=> 'Просмотр',
 	'WikieditAutocomplete'		=> 'Автоподстановка ссылок по Ctrl+Пробел',
-	'WikiEditInactiveJs'		=> 'Для того, чтобы воспользоваться WikiEdit, пожалуйста, включите JavaScript в своём браузере.',
+	'WikiEditInactiveJs'		=> 'Чтобы использовать WikiEdit, включите JavaScript в вашем браузере.',
 	'NumerateLinks'				=> 'Нумеровать ссылки в версии для печати',
 	'Comment'					=> 'Комментарий',
 	'Comments0'					=> 'Добавить свой комментарий',
@@ -604,6 +604,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Настройки пользователя',
 	'UserSettingsGeneral'		=> 'Общие',
 	'UserSettingsNotifications'	=> 'Уведомления',
+	'UserSettingsEditor'		=> 'Редактор',
 
 	'NotifyMinorEdit'			=> 'Уведомлять о минимальных правках',
 	'NotifyPageEdit'			=> 'Правках',
@@ -659,6 +660,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Высота редактора',
 	'SyntaxHighlighting'		=> 'Включить подсветку синтаксиса',
 	'LivePreview'				=> 'Начать с включённого Live Preview',
+	'WikiEditToolbar'			=> 'Панель управления WikiEdit',
+	'CustomizeToolbar'			=> 'Настройка панели инструментов',
+
 	'PageMoved'					=> 'Эта страница перенесена и доступна теперь по адресу',
 	'RedirectedFrom'			=> 'Перенаправлено с %1',
 	'RedirectedTo'				=> 'Перенаправлено',

@@ -258,11 +258,11 @@ $wacko_translation = [
 	'AclAccessDenied'			=> 'Bu sayfanın sahibi değilsiniz.',
 	'AclSyntaxError'			=> 'Erişim kontrol listesi sözdizimi hatası',
 	'AclHelp'					=> '<code>*</code> - herkes izinli<br>' .
-	'<code>$</code> - yalnızca kayıtlı kullanıcılar<br>' .
-	'<code>!</code> - önünde ünlem işareti olan hak reddedilir<br>' .
-	'<code>[UserName]</code> - izin verilen kullanıcı adları<br>' .
-	'<code>[GroupName]</code> - izin verilen kullanıcı grubu adları (takma ad)<br>' .
-	'<code>(an empty list)</code> - sadece sayfa sahibi erişebilir',
+									'<code>$</code> - yalnızca kayıtlı kullanıcılar<br>' .
+									'<code>!</code> - önünde ünlem işareti olan hak reddedilir<br>' .
+									'<code>[UserName]</code> - izin verilen kullanıcı adları<br>' .
+									'<code>[GroupName]</code> - izin verilen kullanıcı grubu adları (takma ad)<br>' .
+									'<code>(an empty list)</code> - sadece sayfa sahibi erişebilir',
 
 	'AccessMode'				=> 'Görünürlük',
 	'AccessDenied'				=> 'reddedildi',
@@ -606,6 +606,7 @@ $wacko_translation = [
 	'UserSettings'				=> 'Kullanıcı ayarları',
 	'UserSettingsGeneral'		=> 'Genel',
 	'UserSettingsNotifications'	=> 'Bildirimler',
+	'UserSettingsEditor'		=> 'Editor',
 
 	'NotifyMinorEdit'			=> 'Küçük düzenlemelerde de bildir',
 	'NotifyPageEdit'			=> 'Düzenle',
@@ -661,6 +662,9 @@ $wacko_translation = [
 	'EditorHeight'				=> 'Düzenleyici yüksekliği',
 	'SyntaxHighlighting'		=> 'Söz dizimi vurgulamayı etkinleştir',
 	'LivePreview'				=> 'Canlı Önizlemeyi varsayılan aç',
+	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
+	'CustomizeToolbar'			=> 'Customize Toolbar',
+
 	'PageMoved'					=> 'Bu sayfa taşındı. Bulabileceğiniz yer',
 	'RedirectedFrom'			=> '%1\'den yönlendirildi',
 	'RedirectedTo'				=> 'Şuraya yönlendirildi',
@@ -681,9 +685,9 @@ $wacko_translation = [
 	'EmailNotConfirmed'			=> 'E-posta doğrulanamıyor. Bu yanlış bir doğrulama kodu yüzünden olabilir veya e-posta adresi zaten doğrulanmış olabilir. E-posta adresinin zaten doğrulanıp doğrulanmadığını, giriş yapıp %1 sayfanızdan durumunu kontrol ederek öğrenebilirsiniz.',
 	'EmailNotVerified'			=> 'E-posta doğrulanmadı!',
 	'EmailNotVerifiedDesc'		=> 'İzlediğiniz sayfalardaki değişiklikler veya yorumlar hakkında bildirim almayacaksınız, ' .
-	'ya da diğer kullanıcılardan mesaj alamayacaksınız. Ayrıca, <strong>unutulan şifreyi kurtaramayacaksınız</strong>, ' .
-	'kaydolurken gönderilen e-postadaki bağlantıyı takip edip e-posta adresinizi doğrulayana kadar. ' .
-	'Kayıttan sonra günler içinde e-posta almazsanız, tekrar istemek için tıklayın ',
+									'ya da diğer kullanıcılardan mesaj alamayacaksınız. Ayrıca, <strong>unutulan şifreyi kurtaramayacaksınız</strong>, ' .
+									'kaydolurken gönderilen e-postadaki bağlantıyı takip edip e-posta adresinizi doğrulayana kadar. ' .
+									'Kayıttan sonra günler içinde e-posta almazsanız, tekrar istemek için tıklayın ',
 
 	'ForgotPasswordHint'		=> 'Giriş adınızı ve e-posta adresinizi girin,' . "\n" . 'sonra talimatlar içeren bir e-posta gönderilecektir.',
 	'ForgotPassword'			=> 'Şifremi unuttum?',

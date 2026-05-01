@@ -253,6 +253,7 @@ else if ($user = $this->get_user())
 
 		$tpl->enter('w_');
 
+		$tpl->userlang			= $this->user_lang;
 		$tpl->doubleclick		= $user['doubleclick_edit'];
 		$tpl->autocomplete		= $user['autocomplete'];
 		$tpl->autosave			= $user['autosave_draft'];

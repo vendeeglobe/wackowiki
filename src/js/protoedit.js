@@ -19,6 +19,7 @@ class ProtoEdit {
   }
 
   constructor() {
+    this.lang = window.lang;
     this.enabled = true;
     this.buttons = [];
     this.id = null;

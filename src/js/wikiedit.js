@@ -271,6 +271,27 @@ class WikiEdit extends ProtoEdit {
     Log.success(`WikiEdit initialized: ${id}`);
   }
 
+  loadAndBuildToolbar() {
+    let config = [];
+
+    // Only use server-side preference (data-toolbar-buttons)
+    const serverJson = this.area.dataset.toolbarButtons;
+    if (serverJson) {
+      try {
+        config = JSON.parse(serverJson);
+      } catch (e) {
+        Log.warn('Invalid toolbar JSON from server');
+      }
+    }
+
+    // Ultimate fallback
+    if (!config.length) {
+      config = this.getDefaultToolbarOrder();
+    }
+
+    this.buildToolbar(config);
+  }
+
   getDefaultToolbarOrder() {
     return [
       'h2', 'h3', 'h4', 'h5', 'h6', 'separator',
@@ -289,263 +310,7 @@ class WikiEdit extends ProtoEdit {
       'dropdown',
     ];
   }
-
-  loadAndBuildToolbar() {
-    let config = [];
-
-    // 1. Server-side user preference (highest priority)
-    const serverJson = this.area.dataset.toolbarButtons;
-    if (serverJson) {
-      try { config = JSON.parse(serverJson); } catch (e) { Log.warn('Invalid toolbar JSON'); }
-    }
-
-    // 2. Fallback: localStorage (guests or quick testing)
-    if (!config.length) {
-      const saved = localStorage.getItem('we_toolbar_buttons');
-      if (saved) config = JSON.parse(saved);
-    }
-
-    // 3. Ultimate fallbackif (this.fullscreenIcon.tagName === 'IMG') {
-    if (!config.length) {
-      config = this.getDefaultToolbarOrder();
-    }
-
-    this.buildToolbar(config);   // from ProtoEdit
-  }
-
-  // ==================== TOOLBAR CUSTOMIZER MODAL (No Global) ====================
-
-  static openToolbarCustomizer(editorId = 'body') {
-    console.log(`[WikiEdit] openToolbarCustomizer called with id="${editorId}"`);
-
-    const textarea = document.getElementById(editorId);
-    if (!textarea) {
-      console.error(`[WikiEdit] Textarea with id "${editorId}" not found`);
-      return;
-    }
-
-    const instance = textarea.wikiEditInstance;
-    if (!instance) {
-      console.error(`[WikiEdit] No wikiEditInstance attached to textarea #${editorId}`);
-      console.log('Available properties on textarea:', Object.keys(textarea));
-      return;
-    }
-
-    if (!(instance instanceof WikiEdit)) {
-      console.error(`[WikiEdit] wikiEditInstance is not a WikiEdit object`);
-      return;
-    }
-
-    console.log(`[WikiEdit] Found valid instance, opening modal...`);
-    instance.showToolbarCustomizerModal();
-  }
-
-  showToolbarCustomizerModal() {
-    console.log('[WikiEdit] showToolbarCustomizerModal started');
-
-    if (!this.area) {
-      console.error('[WikiEdit] showToolbarCustomizerModal: this.area is not set!');
-      return;
-    }
-
-    const currentOrder = this.getCurrentToolbarOrder();
-    console.log('[WikiEdit] Current toolbar order:', currentOrder);
-
-    const html = `
-	          <div id="we-toolbar-modal" class="we-modal" style="position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:10000;">
-	              <div class="we-modal-dialog" style="background:#fff;width:640px;max-width:95%;max-height:90vh;border-radius:8px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.5);">
-	                  
-	                  <div class="we-modal-header" style="padding:16px 20px;background:#f8f9fa;border-bottom:1px solid #ddd;">
-	                      <h3 style="margin:0;">${window.lang?.CustomizeToolbar || 'Customize WikiEdit Toolbar'}</h3>
-	                      <p style="margin:4px 0 0;color:#555;font-size:0.95em;">${window.lang?.DragToReorder || 'Drag to reorder • Uncheck to hide buttons'}</p>
-	                  </div>
-
-	                  <div class="we-modal-body" id="we-modal-content" style="padding:20px;max-height:60vh;overflow:auto;">
-	                      <!-- Populated by renderCustomizerList() -->
-	                  </div>
-
-	                  <div class="we-modal-footer" style="padding:12px 20px;background:#f8f9fa;border-top:1px solid #ddd;text-align:right;">
-	                      <button type="button" class="btn btn-primary" onclick="WikiEdit.saveToolbarCustom(this)">${window.lang?.SaveChanges || 'Save Changes'}</button>
-	                      <button type="button" class="btn btn-secondary" onclick="WikiEdit.resetToolbarToDefault(this)" style="margin-left:8px;">${window.lang?.ResetToDefault || 'Reset to Default'}</button>
-						  <button type="button" class="btn" onclick="this.closest('#we-toolbar-modal').remove()" style="margin-left:8px;">${window.lang?.Cancel || 'Cancel'}</button>
-	                  </div>
-	              </div>
-	          </div>`;
-
-    const modalWrapper = document.createElement('div');
-    modalWrapper.innerHTML = html.trim();
-    const modal = modalWrapper.firstElementChild;
-
-    if (!modal) {
-      console.error('[WikiEdit] Failed to create modal element - HTML parsing failed');
-      return;
-    }
-
-    document.body.appendChild(modal);
-    modal.dataset.editorId = this.area.id;
-
-    console.log('[WikiEdit] Modal added to DOM, rendering list...');
-    this.renderCustomizerList(modal, currentOrder);
-
-    console.log('[WikiEdit] Modal should now be visible');
-  }
-
-
-  getCurrentToolbarOrder() {
-    if (!this.area) {
-      Log.warn('getCurrentToolbarOrder: this.area not available, using default');
-      return this.getDefaultToolbarOrder();
-    }
-
-    let order = [];
-    const serverData = this.area.dataset.toolbarButtons;
-    if (serverData) {
-      try {
-        order = JSON.parse(serverData);
-      } catch (e) {
-        Log.warn('Invalid toolbar JSON in data-toolbar-buttons');
-      }
-    }
-
-    if (!order || order.length === 0) {
-      const saved = localStorage.getItem('we_toolbar_buttons');
-      if (saved) {
-        try { order = JSON.parse(saved); } catch (e) {}
-      }
-    }
-
-    if (!order || order.length === 0) {
-      order = this.getDefaultToolbarOrder();
-    }
-
-    return order;
-  }
-
-  renderCustomizerList(modal, currentOrder) {
-    const container = modal.querySelector('#we-modal-content');
-    if (!container) return;
-
-    let html = `<div class="we-customizer-list">`;
-
-    const defaultOrder = this.getDefaultToolbarOrder();
-
-    defaultOrder.forEach(id => {
-      if (id === 'dropdown') return; // skip dropdown in customizer
-
-      if (id === 'separator') {
-        html += `<div class="we-separator-item">—— Separator ——</div>`;
-        return;
-      }
-
-      const def = WikiEdit.buttonDefs[id] || ProtoEdit.buttonRegistry.get(id);
-      if (!def) return;
-
-      const label = def.labelKey
-        ? (this.lang?.[def.labelKey] || id)
-        : (def.label || id);
-
-      const checked = currentOrder.includes(id) ? 'checked' : '';
-
-      html += `
-	                <div class="we-customizer-item" draggable="true" data-id="${id}">
-	                    <label>
-	                        <input type="checkbox" data-id="${id}" ${checked}>
-	                        <span>${label}</span>
-	                    </label>
-	                </div>`;
-    });
-
-    html += `</div>`;
-    container.innerHTML = html;
-
-    this.makeCustomizerDraggable(modal);
-  }
-
-  makeCustomizerDraggable(modal) {
-    // Basic native drag & drop reordering
-    const items = modal.querySelectorAll('.we-customizer-item');
-    items.forEach(item => {
-      item.addEventListener('dragstart', (e) => {
-        e.dataTransfer.setData('text/plain', item.dataset.id);
-        item.classList.add('dragging');
-      });
-
-      item.addEventListener('dragend', () => {
-        item.classList.remove('dragging');
-      });
-
-      item.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        const dragging = modal.querySelector('.dragging');
-        if (dragging && dragging !== item) {
-          const rect = item.getBoundingClientRect();
-          const offset = e.clientY - rect.top;
-          if (offset > rect.height / 2) {
-            item.after(dragging);
-          } else {
-            item.before(dragging);
-          }
-        }
-      });
-    });
-  }
-
-  // Static methods called from modal buttons
-  static saveToolbarCustom(btn) {
-    const modal = btn.closest('#we-toolbar-modal');
-    if (!modal) return;
-
-    const editorId = modal.dataset.editorId;
-    const textarea = document.getElementById(editorId);
-    if (!textarea?.wikiEditInstance) {
-      modal.remove();
-      return;
-    }
-
-    const instance = textarea.wikiEditInstance;
-
-    // Collect currently checked buttons in their new visual order
-    const checkedIds = Array.from(modal.querySelectorAll('.we-customizer-item input:checked'))
-      .map(input => input.dataset.id);
-
-    // Rebuild order preserving separators from default
-    const defaultOrder = instance.getDefaultToolbarOrder();
-    const newOrder = defaultOrder.filter(id =>
-      id === 'separator' || id === 'dropdown' || checkedIds.includes(id)
-    );
-
-    // Save to hidden form field (for server-side persistence)
-    const hiddenInput = document.getElementById('wikiedit_toolbar_hidden');
-    if (hiddenInput) {
-      hiddenInput.value = JSON.stringify(newOrder);
-    }
-
-    // Optional: also save to localStorage as fallback
-    localStorage.setItem('we_toolbar_buttons', JSON.stringify(newOrder));
-
-    // Rebuild toolbar immediately
-    instance.buildToolbar(newOrder);
-
-    modal.remove();
-  }
-
-  static resetToolbarToDefault(btn) {
-    const modal = btn.closest('#we-toolbar-modal');
-    if (!modal) return;
-
-    const editorId = modal.dataset.editorId;
-    const textarea = document.getElementById(editorId);
-    if (textarea?.wikiEditInstance) {
-      localStorage.removeItem('we_toolbar_buttons');
-      const hiddenInput = document.getElementById('wikiedit_toolbar_hidden');
-      if (hiddenInput) hiddenInput.value = '';
-
-      textarea.wikiEditInstance.buildToolbar(
-        textarea.wikiEditInstance.getDefaultToolbarOrder()
-      );
-    }
-    modal.remove();
-  }
+  
 
   attachSpecialButtons() {
     if (!this.toolbar) return;

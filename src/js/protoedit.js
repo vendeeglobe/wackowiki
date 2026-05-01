@@ -127,17 +127,23 @@ class ProtoEdit {
 
     // Rebuild DOM
     const oldContainer = document.getElementById(`tb_${this.id}`);
-    if (oldContainer) oldContainer.remove();
+    if (oldContainer) {
+      // Reuse existing container instead of removing + recreating
+      const oldUl = oldContainer.querySelector('.we-toolbar');
+      if (oldUl) oldUl.remove();
+    } else {
+      const container = document.createElement('div');
+      container.id = `tb_${this.id}`;
+      container.className = 'we-toolbar-container';
+      if (this.area && this.area.parentNode) {
+        this.area.parentNode.insertBefore(container, this.area);
+      }
+    }
 
-    const container = document.createElement('div');
-    container.id = `tb_${this.id}`;
-    container.className = 'we-toolbar-container';
-
-    this.toolbar = this.createToolbar();        // ← IMPORTANT: assign to this.toolbar
-    container.appendChild(this.toolbar);
-
-    if (this.area && this.area.parentNode) {
-      this.area.parentNode.insertBefore(container, this.area);
+    this.toolbar = this.createToolbar();
+    const currentContainer = document.getElementById(`tb_${this.id}`);
+    if (currentContainer) {
+      currentContainer.appendChild(this.toolbar);
     }
 
     // Re-attach any special button references after rebuild
@@ -150,14 +156,13 @@ class ProtoEdit {
   }
 
   getDropdownHTML() {
-    // Keep your existing dropdown and add Customize entry
     return `<li class="we-dropdown">
        <button type="button" class="btn-" title="${this.lang?.ToolsHelp || 'Tools'}">▼</button>
        <ul class="we-dropdown-menu">
-         <!-- existing items: search, about, etc. -->
-         <li class="we-customize">
-           <a href="#" onclick="WikiEdit.openToolbarCustomizer('${this.id}'); return false;">⚙️ Customize Toolbar</a>
+          <li class="we-about">
+	              <a href="${this.manual || 'https://wackowiki.org/doc/'}" target="_blank">ℹ️ ${this.lang?.About || 'About WikiEdit'}</a>
          </li>
+		 <!-- Add any other permanent dropdown items here -->
        </ul>
      </li>`;
   }

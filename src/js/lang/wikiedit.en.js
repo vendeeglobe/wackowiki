@@ -80,11 +80,16 @@ lang = {
 	HeightShrink:			'Shrink editor height',
 	HeightEnlarge:			'Enlarge editor height',
 	HeightReset:			'Reset editor height',
-	DraftClear:				'Clear autosaved draft',
-	DraftRestore:			'Restore autosaved draft',
 	Undo:					'Undo (Ctrl+Z)',
 	Redo:					'Redo (Ctrl+Shift+Z)',
 
+	DraftFound:				'Draft found',
+	SavedOn:				'saved on',
+	RecoverDraftQuestion:	'Do you want to recover the draft for',
+	RecoverDraft:			'Recover Draft',
+	DiscardDraft:			'Discard Draft',
+	ThisPage:				'this page',
+	
 	Autocomplete:			'Autocomplete',
 	AcHelp:					'Autocomplete (Ctrl+Space)',
 	AcReset:				'Reset autocomplete',

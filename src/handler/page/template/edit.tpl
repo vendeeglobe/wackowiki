@@ -28,6 +28,8 @@
 				=]
 				[ '' buttons '' ]
 				<br>
+				<!-- Draft infobox will be inserted here by WikiEdit -->
+				<div id="draft-infobox-placeholder"></div>
 				<noscript><div class="errorbox-js">[ ' _t: WikiEditInactiveJs ' ]</div></noscript>
 				[= r _ =
 					<br>

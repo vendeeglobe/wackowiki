@@ -49,8 +49,6 @@ class WikiEdit extends ProtoEdit {
     'footnote': { labelKey: 'Footnote', method: 'insTag', args: ['[[^ ', ']]', 2] },
     'createtable': { labelKey: 'InsertTable', method: 'createTable', args: [] },
     'upload-media': { labelKey: 'Upload', method: 'triggerFileUpload', condition: 'canUpload' },
-    'draft-restore': { labelKey: 'DraftRestore', method: 'restoreDraft', condition: 'hasDraft' },
-    'draft-clear': { labelKey: 'DraftClear', method: 'clearDraft', condition: 'hasDraft' },
     'wacko2md': { label: 'Wacko → MD', method: 'convertToMarkdown', args: [] },
     'md2wacko': { label: 'MD → Wacko', method: 'convertToWacko', args: [] },
     'dark-toggle': { labelKey: 'ToggleDark', method: 'toggleDarkMode', args: [] },
@@ -564,16 +562,15 @@ class WikiEdit extends ProtoEdit {
       return;
     }
 
-    if (this.safeSetDraft(this.draftKey, content)) {
+    const draftData = {
+      content: content,
+      timestamp: Date.now(),
+      title: document.getElementById('page_title')?.value?.trim() || ''
+    };
+
+    if (this.safeSetDraft(this.draftKey, JSON.stringify(draftData))) {
       this.showMessage(`✓ ${lang.DraftSaved || 'Draft saved'}`);
     }
-  }
-
-  clearDraft() {
-    if (!this.draftKey) return;
-    this.safeRemoveDraft(this.draftKey);
-    Log.info('[WikiEdit] Autosaved draft cleared');
-    this.showMessage(`${lang.DraftCleared || 'Draft cleared'}`);
   }
 
   /**
@@ -616,31 +613,66 @@ class WikiEdit extends ProtoEdit {
    * the user is asked whether to restore it (with undo support).
    */
   loadAutosavedDraft() {
-    if (!this.draftKey) return;
-    const saved = this.safeGetDraft(this.draftKey);
-    if (saved !== null && saved !== this.area.value.trim()) {
-      // Just notify the user – no popup
-      this.showMessage(`${lang?.DraftAvailable || 'Autosaved draft found'} – click 🔄 Restore to recover it`, 4000);
+    const saved = localStorage.getItem(this.draftKey);
+    if (!saved) return;
+
+    let draft;
+    try {
+      draft = JSON.parse(saved);
+    } catch (e) {
+      this.safeRemoveDraft(this.draftKey);
+      return;
     }
+
+    if (!draft.content) {
+      this.safeRemoveDraft(this.draftKey);
+      return;
+    }
+
+    this.showDraftInfobox(draft);
   }
 
-  // Manual restore from toolbar button (no popup)
-  restoreDraft() {
-    if (!this.draftKey) return;
-    const saved = this.safeGetDraft(this.draftKey);
-    if (saved !== null && saved !== this.area.value) {
-      this.pushState();
-      this.area.value = saved;
-      this.area.setSelectionRange(saved.length, saved.length);
-      this.area.focus();
-      this.showMessage(`${lang?.DraftRestored || 'Draft restored'}`);
-      this.updateStatus();
+  showDraftInfobox(draft) {
+      const timeStr = new Date(draft.timestamp).toLocaleString();
+      const titlePart = draft.title ? `“${draft.title}”` : this.lang?.ThisPage || 'this page';
 
-      this._updateSyntaxHighlight();
-    } else {
-      this.showMessage('No draft to restore');
+      const infoboxHTML = `
+        <div id="draft-infobox" class="info-box draft-infobox">
+          <strong>${this.lang?.DraftFound || 'Draft found'}</strong> — ${this.lang?.SavedOn || 'saved on'} ${timeStr}<br>
+          ${this.lang?.RecoverDraftQuestion || 'Do you want to recover the draft for'} ${titlePart}?
+          <br><br>
+          <button type="button" class="btn-ok" id="recover-draft-btn">${this.lang?.RecoverDraft || 'Recover Draft'}</button>
+          <button type="button" class="btn-cancel" id="discard-draft-btn">${this.lang?.DiscardDraft || 'Discard Draft'}</button>
+        </div>
+      `;
+
+      const placeholder = document.getElementById('draft-infobox-placeholder');
+      if (placeholder) {
+        placeholder.innerHTML = infoboxHTML;
+      } else {
+        // Fallback
+        const target = this.area?.parentNode;
+        if (target) {
+          const div = document.createElement('div');
+          div.innerHTML = infoboxHTML;
+          target.insertBefore(div, this.area);
+        }
+      }
+
+      // Handlers
+      document.getElementById('recover-draft-btn').onclick = () => {
+        this.pushState();                    // allow undo
+        this.area.value = draft.content;
+        this.updateStatus();
+        this.safeRemoveDraft(this.draftKey);
+        document.getElementById('draft-infobox')?.remove();
+      };
+
+      document.getElementById('discard-draft-btn').onclick = () => {
+        this.safeRemoveDraft(this.draftKey);
+        document.getElementById('draft-infobox')?.remove();
+      };
     }
-  }
 
   toggleDarkMode() {
     const html = document.documentElement;

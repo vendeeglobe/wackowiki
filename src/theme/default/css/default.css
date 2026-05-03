@@ -1199,8 +1199,8 @@ td.file- {
 .upload-error   { background: #f8d7da; color: #721c24; }
 
 .upload-tabs { display: flex; margin-bottom: 1rem; border-bottom: 2px solid #ddd; }
-.tab-btn { padding: 0.75rem 1.5rem; background: none; border: none; cursor: pointer; }
-.tab-btn.active { border-bottom: 3px solid #007acc; font-weight: bold; }
+.tab-btn { padding: 0.75rem 1.5rem; background: none; border: none; cursor: pointer; color: var(--ww-text); }
+.tab-btn.active { border-bottom: 3px solid #007acc; font-weight: bold; color: var(--ww-text); }
 
 .upload-tab-content.hidden { display: none; }
 
@@ -1279,12 +1279,6 @@ td.file- {
   flex-direction: column;
 }
 
-/* Optional: make the active tab more obvious */
-.tab-btn.active {
-  background: #fff;
-  border-bottom: 3px solid #007acc;
-  font-weight: bold;
-}
 
 /* caption */
 .caption {
@@ -2114,6 +2108,20 @@ textarea.wikiedit-area.syntax-enabled {
 	overflow: hidden;
 }
 
+
+.draft-infobox {
+  margin: 8px 0 12px 0;
+  padding: 12px 16px;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 4px;
+  color: #856404;
+}
+
+.draft-infobox button {
+  margin-right: 8px;
+}
+
 /* WikiEdit modal Forms --------------------------------- */
 .we-modal {
 	display: none;
@@ -2353,6 +2361,34 @@ textarea.wikiedit-area.syntax-enabled {
 @keyframes ww-pulse {
 	0%, 100% { opacity: 1; }
 	50%      { opacity: 0.4; }
+}
+
+
+.session-expired-warning {
+  margin: 12px 0;
+  padding: 12px 16px;
+  border-left: 5px solid #e74c3c;
+}
+
+.session-expired-warning button {
+  background: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.session-expired-warning button:hover {
+  background: #e9ecef;
+}
+
+.session-expired-warning .btn-save-draft {
+  background: #28a745;
+  color: white;
+  border-color: #28a745;
+}
+
+.session-expired-warning .btn-save-draft:hover {
+  background: #218838;
 }
 
 

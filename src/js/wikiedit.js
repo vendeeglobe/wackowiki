@@ -663,6 +663,7 @@ class WikiEdit extends ProtoEdit {
       document.getElementById('recover-draft-btn').onclick = () => {
         this.pushState();                    // allow undo
         this.area.value = draft.content;
+        this._updateSyntaxHighlight();
         this.updateStatus();
         this.safeRemoveDraft(this.draftKey);
         document.getElementById('draft-infobox')?.remove();

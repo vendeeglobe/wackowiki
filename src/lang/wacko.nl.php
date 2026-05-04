@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'Starten met Live Preview ingeschakeld',
 	'WikiEditToolbar'			=> 'WikiEdit werkbalk',
 	'CustomizeToolbar'			=> 'Werkbalk aanpassen',
+	'ClearWeCache'				=> 'Cache legen',
+	'ClearWeCacheButton'		=> 'LocalStorage wissen',
+	'WeCacheCleared'			=> 'Lokale gegevens WikiEdit met succes gewist',
 
 	'PageMoved'					=> 'Deze pagina is verplaatst. U kunt \'m vinden op',
 	'RedirectedFrom'			=> 'Omgeleid van %1',

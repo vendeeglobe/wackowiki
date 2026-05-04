@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'Aloita Live Preview käytössä',
 	'WikiEditToolbar'			=> 'WikiEdit Työkalurivi',
 	'CustomizeToolbar'			=> 'Muokkaa Työkalupalkkia',
+	'ClearWeCache'				=> 'Tyhjennä Välimuisti',
+	'ClearWeCacheButton'		=> 'Tyhjennä paikallinen tallennustila',
+	'WeCacheCleared'			=> 'WikiEdit paikallinen data tyhjennetty onnistuneesti',
 
 	'PageMoved'					=> 'Tämä sivu siirretty. Löydät sen osoitteesta',
 	'RedirectedFrom'			=> 'Ohjattu uudelleen kohteesta %1',

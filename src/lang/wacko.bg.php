@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'Start with Live Preview enabled',
 	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
 	'CustomizeToolbar'			=> 'Customize Toolbar',
+	'ClearWeCache'				=> 'Clear Cache',
+	'ClearWeCacheButton'		=> 'Clear localStorage',
+	'WeCacheCleared'			=> 'WikiEdit local data cleared successfully',
 
 	'PageMoved'					=> 'Преместено на адрес',
 	'RedirectedFrom'			=> 'Пренасочен от %1',

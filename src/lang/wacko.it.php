@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'Inizia con l\'anteprima in diretta abilitata',
 	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
 	'CustomizeToolbar'			=> 'Personalizza Barra Strumenti',
+	'ClearWeCache'				=> 'Cancella Cache',
+	'ClearWeCacheButton'		=> 'Cancella localStorage',
+	'WeCacheCleared'			=> 'WikiEdit dati locali cancellati con successo',
 
 	'PageMoved'					=> 'La pagina è stata spostata. Puoi trovarla qui',
 	'RedirectedFrom'			=> 'Reindirizzato da %1',

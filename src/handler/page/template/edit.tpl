@@ -4,7 +4,7 @@
 		[ ' warning ' ]
 		[= f _ =
 			[= l _ =
-				<div class="page-properties">[ ' accessmode ' ]<br><br><br>
+				<div class="page-properties">[ ' accessmode ' ]<br><br>
 				<span title="[ ' language ' ]">[ ' lang ' ]&nbsp;&nbsp;</span></div>
 			=]
 			[= p _ =

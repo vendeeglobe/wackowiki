@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'Start with Live Preview enabled',
 	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
 	'CustomizeToolbar'			=> 'Customize Toolbar',
+	'ClearWeCache'				=> 'Clear Cache',
+	'ClearWeCacheButton'		=> 'Clear localStorage',
+	'WeCacheCleared'			=> 'WikiEdit local data cleared successfully',
 
 	'PageMoved'					=> 'See leht on ümber paigutatud. Sa leiad selle',
 	'RedirectedFrom'			=> 'Redigeeritud alates %1',

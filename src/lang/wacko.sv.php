@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'Börja med Live Preview aktiverad',
 	'WikiEditToolbar'			=> 'WikiEdit verktygsfält',
 	'CustomizeToolbar'			=> 'Anpassa verktygsfältet',
+	'ClearWeCache'				=> 'Rensa cache',
+	'ClearWeCacheButton'		=> 'Rensa localStorage',
+	'WeCacheCleared'			=> 'WikiEdit lokal data har rensats',
 
 	'PageMoved'					=> 'Denna sida flyttad. Du hittar den på',
 	'RedirectedFrom'			=> 'Omdirigerad från %1',

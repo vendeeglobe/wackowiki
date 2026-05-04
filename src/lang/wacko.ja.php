@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'ライブプレビューを有効にして開始',
 	'WikiEditToolbar'			=> 'Wiki編集ツールバー',
 	'CustomizeToolbar'			=> 'ツールバーをカスタマイズ',
+	'ClearWeCache'				=> 'キャッシュをクリア',
+	'ClearWeCacheButton'		=> 'ローカルストレージをクリア',
+	'WeCacheCleared'			=> 'WikiEditローカルデータを消去しました',
 
 	'PageMoved'					=> 'このページは移動しました。次の場所で見つけることができます：',
 	'RedirectedFrom'			=> '%1から転送',

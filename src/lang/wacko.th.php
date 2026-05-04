@@ -664,6 +664,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'เริ่มด้วยตัวอย่างสดเปิดใช้งาน',
 	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
 	'CustomizeToolbar'			=> 'Customize Toolbar',
+	'ClearWeCache'				=> 'Clear Cache',
+	'ClearWeCacheButton'		=> 'Clear localStorage',
+	'WeCacheCleared'			=> 'WikiEdit local data cleared successfully',
 
 	'PageMoved'					=> 'หน้านี้ถูกย้าย คุณสามารถค้นหาได้ที่',
 	'RedirectedFrom'			=> 'เปลี่ยนทางมาจาก %1',

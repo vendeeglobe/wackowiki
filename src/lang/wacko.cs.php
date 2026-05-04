@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'Začít s živým náhledem povoleno',
 	'WikiEditToolbar'			=> 'Panel nástrojů WikiEdit',
 	'CustomizeToolbar'			=> 'Přizpůsobit lištu nástrojů',
+	'ClearWeCache'				=> 'Vymazat mezipaměť',
+	'ClearWeCacheButton'		=> 'Vymazat localStorage',
+	'WeCacheCleared'			=> 'WikiEdit místní data úspěšně vymazána',
 
 	'PageMoved'					=> 'Tato stránka byla přesunuta. Najdete ji na',
 	'RedirectedFrom'			=> 'Přesměrováno z %1',

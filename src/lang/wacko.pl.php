@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'Rozpocznij z włączonym podglądem na żywo',
 	'WikiEditToolbar'			=> 'Pasek narzędzi Wiki',
 	'CustomizeToolbar'			=> 'Dostosuj pasek narzędzi',
+	'ClearWeCache'				=> 'Usuń pamięć podręczną',
+	'ClearWeCacheButton'		=> 'Wyczyść pamięć lokalną',
+	'WeCacheCleared'			=> 'Lokalne dane wikiEdit zostały pomyślnie wyczyszczone',
 
 	'PageMoved'					=> 'Ta strona została przeniesiona. Nowy adres strony:',
 	'RedirectedFrom'			=> 'Przekierowano z %1',

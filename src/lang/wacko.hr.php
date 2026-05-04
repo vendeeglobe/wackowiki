@@ -664,6 +664,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'Startaj s omogućenim Live Preview',
 	'WikiEditToolbar'			=> 'WikiEdit Toolbar',
 	'CustomizeToolbar'			=> 'Customize Toolbar',
+	'ClearWeCache'				=> 'Clear Cache',
+	'ClearWeCacheButton'		=> 'Clear localStorage',
+	'WeCacheCleared'			=> 'WikiEdit local data cleared successfully',
 
 	'PageMoved'					=> 'Ova stranica je premještena. Možete je pronaći na',
 	'RedirectedFrom'			=> 'Preusmjereno s %1',

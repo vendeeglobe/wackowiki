@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'Începe cu Previzualizarea Live activată',
 	'WikiEditToolbar'			=> 'WikiEditați bara de instrumente',
 	'CustomizeToolbar'			=> 'Personalizează bara de instrumente',
+	'ClearWeCache'				=> 'Curăță Cache',
+	'ClearWeCacheButton'		=> 'Curăță stocarea locală',
+	'WeCacheCleared'			=> 'WikiEditarea datelor locale a fost ștearsă',
 
 	'PageMoved'					=> 'Această pagină mutată. O puteți găsi la',
 	'RedirectedFrom'			=> 'Redirectionat de la %1',

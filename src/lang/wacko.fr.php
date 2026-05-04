@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'Démarrer avec l\'aperçu en direct activé',
 	'WikiEditToolbar'			=> 'Barre d\'outils de modification du wiki',
 	'CustomizeToolbar'			=> 'Personnaliser la barre d\'outils',
+	'ClearWeCache'				=> 'Vider le cache',
+	'ClearWeCacheButton'		=> 'Effacer localStorage',
+	'WeCacheCleared'			=> 'WikiEdit des données locales effacées avec succès',
 
 	'PageMoved'					=> 'Cette page a été déplacée ou a changé de nom. Vous pouvez la trouverez ici : ',
 	'RedirectedFrom'			=> 'Redirigé depuis %1',

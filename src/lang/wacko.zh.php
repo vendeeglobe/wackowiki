@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> '启用实时预览',
 	'WikiEditToolbar'			=> 'Wiki编辑工具栏',
 	'CustomizeToolbar'			=> '自定义工具栏',
+	'ClearWeCache'				=> '清除缓存',
+	'ClearWeCacheButton'		=> '清除本地存储',
+	'WeCacheCleared'			=> 'WikiEdit 本地数据清除成功',
 
 	'PageMoved'					=> '这一页被移动了。你可以在',
 	'RedirectedFrom'			=> '重定向自%1',

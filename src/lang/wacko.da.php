@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'Start med Live-forhåndsvisning aktiveret',
 	'WikiEditToolbar'			=> 'WikiEdit Værktøjslinje',
 	'CustomizeToolbar'			=> 'Tilpas Værktøjslinje',
+	'ClearWeCache'				=> 'Ryd Cache',
+	'ClearWeCacheButton'		=> 'Ryd localStorage',
+	'WeCacheCleared'			=> 'WikiEdit lokale data ryddet med succes',
 
 	'PageMoved'					=> 'Denne side er flyttet. Du kan finde den på',
 	'RedirectedFrom'			=> 'Omdirigeret fra %1',

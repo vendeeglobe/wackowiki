@@ -662,6 +662,9 @@ $wacko_translation = [
 	'LivePreview'				=> 'Запускати з увімкненого живого перегляду',
 	'WikiEditToolbar'			=> 'Вікі редагування панелі інструментів',
 	'CustomizeToolbar'			=> 'Налаштування панелі інструментів',
+	'ClearWeCache'				=> 'Очистити кеш',
+	'ClearWeCacheButton'		=> 'Очистити локальне сховище',
+	'WeCacheCleared'			=> 'WikiEdit локальні дані успішно очищені',
 
 	'PageMoved'					=> 'Цю сторінку перенесено. Ви можете знайти її в',
 	'RedirectedFrom'			=> 'Перенаправлено з %1',

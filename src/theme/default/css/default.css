@@ -194,7 +194,7 @@ input[type=search]:focus,
 input[type=email]:focus,
 input[type=password]:focus,
 textarea:focus {
-	border: 1px solid #3daee9;
+	border: 1px solid var(--ww-focus-ring);
 }
 
 input[type=checkbox],
@@ -1174,7 +1174,7 @@ td.file- {
 }
 
 .show-image a img:active {
-	box-shadow: 0 0 10px 0 #3daee9;
+	box-shadow: 0 0 10px 0 var(--ww-focus-ring);
 }
 
 .upload-dropzone {
@@ -1933,7 +1933,8 @@ body:has(.we-fullscreen[open]) .we-toolbar {
 }
 
 /* Textarea */
-textarea.wikiedit-area {
+textarea.textarea-page,
+textarea.textarea-comment {
 	position: relative;
 	z-index: 2;
 	box-sizing: border-box;
@@ -1951,7 +1952,8 @@ textarea.wikiedit-area {
 	word-break: normal;
 }
 
-textarea.wikiedit-area:not(.syntax-enabled) {
+textarea.textarea-page:not(.syntax-enabled),
+textarea.textarea-comment:not(.syntax-enabled) {
 	color: var(--we-textarea-text);
 	background: var(--we-textarea-bg);
 	caret-color: var(--we-textarea-caret);
@@ -1992,7 +1994,7 @@ textarea.wikiedit-area:not(.syntax-enabled) {
 	tab-size: inherit;
 	letter-spacing: inherit;
 	word-spacing: inherit;
-	z-index: 1;
+	z-index: 0;
 	color: var(--we-textarea-text, #222);
 }
 
@@ -2004,10 +2006,12 @@ textarea.wikiedit-area:not(.syntax-enabled) {
 }
 
 /* Textarea on top when syntax is enabled */
-textarea.wikiedit-area.syntax-enabled {
+textarea.syntax-enabled {
 	background: transparent !important;
 	color: transparent !important;
 	caret-color: var(--we-textarea-caret, #000) !important;
+	z-index: 1;
+	position: relative;
 }
 
 .wikiedit-split-container {

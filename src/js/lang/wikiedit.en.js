@@ -85,7 +85,7 @@ lang = {
 
 	DraftFound:				'Draft found',
 	SavedOn:				'saved on',
-	RecoverDraftQuestion:	'Do you want to recover the draft for',
+	RecoverDraftQuestion:	'Do you want to recover the draft?',
 	RecoverDraft:			'Recover Draft',
 	DiscardDraft:			'Discard Draft',
 	ThisPage:				'this page',

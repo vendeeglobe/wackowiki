@@ -572,6 +572,13 @@ class WikiEdit extends ProtoEdit {
     }
   }
 
+  clearDraft() {
+    if (!this.draftKey) return;
+    this.safeRemoveDraft(this.draftKey);
+    Log.info('[WikiEdit] Autosaved draft cleared');
+    this.showMessage(`${lang.DraftCleared || 'Draft cleared'}`);
+  }
+
   /**
    * Debounced autosave – fires only after the user stops typing for `autosaveDelay` ms.
    */
@@ -612,7 +619,9 @@ class WikiEdit extends ProtoEdit {
    * the user is asked whether to restore it (with undo support).
    */
   loadAutosavedDraft() {
-    const saved = localStorage.getItem(this.draftKey);
+	if (!this.draftKey) return;
+	const saved = this.safeGetDraft(this.draftKey);
+
     if (!saved) return;
 
     let draft;
@@ -638,7 +647,7 @@ class WikiEdit extends ProtoEdit {
       const infoboxHTML = `
         <div id="draft-infobox" class="info-box draft-infobox">
           <strong>${this.lang?.DraftFound || 'Draft found'}</strong> — ${this.lang?.SavedOn || 'saved on'} ${timeStr}<br>
-          ${this.lang?.RecoverDraftQuestion || 'Do you want to recover the draft for'} ${titlePart}?
+          ${this.lang?.RecoverDraftQuestion || 'Do you want to recover the draft?'}
           <br><br>
           <button type="button" class="btn-ok" id="recover-draft-btn">${this.lang?.RecoverDraft || 'Recover Draft'}</button>
           <button type="button" class="btn-cancel" id="discard-draft-btn">${this.lang?.DiscardDraft || 'Discard Draft'}</button>
@@ -2219,7 +2228,7 @@ class WikiEdit extends ProtoEdit {
 
         const data = await res.json();
 
-        this.previewPane.innerHTML = data.preview_html || '<p style="color:#999;">(empty preview)</p>';
+        this.previewPane.innerHTML = data.preview_html || '';
 
         const tokenField = form.querySelector('input[name="_nonce"]');
         if (tokenField && data.new_form_token) {

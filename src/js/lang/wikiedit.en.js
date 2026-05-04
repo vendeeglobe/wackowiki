@@ -84,7 +84,7 @@ lang = {
 	Redo:					'Redo',
 
 	DraftFound:				'Draft found',
-	SavedOn:				'saved on',
+	SavedOn:				'saved',
 	RecoverDraftQuestion:	'Do you want to recover the draft?',
 	RecoverDraft:			'Recover Draft',
 	DiscardDraft:			'Discard Draft',
@@ -114,4 +114,13 @@ lang = {
 	Alt:					'Alt',
 	Shift:					'Shift',
 	Space:					'Space',
+	
+	JustNow:				'just now',
+	MinuteAgo:				'1 minute ago',
+	MinutesAgo:				'%s minutes ago',
+	HourAgo:				'1 hour ago',
+	HoursAgo:				'%s hours ago',
+	Yesterday:				'yesterday',
+	DaysAgo:				'days ago',
+	Yesterday:				'yesterday',
 };

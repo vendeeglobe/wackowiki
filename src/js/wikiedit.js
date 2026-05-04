@@ -641,14 +641,19 @@ class WikiEdit extends ProtoEdit {
   }
 
   showDraftInfobox(draft) {
-      const timeStr = new Date(draft.timestamp).toLocaleString();
-      const titlePart = draft.title ? `“${draft.title}”` : this.lang?.ThisPage || 'this page';
+      const date = new Date(draft.timestamp);
+      const timeStr = date.toLocaleString();
+      const relativeTime = this.getRelativeTime(date);
 
       const infoboxHTML = `
         <div id="draft-infobox" class="info-box draft-infobox">
-          <strong>${this.lang?.DraftFound || 'Draft found'}</strong> — ${this.lang?.SavedOn || 'saved on'} ${timeStr}<br>
-          ${this.lang?.RecoverDraftQuestion || 'Do you want to recover the draft?'}
-          <br><br>
+              <strong>${this.lang?.DraftFound || 'Draft found'}</strong> — 
+              ${this.lang?.SavedOn || 'saved'} 
+              <time datetime="${date.toISOString()}" title="${timeStr}">
+                  ${relativeTime}
+              </time><br>
+			<span class="visuallyhidden">${this.lang?.RecoverDraftQuestion || 'Do you want to recover the draft?'}</span>
+          <br>
           <button type="button" class="btn-ok" id="recover-draft-btn">${this.lang?.RecoverDraft || 'Recover Draft'}</button>
           <button type="button" class="btn-cancel" id="discard-draft-btn">${this.lang?.DiscardDraft || 'Discard Draft'}</button>
         </div>
@@ -2799,5 +2804,68 @@ class WikiEdit extends ProtoEdit {
     // Trigger input event for other listeners
     area.dispatchEvent(new Event('input', { bubbles: true }));
   }
+
+  /**
+   * Returns localized relative time string
+   */
+  getRelativeTime(date) {
+    const now = new Date();
+    const diffMs = now - date;
+    const diffSec = Math.floor(diffMs / 1000);
+
+    if (diffSec < 60) {
+      return this.lang?.JustNow || 'just now';
+    }
+
+    const diffMin = Math.floor(diffSec / 60);
+    if (diffMin < 60) {
+      return this._formatRelativeTime(diffMin, 'Minute');
+    }
+
+    const diffHour = Math.floor(diffMin / 60);
+    if (diffHour < 24) {
+      return this._formatRelativeTime(diffHour, 'Hour');
+    }
+
+    const yesterday = new Date(now);
+    yesterday.setDate(yesterday.getDate() - 1);
+
+    if (date.toDateString() === yesterday.toDateString()) {
+      return this.lang?.Yesterday || 'yesterday';
+    }
+
+    const diffDay = Math.floor(diffHour / 24);
+    if (diffDay < 30) {
+      return this._formatRelativeTime(diffDay, 'Day');
+    }
+
+    // Fallback for older drafts
+    return date.toLocaleDateString(this.lang?.Locale || undefined);
+  }
+
+  /**
+   * Internal helper: Uses language templates like "vor %s Stunden" or "%s hours ago"
+   */
+  _formatRelativeTime(value, unit) {
+      const isSingular = value === 1;
+
+      // Try localized template first (e.g. 'vor %s Stunden' or '%s hours ago')
+      const key = isSingular ? unit + 'Ago' : unit + 'sAgo';
+      let template = this.lang?.[key];
+
+      if (template) {
+        return template
+          .replace('%s', value)
+          .replace('%1', value)
+          .replace('%d', value);
+      }
+
+      // Fallback: Use singular/plural from language file
+      if (isSingular) {
+        return `1 ${this.lang?.[unit] || unit.toLowerCase()} ago`;
+      } else {
+        return `${value} ${this.lang?.[unit + 's'] || unit.toLowerCase() + 's'} ago`;
+      }
+    }
 
 }

@@ -157,7 +157,7 @@ class ProtoEdit {
   }
 
   getDropdownHTML() {
-    return `<li class="we-dropdown">
+    return ''; /*`<li class="we-dropdown">
        <button type="button" class="btn-" title="${this.lang?.ToolsHelp || 'Tools'}">▼</button>
        <ul class="we-dropdown-menu">
           <li class="we-about">
@@ -165,7 +165,7 @@ class ProtoEdit {
          </li>
 		 <!-- Add any other permanent dropdown items here -->
        </ul>
-     </li>`;
+     </li>`;*/
   }
 
   /** Build toolbar as real DOM element */

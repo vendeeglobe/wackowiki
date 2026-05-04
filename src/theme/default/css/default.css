@@ -2266,6 +2266,13 @@ textarea.syntax-enabled {
 	padding: 0 24px 24px 24px;
 }
 
+.we-shortcuts-table td {
+	padding:8px 12px; border-bottom:1px solid #eee;
+}
+.we-shortcuts-table td {
+	text-align:left; padding:8px 12px; border-bottom:2px solid #ddd;
+}
+
 .we-dropdown {
 	position: relative;
 	display: inline-block;

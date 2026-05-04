@@ -43,7 +43,7 @@ class WikiEdit extends ProtoEdit {
     'action': { labelKey: 'Action', method: 'insTag', args: ['{{', '}}', 2] },
     'textred': { labelKey: 'MarkedText', method: 'insTag', args: ['!!', '!!', 2] },
     'highlight': { labelKey: 'HighlightText', method: 'insTag', args: ['??', '??', 2] },
-    'hr': { labelKey: 'Line', method: 'insTag', args: ['', '\n----\n', 2] },
+    'hr': { labelKey: 'HorizontalRule', method: 'insTag', args: ['', '\n----\n', 2] },
     'signature': { labelKey: 'Signature', method: 'insTag', args: ['::@::', ' ', 1] },
     'createlink': { labelKey: 'Hyperlink', method: 'createLink', args: [] },
     'footnote': { labelKey: 'Footnote', method: 'insTag', args: ['[[^ ', ']]', 2] },
@@ -1688,8 +1688,40 @@ class WikiEdit extends ProtoEdit {
         <a href="${this.manual}${lang.HelpFormattingPage || 'Formatting'}" target="_blank">${lang.HelpFormattingTip}</a><br>
         <a href="${this.manual}" target="_blank">Full Documentation</a><br>
         <a href="https://wackowiki.org/doc/Dev/Projects/WikiEdit" target="_blank">Project Page</a>
-        <hr style="margin:15px 0;border:none;border-top:1px solid #ddd;">
-        <pre style="white-space:pre-wrap;font-size:0.95em;line-height:1.4;">${lang.HelpAboutTip || ''}</pre>
+      </div>
+	  <div class="we-modal-header">
+          <h3 class="we-modal-title">${lang.KeyboardShortcuts || 'Keyboard Shortcuts'}</h3>
+        </div>
+        <div class="we-modal-body" style="padding:20px; max-height:50vh; overflow-y:auto;">
+          <table class="we-shortcuts-table" style="width:100%; border-collapse:collapse; font-size:13px;">
+            <thead>
+              <tr style="background:#f8f8f8;">
+                <th>${lang.Shortcut || 'Shortcut'}</th>
+                <th>${lang.Action || 'Action'}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>Z</kbd></td><td>${lang.Undo || 'Undo'}</td></tr>
+              <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>${lang.Shift}</kbd> + <kbd>Z</kbd></td><td>${lang.Redo || 'Redo'}</td></tr>
+              <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>F</kbd></td><td>${lang.SearchReplace || 'Search & Replace'}</td></tr>
+              <tr><td><kbd>Tab</kbd></td><td>${lang.Indent || 'Indent'}</td></tr>
+              <tr><td><kbd>${lang.Shift}</kbd> + <kbd>Tab</kbd> / <kbd>Alt</kbd> + <kbd>U</kbd></td><td>${lang.Outdent || 'Outdent'}</td></tr>
+              <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>1</kbd> … <kbd>6</kbd></td><td>${lang.HeadingLevels || 'Heading level 1–6'}</td></tr>
+              <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>B</kbd></td><td>${lang.Bold || 'Bold'}</td></tr>
+              <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>I</kbd></td><td>${lang.Italic || 'Italic'}</td></tr>
+              <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>U</kbd></td><td>${lang.Underline || 'Underline'}</td></tr>
+              <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>=</kbd></td><td>${lang.Small || 'Small'}</td></tr>
+              <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>S</kbd></td><td>${lang.Strikethrough || 'Strike-through'}</td></tr>
+              <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>J</kbd></td><td>${lang.MarkedText || 'Marked text'}</td></tr>
+              <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>H</kbd></td><td>${lang.HighlightText || 'Highlight text'}</td></tr>
+              <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>_</kbd></td><td>${lang.HorizontalRule || 'Horizontal rule'}</td></tr>
+              <tr><td><kbd>${lang.Alt}</kbd> + <kbd>S</kbd></td><td>${lang.SavePage || 'Save page'}</td></tr>
+              <tr><td><kbd>${lang.Ctrl}</kbd>/<kbd>Alt</kbd> + <kbd>L</kbd></td><td>${lang.Hyperlink || 'Insert link'}</td></tr>
+              <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>${lang.Shift}</kbd> + <kbd>N</kbd>/<kbd>O</kbd></td><td>${lang.NumberedList || 'Numbered list'}</td></tr>
+              <tr><td><kbd>Enter</kbd> (inside list)</td><td>${lang.AutoList || 'Continue list automatically'}</td></tr>
+			  <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>${lang.Space}</kbd><td>${lang.AutoList || 'Autocomplete'}</td></tr>
+            </tbody>
+          </table>
       </div>
       <div class="we-modal-footer">
         <button type="button" class="we-btn">Close</button>

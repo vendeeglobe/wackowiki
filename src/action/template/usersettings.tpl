@@ -150,6 +150,16 @@
 					</td>
 				</tr>
 				<tr>
+				<tr>
+					<th scope="row">[ ' _t: ClearWeCache ' ]</th>
+					<td>
+						<button type="button" id="clear_we_localstorage" class="btn">
+							[ ' _t: ClearWeCacheButton ' ]
+						</button>
+						<span id="we_localstorage_status" class="form-note"></span>
+					</td>
+				</tr>
+				<tr>
 					<th><label for="editor_height">[ ' _t: EditorHeight ' ]</label></th>
 					<td>
 						<input type="number" id="editor_height" name="editor_height" value="[ ' height ' ]" min="300" max="800" step="100" style="width:80px">
@@ -167,6 +177,33 @@
 			</table>
 			</div>
 		</form>
+		<script>
+			document.getElementById('clear_we_localstorage').addEventListener('click', function() {
+				const statusEl = document.getElementById('we_localstorage_status');
+		
+				// Clear only WikiEdit-related keys
+				const keys = Object.keys(localStorage);
+				let cleared = 0;
+		
+				keys.forEach(key => {
+					if (key.startsWith('we_') || 
+						key.startsWith('wikiedit_') || 
+						key.includes('draft')) {
+						localStorage.removeItem(key);
+						cleared++;
+					}
+				});
+		
+				// Success feedback
+				statusEl.style.color = 'green';
+				statusEl.textContent = '[ ' _t: WeCacheCleared ' ] (' + cleared + ' keys removed)';
+		
+				// Auto-hide message after 4 seconds
+				setTimeout(() => {
+					statusEl.textContent = '';
+				}, 4000);
+			});
+	</script>
 	=]
 	[= e _ =
 		<form action="[ ' href: ' ]" method="post" name="user_settings_extended">

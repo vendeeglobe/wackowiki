@@ -78,7 +78,6 @@ class WikiEdit extends ProtoEdit {
     this.end = '##endpoint##';
     this.rend = new RegExp(this.end);
     this.rendb = new RegExp('^' + this.end);
-    this.tab = false;
     this.enterpressed = false;
 
     // Single-form popups
@@ -886,10 +885,6 @@ class WikiEdit extends ProtoEdit {
       clearTimeout(this.pushTimer);
     }
   }
-  // Toggle TAB key interception
-  switchTab() {
-    this.tab = !this.tab;
-  }
 
   // ====================== INTERNAL HELPERS ======================
 
@@ -1202,12 +1197,10 @@ class WikiEdit extends ProtoEdit {
     } else if (ctrl && key === 'f') {
       this.showFindReplace();
       res = true;
-    } else if (e.key === 'Tab' || (alt && (key === 'u' || key === 'i'))) {
-      if (this.tab || e.key !== 'Tab') {
+    } else if (alt && (key === 'u' || key === 'i')) {
         res = shift || (alt && key === 'u')
           ? this.unindent()
           : this.insTag('  ', '', 0, 1);
-      }
     } else if (ctrl && /^[1-6]$/.test(key)) {
       const level = parseInt(key);
       const tag = '='.repeat(level + 1);
@@ -1228,12 +1221,12 @@ class WikiEdit extends ProtoEdit {
       res = true;
     } else if ((ctrl || alt) && key === 'l') {
       if (shift && ctrl) {
-        res = this.insTag(' * ', '', 0, 1, 1);
+        res = this.insTag('  * ', '', 0, 1, 1);
       } else {
         res = this.createLink(alt);
       }
     } else if (ctrl && shift && (key === 'n' || key === 'o')) {
-      res = this.insTag(' 1. ', '', 0, 1, 1);
+      res = this.insTag('  1. ', '', 0, 1, 1);
     } else if (e.key === 'Enter' && !e.shiftKey) {
       // (Enter auto-list logic)
       const text = t.value.replace(/\r/g, '');
@@ -1704,8 +1697,8 @@ class WikiEdit extends ProtoEdit {
               <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>Z</kbd></td><td>${lang.Undo || 'Undo'}</td></tr>
               <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>${lang.Shift}</kbd> + <kbd>Z</kbd></td><td>${lang.Redo || 'Redo'}</td></tr>
               <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>F</kbd></td><td>${lang.SearchReplace || 'Search & Replace'}</td></tr>
-              <tr><td><kbd>Tab</kbd></td><td>${lang.Indent || 'Indent'}</td></tr>
-              <tr><td><kbd>${lang.Shift}</kbd> + <kbd>Tab</kbd> / <kbd>Alt</kbd> + <kbd>U</kbd></td><td>${lang.Outdent || 'Outdent'}</td></tr>
+              <tr><td><kbd>${lang.Alt}</kbd> + <kbd>I</kbd></td><td>${lang.Indent || 'Indent'}</td></tr>
+              <tr><td><kbd>${lang.Alt}</kbd> + <kbd>U</kbd></td><td>${lang.Outdent || 'Outdent'}</td></tr>
               <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>1</kbd> … <kbd>6</kbd></td><td>${lang.HeadingLevels || 'Heading level 1–6'}</td></tr>
               <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>B</kbd></td><td>${lang.Bold || 'Bold'}</td></tr>
               <tr><td><kbd>${lang.Ctrl}</kbd> + <kbd>I</kbd></td><td>${lang.Italic || 'Italic'}</td></tr>
@@ -2512,18 +2505,6 @@ class WikiEdit extends ProtoEdit {
     const wacko = this.markdownToWacko(original);
 	this.replaceContent(wacko);
     this.showMessage('✓ Markdown → Wacko');
-  }
-
-  /** Optional: Dual-mode toggle (Markdown ↔ Wacko editing) */
-  markdownMode = false;
-  toggleMarkdownMode() {
-    this.markdownMode = !this.markdownMode;
-    if (this.markdownMode) {
-      this.area.value = this.wackoToMarkdown(this.area.value);
-    } else {
-      this.area.value = this.markdownToWacko(this.area.value);
-    }
-    this.showMessage(this.markdownMode ? 'Markdown mode ON' : 'Wacko mode ON');
   }
 
   /* ================================================================

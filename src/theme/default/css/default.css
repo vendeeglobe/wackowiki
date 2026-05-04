@@ -2826,6 +2826,7 @@ table.gallery {
 	padding: 0;
 }
 
+.we-shortcuts-table tr:hover,
 .topics tbody:hover,
 .revisions li:hover,
 .form-tbl tr:hover,
